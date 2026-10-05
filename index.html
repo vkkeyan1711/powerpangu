@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PowerPangu | Learn Trading, Free Scanners & Zerodha Account Opening</title>
+<meta name="description" content="Free trading courses, 50+ scanners and lifetime WhatsApp support from V. Karthikeyan, Zerodha Authorized Person. Open your Zerodha account with PowerPangu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--camel:#B98B5A;--camel-d:#9A6F42;--brown:#3E2A1A;--cream:#FAF5EC;--sand:#F0E6D4;--ink:#2B2118;--muted:#6F6050;--green:#2E7D4F;--red:#B3402F;--line:#E3D5BE;--card:#FFFDF8}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
+h1,h2,h3,.brand{font-family:Poppins,Inter,sans-serif;color:var(--brown);line-height:1.2}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.alt{background:var(--sand)}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:10px}
+.sub{color:var(--muted);max-width:620px;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:10px;font-weight:600;font-size:.95rem;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible,input:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.btn-p{background:var(--green);color:#fff;box-shadow:0 6px 16px rgba(46,125,79,.28)}
+.btn-p:hover{background:#256941}
+.btn-s{background:transparent;border-color:var(--camel-d);color:var(--brown)}
+.btn-s:hover{background:var(--camel);color:#fff}
+.btn-w{background:#1F8F4B;color:#fff}
+.btn-sm{padding:9px 16px;font-size:.82rem}
+nav{position:sticky;top:0;z-index:50;background:rgba(250,245,236,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-weight:700;font-size:1.35rem}.brand b{color:var(--camel-d)}
+.links{display:flex;align-items:center;gap:24px;font-weight:500;font-size:.93rem}
+.links a:not(.btn):hover{color:var(--camel-d)}
+.burger{display:none;background:none;border:0;font-size:1.7rem;color:var(--brown);cursor:pointer}
+.hero{padding:84px 0 64px;background:linear-gradient(135deg,#F6EBD8 0%,#E9D3AE 100%);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2rem,5vw,3.3rem);margin-bottom:18px}
+.hero p.lead{font-size:1.1rem;color:#4b3b2c;margin-bottom:18px}
+.trust{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.85rem;font-weight:500;margin-bottom:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.fine{font-size:.8rem;color:var(--muted)}
+.chart{background:var(--brown);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(62,42,26,.25)}
+.chart svg{width:100%;height:auto;display:block}
+.chart small{display:block;color:#d9c6a8;font-size:.72rem;margin-top:10px}
+.grid{display:grid;gap:20px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:0 4px 14px rgba(62,42,26,.06)}
+.card h3{font-size:1.08rem;margin:12px 0 6px}
+.card p{color:var(--muted);font-size:.93rem}
+.ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--camel),var(--camel-d));display:grid;place-items:center;font-size:1.3rem}
+.band{background:var(--brown);color:#F3E8D5;border-radius:18px;padding:36px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.band h2{color:#fff;margin:0 0 6px;font-size:1.5rem}.band p{color:#d9c6a8}
+.statbox{display:flex;align-items:baseline;gap:12px;margin-bottom:22px}
+.statbox strong{font-family:Poppins;font-size:2.4rem;color:var(--camel-d)}
+.tools{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{padding:10px 20px;border-radius:999px;border:1.5px solid var(--camel-d);background:transparent;font:600 .85rem Inter;color:var(--brown);cursor:pointer}
+.tab[aria-selected=true]{background:var(--brown);border-color:var(--brown);color:#fff}
+.search{flex:1;min-width:220px;max-width:340px;padding:11px 16px;border-radius:10px;border:1.5px solid var(--line);font:inherit;background:#fff}
+.count{font-size:.88rem;color:var(--muted);margin-bottom:18px}
+.sc{display:flex;flex-direction:column;gap:8px}
+.sc .top{display:flex;align-items:center;gap:12px}
+.sc .th{width:44px;height:44px;border-radius:10px;object-fit:cover;flex:none;display:grid;place-items:center;font-size:1.2rem;color:#fff;background:linear-gradient(135deg,var(--camel),var(--brown))}
+.sc.buy .th{background:linear-gradient(135deg,#4a9a6a,var(--green))}
+.sc.sell .th{background:linear-gradient(135deg,#cf6a58,var(--red))}
+.sc h3{margin:0;font-size:1rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;background:var(--sand);border-radius:6px;padding:2px 8px;color:var(--camel-d);width:max-content}
+.sc p{flex:1;font-size:.88rem}
+.empty{text-align:center;padding:40px;color:var(--muted);grid-column:1/-1}
+.steps{counter-reset:s;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{position:relative;padding:22px;border-left:3px solid var(--camel);background:var(--card);border-radius:0 12px 12px 0}
+.step::before{counter-increment:s;content:counter(s);font:700 1.5rem Poppins;color:var(--camel-d);display:block}
+.step h3{font-size:1rem;margin-bottom:4px}.step p{font-size:.9rem;color:var(--muted)}
+.about{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+.avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--camel),var(--brown));display:grid;place-items:center;color:#fff;font:700 2.2rem Poppins}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;color:var(--brown)}
+details p{margin-top:10px;color:var(--muted);font-size:.93rem}
+.risk{background:#F6E7E3;border:1px solid #E5C0B8;border-radius:12px;padding:22px;font-size:.88rem;color:#5a2a21}
+.risk strong{color:var(--red)}
+footer{background:var(--brown);color:#d9c6a8;padding:44px 0 90px;font-size:.88rem}
+footer .brand{color:#fff;margin-bottom:8px;display:block}
+.fl{display:flex;flex-wrap:wrap;gap:18px;margin:14px 0}
+.fl a:hover{color:#fff}
+.sticky{display:none}
+@media(max-width:860px){
+.hero-grid{grid-template-columns:1fr}.chart{order:-1;max-width:420px}
+.burger{display:block}
+.links{position:absolute;top:68px;left:0;right:0;background:var(--cream);flex-direction:column;align-items:stretch;padding:18px 20px;gap:14px;border-bottom:1px solid var(--line);display:none}
+.links.open{display:flex}
+.about{grid-template-columns:1fr;text-align:center;justify-items:center}
+section{padding:54px 0}
+.sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px;background:rgba(250,245,236,.97);border-top:1px solid var(--line)}
+.sticky .btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="wrap nav">
+  <a href="#home" class="brand">Power<b>Pangu</b></a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <div class="links" id="links">
+   <a href="#home">Home</a><a href="#courses">Courses</a><a href="#scanners">Scanners</a><a href="#youtube">YouTube</a><a href="#about">About</a><a href="#faq">FAQ</a>
+   <a class="btn btn-p btn-sm zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a>
+  </div>
+ </div>
+</nav>
+
+<header class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div>
+   <span class="trust">Created by V. Karthikeyan | Zerodha Authorized Person | PowerPangu YouTube</span>
+   <h1>Learn Trading. Find Opportunities. Trade Smarter.</h1>
+   <p class="lead">Learn Intraday Trading, Investing, Futures &amp; Options and Weekly Income strategies with PowerPangu, along with free trading scanners and lifetime support.</p>
+   <div class="cta-row">
+    <a class="btn btn-p zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a>
+    <a class="btn btn-s" href="#scanners">Explore Free Scanners</a>
+   </div>
+   <p class="fine">Trading involves market risk. Educational content only. No profit or return is guaranteed.</p>
+  </div>
+  <div class="chart" aria-hidden="true">
+   <svg viewBox="0 0 320 180"><g stroke="#6b5440" stroke-width="1"><line x1="0" y1="45" x2="320" y2="45"/><line x1="0" y1="90" x2="320" y2="90"/><line x1="0" y1="135" x2="320" y2="135"/></g>
+   <g stroke-width="2"><line x1="30" y1="60" x2="30" y2="140" stroke="#B3402F"/><rect x="22" y="75" width="16" height="45" fill="#B3402F"/>
+   <line x1="75" y1="70" x2="75" y2="150" stroke="#2E7D4F"/><rect x="67" y="90" width="16" height="40" fill="#2E7D4F"/>
+   <line x1="120" y1="50" x2="120" y2="125" stroke="#2E7D4F"/><rect x="112" y="65" width="16" height="45" fill="#2E7D4F"/>
+   <line x1="165" y1="55" x2="165" y2="115" stroke="#B3402F"/><rect x="157" y="70" width="16" height="30" fill="#B3402F"/>
+   <line x1="210" y1="35" x2="210" y2="105" stroke="#2E7D4F"/><rect x="202" y="48" width="16" height="42" fill="#2E7D4F"/>
+   <line x1="255" y1="30" x2="255" y2="95" stroke="#2E7D4F"/><rect x="247" y="40" width="16" height="38" fill="#2E7D4F"/>
+   <line x1="295" y1="38" x2="295" y2="85" stroke="#B3402F"/><rect x="287" y="48" width="16" height="25" fill="#B3402F"/></g>
+   <path d="M10 130 C80 110 140 90 310 55" stroke="#B98B5A" stroke-width="2" fill="none" stroke-dasharray="5 4"/></svg>
+   <small>Illustrative candlestick pattern only. Not real market data.</small>
+  </div>
+ </div>
+</header>
+
+<section class="alt" style="padding:40px 0">
+ <div class="wrap"><div class="band">
+  <div><h2>Open your Zerodha account with PowerPangu</h2><p>Open a Demat &amp; Trading account through V. Karthikeyan's referral link and get access to free resources and WhatsApp support.</p></div>
+  <a class="btn btn-p zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a>
+ </div></div>
+</section>
+
+<section id="why">
+ <div class="wrap">
+  <h2>What You Get with PowerPangu</h2>
+  <p class="sub">Practical education, free tools and direct support in one place.</p>
+  <div class="grid g3">
+   <div class="card"><div class="ico">&#127891;</div><h3>Free Training Courses</h3><p>Learn practical concepts covering Intraday, Investing, Futures &amp; Options and Weekly Income.</p></div>
+   <div class="card"><div class="ico">&#128269;</div><h3>50+ Trading Scanners</h3><p>Access a growing collection of scanners organized by Intraday, Hourly and Daily timeframes.</p></div>
+   <div class="card"><div class="ico">&#128172;</div><h3>Lifetime Support</h3><p>Get ongoing support through WhatsApp.</p></div>
+   <div class="card"><div class="ico">&#128221;</div><h3>Practical Learning</h3><p>Learn through educational videos, examples, scanners and market-oriented resources.</p></div>
+   <div class="card"><div class="ico">&#128200;</div><h3>Free Market Resources</h3><p>Access useful external scanner and charting tools.</p></div>
+   <div class="card"><div class="ico">&#9654;</div><h3>YouTube Education</h3><p>Continue learning through the PowerPangu YouTube channel.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="alt" id="courses">
+ <div class="wrap">
+  <h2>Learn With PowerPangu</h2>
+  <p class="sub">Build your market knowledge step by step.</p>
+  <div class="grid g4" id="courseGrid"></div>
+ </div>
+</section>
+
+<section id="scanners">
+ <div class="wrap">
+  <h2>PowerPangu Trading Scanner Library</h2>
+  <p class="sub">Explore free scanners for Intraday, Hourly and Daily timeframes.</p>
+  <div class="statbox"><strong>50+</strong><span>Trading Scanners</span></div>
+  <div class="tools">
+   <div class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" data-cat="Intraday" aria-selected="true">INTRADAY</button>
+    <button class="tab" role="tab" data-cat="Hourly" aria-selected="false">HOURLY</button>
+    <button class="tab" role="tab" data-cat="Daily" aria-selected="false">DAILY</button>
+   </div>
+   <input class="search" id="search" type="search" placeholder="Search scanners..." aria-label="Search scanners">
+  </div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="grid g3" id="scanGrid"></div>
+  <p class="fine" style="margin-top:18px">Scanners are screening tools for educational use. They are not trading recommendations.</p>
+  <h2 style="margin-top:56px">Free Resources</h2>
+  <p class="sub">Join the community and download free study material.</p>
+  <div class="grid g3">
+   <div class="card"><div class="ico">&#9992;</div><h3>Join Our Telegram</h3><p style="margin-bottom:16px">Follow the PowerPangu Telegram channel for updates.</p><a class="btn btn-s btn-sm" href="https://t.me/powerpangu" target="_blank" rel="noopener">Join Telegram</a></div>
+   <div class="card"><div class="ico">&#128202;</div><h3>Gann Sheet Download</h3><p style="margin-bottom:16px">Download the free Gann spreadsheet.</p><a class="btn btn-s btn-sm" href="https://docs.google.com/spreadsheets/d/1OLL5NDA3auLcFq_dZZntbtu-F_XtrLduCv6ay2fX3Tw/edit?usp=sharing" target="_blank" rel="noopener">Open Gann Sheet</a></div>
+   <div class="card"><div class="ico">&#128214;</div><h3>Candlesticks PDF</h3><p style="margin-bottom:16px">Download the candlestick patterns guide.</p><a class="btn btn-s btn-sm" href="https://drive.google.com/file/d/1SX0tFSFfKagQ_bE2vXQmGI2qWX-tW4eM/view?usp=sharing" target="_blank" rel="noopener">Download PDF</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="alt" id="youtube">
+ <div class="wrap">
+  <h2>Watch &amp; Learn on YouTube</h2>
+  <p class="sub">Market analysis, scanner walkthroughs and trading education on the PowerPangu channel.</p>
+  <div class="cta-row"><a class="btn btn-p" id="ytBtn" target="_blank" rel="noopener">Visit PowerPangu on YouTube</a><a class="btn btn-s" id="ytSub" target="_blank" rel="noopener">Subscribe</a></div>
+ </div>
+</section>
+
+<section id="support">
+ <div class="wrap"><div class="band">
+  <div><h2>Free courses and lifetime support on WhatsApp</h2><p>Message V. Karthikeyan directly to ask about the Zerodha account and free trading resources.</p></div>
+  <a class="btn btn-w whatsapp" target="_blank" rel="noopener">Chat on WhatsApp</a>
+ </div></div>
+</section>
+
+<section class="alt" id="how">
+ <div class="wrap">
+  <h2>How It Works</h2>
+  <p class="sub">Four simple steps to get started.</p>
+  <div class="steps">
+   <div class="step"><h3>Open your account</h3><p>Use the PowerPangu referral link to start your Zerodha Demat &amp; Trading account.</p></div>
+   <div class="step"><h3>Message on WhatsApp</h3><p>Send a message to request the free training courses.</p></div>
+   <div class="step"><h3>Learn and practise</h3><p>Study the courses and explore the scanner library.</p></div>
+   <div class="step"><h3>Stay supported</h3><p>Ask questions anytime through WhatsApp and follow the YouTube channel.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="wrap about">
+  <div class="avatar" aria-hidden="true">VK</div>
+  <div>
+   <h2>About V. Karthikeyan</h2>
+   <p style="color:var(--muted);max-width:660px;margin-bottom:18px">V. Karthikeyan is the creator of PowerPangu, a trading education channel and resource platform for Indian stock-market learners. He is a Zerodha Authorized Person and shares free scanners, training courses and practical market education through YouTube and WhatsApp.</p>
+   <a class="btn btn-p zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a>
+  </div>
+ </div>
+</section>
+
+<section class="alt" id="faq">
+ <div class="wrap" style="max-width:820px">
+  <h2>Frequently Asked Questions</h2>
+  <p class="sub">Quick answers before you get started.</p>
+  <details><summary>Are the scanners and courses really free?</summary><p>Yes. The scanner links are free to open. To get the free training courses, open your Zerodha account through the PowerPangu link and message on WhatsApp.</p></details>
+  <details><summary>How do I open a Zerodha account?</summary><p>Click any Open Zerodha Account button. You will be taken to Zerodha's official page to complete the online process.</p></details>
+  <details><summary>Do I need trading experience?</summary><p>No. The courses start from the fundamentals and build step by step.</p></details>
+  <details><summary>Can I get support after opening my account?</summary><p>Yes. Lifetime support is available on WhatsApp.</p></details>
+  <details><summary>Are the scanners buy or sell recommendations?</summary><p>No. Scanners only filter stocks by technical conditions. Always do your own analysis and manage risk.</p></details>
+ </div>
+</section>
+
+<section style="padding:40px 0">
+ <div class="wrap"><div class="risk"><strong>Risk Disclaimer:</strong> Trading and investing in the stock market involve risk, and you may lose part or all of your capital. PowerPangu content is for educational purposes only and is not investment advice or a recommendation to buy or sell any security. No profit or return is guaranteed. Past performance does not indicate future results. V. Karthikeyan is a Zerodha Authorized Person; PowerPangu may earn a referral benefit when you open an account through its link. Please consult a SEBI-registered advisor before making financial decisions.</div></div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <span class="brand">PowerPangu</span>
+  <p>Trading education and free scanners by V. Karthikeyan.</p>
+  <div class="fl"><a href="#courses">Courses</a><a href="#scanners">Scanners</a><a id="fYt" target="_blank" rel="noopener">YouTube</a><a class="whatsapp" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/powerpangu" target="_blank" rel="noopener">Telegram</a><a class="zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a></div>
+  <p>&copy; <span id="yr"></span> PowerPangu. All rights reserved.</p>
+ </div>
+</footer>
+
+<div class="sticky"><a class="btn btn-p zerodha" target="_blank" rel="noopener sponsored">Open Zerodha Account</a></div>
+
+<script>
+/* ===== EDIT HERE: all links and data ===== */
+const CONFIG={
+ zerodha:"https://zerodha.com/open-account?c=ZMPMQU",
+ youtube:"https://www.youtube.com/@powerpangu",
+ whatsapp:"https://wa.me/918072210003?text="+encodeURIComponent("Hi Karthikeyan, I came from the PowerPangu website and I want to know more about the Zerodha account and free trading resources."),
+ COURSE_INTRADAY_URL:"#",
+ COURSE_INVESTING_URL:"#",
+ COURSE_FNO_URL:"#",
+ COURSE_WEEKLY_INCOME_URL:"#"
+};
+const COURSES=[
+ {icon:"⚡",name:"Intraday Trading",desc:"Learn concepts and techniques for identifying intraday opportunities.",url:CONFIG.COURSE_INTRADAY_URL},
+ {icon:"🌱",name:"Investing",desc:"Understand market concepts and approaches for long-term investing.",url:CONFIG.COURSE_INVESTING_URL},
+ {icon:"📊",name:"Futures & Options",desc:"Learn the fundamentals and practical concepts of futures and options.",url:CONFIG.COURSE_FNO_URL},
+ {icon:"📅",name:"Weekly Income",desc:"Learn strategies and concepts related to weekly market opportunities.",url:CONFIG.COURSE_WEEKLY_INCOME_URL}
+];
+/* Scanner: [name, url, description, bias(buy|sell|"")]. Optional 5th item: image path e.g. "images/scanners/vwap-breakout.jpg" */
+const C="https://chartink.com/screener/";
+const SCANNERS={
+Intraday:[
+["Pre Open Market S","https://youtube.com/live/i8cIaRFGkbM","Live pre-open market session on YouTube.",""],
+["3 Consec.Green Cdl",C+"3-consecutive-5-mins-green-candles-2","Stocks with three consecutive green 5-minute candles.","buy"],
+["Flat Open Explosive",C+"flat-open-explosive-move-site","Stocks opening flat and showing an explosive early move.",""],
+["VWAP Breakout Scan",C+"vwap-breakout-site-2","Identify stocks showing a VWAP breakout setup.","buy"],
+["Highly Volatile Stocks",C+"highly-volatile-intraday-stocks-site-2","Intraday stocks with high volatility.",""],
+["Camarilla R3 Cross",C+"camarilla-r3-level-crossing","Stocks crossing the Camarilla R3 level.","buy"],
+["Camarilla S3 Cross",C+"camarilla-s3-level-crossing-2","Stocks crossing the Camarilla S3 level.","sell"],
+["15 Min Md.Bengulf",C+"bearish-engulfing-15-mins-moderate-site","Moderate bearish engulfing on the 15-minute chart.","sell"],
+["H and S 15 Min Sell",C+"h-s-15-mins-site-5","Head and shoulders pattern on the 15-minute chart.","sell"],
+["Inv H S 15 Min Buy",C+"inv-h-s-15-mins-site-3","Inverse head and shoulders on the 15-minute chart.","buy"],
+["5 Small Cdl + Brkout",C+"small-candles-breakout-site","Breakout after a series of small candles.",""],
+["Sure Shot Intraday",C+"95-sure-shot-intraday-site-2","Intraday setups filtered by strict technical conditions.",""],
+["15 Mins Brkout Scan",C+"15-minute-stock-breakouts","Stocks breaking out on the 15-minute timeframe.","buy"],
+["Modified Open=Low",C+"modified-ol-sell-intraday-site-3","Modified open equals low setup for intraday sell.","sell"],
+["Modified Open=High",C+"modified-oh-buy-intraday-site-7","Modified open equals high setup for intraday buy.","buy"],
+["NR 10 Days & 15 Min",C+"nr-10-days-15-mins-breakout-site","Narrow range 10-day setup with a 15-minute breakout.",""],
+["1 Hr High Bkout - Buy",C+"5-min-breakout-in-1-hr-site-2","5-minute breakout above the first-hour high.","buy"],
+["1 Hr Low Bkout - Sell",C+"5-min-breakout-in-1-hr-site-3","5-minute breakdown below the first-hour low.","sell"],
+["RSI Divergen Scannr",C+"rsi-divergence-site","Stocks showing RSI divergence.",""],
+["Trndline Brkout Down","https://www.topstockresearch.com/rt/Screener/ChartPatterns/Trendlines","Trendline breakdown scanner on TopStockResearch.","sell"],
+["Narrow CPR Scanner",C+"ncpr-for-tomorrow-1042","Narrow CPR stocks to watch for the next session.",""],
+["15 Mins Doji Scanner",C+"15-min-intraday-doji-at-top-for-shorting","15-minute doji at the top, for short setups.","sell"],
+["ADX Buy Intraday",C+"adx-site-buy-3","ADX-based buy-side intraday scan.","buy"],
+["ADX Sell Intraday",C+"adx-site-sell-2","ADX-based sell-side intraday scan.","sell"],
+["ADX Crossed Buy",C+"adx-site-crossed-above-buy-2","ADX crossed above threshold, buy side.","buy"],
+["ADX Crossed Sell",C+"adx-site-crossed-sell","ADX crossed threshold, sell side.","sell"],
+["15 Mins 5 EMA Buy",C+"5-ema-15-min-buy-site","5 EMA buy setup on the 15-minute chart.","buy"],
+["15 Mins 5 EMA Sell",C+"5-ema-15-min","5 EMA sell setup on the 15-minute chart.","sell"]
+],
+Hourly:[
+["5 EMA Modify Buy",C+"5-ema-hourly-buy-site-modify-2","Modified 5 EMA buy setup on the hourly chart.","buy"],
+["5 EMA Hourly Buy",C+"5-ema-hourly-buy-site","5 EMA buy setup on the hourly chart.","buy"],
+["5 EMA Hourly Sell",C+"5-ema-hourly-sell-site","5 EMA sell setup on the hourly chart.","sell"],
+["Hourly H and S Sell",C+"h-s-hourly-site","Head and shoulders pattern on the hourly chart.","sell"],
+["Hourly H and S Buy",C+"inv-h-s-hourly-site","Inverse head and shoulders on the hourly chart.","buy"],
+["Hero Scanner - CE",C+"hero-zero-scanner-site","Hero scanner for call option (CE) opportunities.","buy"],
+["Hero Scanner - PE",C+"hero-zero-scanner-site-pe","Hero scanner for put option (PE) opportunities.","sell"],
+["1 Hr Doji Candle Sc",C+"1-hr-intraday-site","Doji candles on the 1-hour timeframe.",""],
+["2H Hrly Buy Cand",C+"inv-h-s-daily-buy-site","Buy-side candle setup on the 2-hour timeframe.","buy"],
+["2H Hrly Sell Cand",C+"h-s-sell-daiily-site","Sell-side candle setup on the 2-hour timeframe.","sell"],
+["5 Mins NR 10 Brkout",C+"intraday-nr-10-days-site","Narrow range 10-day setup with a 5-minute breakout.",""]
+],
+Daily:[
+["Bearish Engulfing Mod.",C+"bearish-engulfing-moderate-site-2","Moderate bearish engulfing pattern on the daily chart.","sell"],
+["Daily Doji - CE Jackpot",C+"daily-doji-at-bottom-for-monthly-call-buying-powerpangu-2","Daily doji at a bottom, for monthly call option ideas.","buy"],
+["Daily Doji - PE Jackpot",C+"daily-doji-at-top-for-monthly-put-buying-powerpangu","Daily doji at a top, for monthly put option ideas.","sell"],
+["Inv.Hammer CE Jackpot",C+"inverted-hammer-for-jackpot-site-5","Inverted hammer candle for call option ideas.","buy"],
+["Hammer Call Op Jackpot",C+"hammer-candle-site","Hammer candle for call option ideas.","buy"],
+["Hanging Man PE Jackpot",C+"hanging-man-daily-site-6","Hanging man candle for put option ideas.","sell"],
+["Shooting Star PE Jackpot",C+"shooting-star-for-jackpot-site-2","Shooting star candle for put option ideas.","sell"],
+["Jackpot Up + 3X Vol Sc",C+"jackpot-gap-up-by-2-1-with-3x-volume","Gap-up stocks trading on 3x volume.","buy"],
+["200D 2.5X Vol Increase",C+"specifc-candle-size2to3-up-site","Specific candle size with a volume surge above the 200-day level.",""],
+["3 Yr Brkout Pivot based",C+"3-year-consolidation-pattern-site","Pivot-based breakout after a 3-year consolidation.","buy"],
+["3 Year Breakout Scanner",C+"3-year-breakout-scan-site","Stocks breaking out of a 3-year range.","buy"],
+["1 Year Breakout Scanner",C+"yearly-breakout-nifty-500-site","Nifty 500 stocks breaking out of a 1-year range.","buy"],
+["Violent Move CE & Put",C+"put-jackpot-cup-h-site","Stocks with sharp moves for call and put option ideas.",""],
+["N.Range 10 Days Scan",C+"nr-10-days-site-2","Narrowest range in 10 days on the daily chart.",""],
+["200 EMA Brkout_Volu",C+"200-ema-brk-with-vol-site","200 EMA breakout supported by volume.","buy"],
+["4% Fallen Stocks - Scan",C+"4-fallen-stocks-site","Stocks that have fallen about 4%.","sell"],
+["200 Days Brkout > 5%",C+"breakout-scan-5-200-days-high-site","Breakout above the 200-day high by more than 5%.","buy"],
+["Pivot W+M Setup Scan",C+"mass-pivot-weekly-monthly-setup-site","Weekly and monthly pivot setup scan.",""],
+["ChoCH Scanner",C+"bullish-choch-scanner","Bullish change of character (ChoCH) structure scan.","buy"]
+]
+};
+/* ===== END CONFIG ===== */
+
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+$$(".zerodha").forEach(a=>a.href=CONFIG.zerodha);
+$$(".whatsapp").forEach(a=>a.href=CONFIG.whatsapp);
+["#ytBtn","#ytSub","#fYt"].forEach(s=>$(s).href=CONFIG.youtube);
+$("#ytSub").href=CONFIG.youtube+"?sub_confirmation=1";
+$("#yr").textContent=new Date().getFullYear();
+
+$("#burger").onclick=e=>{const o=$("#links").classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
+$$("#links a").forEach(a=>a.addEventListener("click",()=>$("#links").classList.remove("open")));
+
+const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+$("#courseGrid").innerHTML=COURSES.map(c=>`<div class="card"><div class="ico">${c.icon}</div><h3>${c.name}</h3><p style="margin-bottom:16px">${c.desc}</p><a class="btn btn-s btn-sm" href="${c.url}" target="_blank" rel="noopener">Learn More</a></div>`).join("");
+
+let cat="Intraday";
+const fallback={buy:"▲",sell:"▼","":"◆"};
+function render(){
+ const q=$("#search").value.trim().toLowerCase();
+ const list=SCANNERS[cat].filter(s=>(s[0]+" "+s[2]).toLowerCase().includes(q));
+ $("#count").textContent=list.length?`Showing ${list.length} ${cat} Scanner${list.length>1?"s":""}`:"";
+ if(!list.length){
+  const none=!SCANNERS[cat].length;
+  $("#scanGrid").innerHTML=`<p class="empty">${none?cat+" scanners are coming soon.":"No scanners found. Try another search."}</p>`;
+  if(none)$("#count").textContent="";return;
+ }
+ $("#scanGrid").innerHTML=list.map(([n,u,d,b,img])=>{
+  const th=img?`<img class="th" src="${esc(img)}" alt="" loading="lazy" onerror="this.outerHTML='<span class=\\'th\\'>${fallback[b]}</span>'">`:`<span class="th" aria-hidden="true">${fallback[b]}</span>`;
+  return `<div class="card sc ${b}"><div class="top">${th}<div><h3>${esc(n)}</h3><span class="tag">${cat}</span></div></div><p>${esc(d)}</p><a class="btn btn-s btn-sm" href="${esc(u)}" target="_blank" rel="noopener">Open Scanner <span aria-hidden="true">&#8599;</span></a></div>`;
+ }).join("");
+}
+$$(".tab").forEach(t=>t.onclick=()=>{cat=t.dataset.cat;$$(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));render()});
+$("#search").oninput=render;
+render();
+</script>
+</body>
+</html>
