@@ -3,40 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Market Wisdom Comics</title>
+<title>Market Wisdom: Think Better. Trade Wiser.</title>
+<meta name="description" content="Practical share market wisdom told through comics. Learn from the mistakes traders make every day. Education only, not tips.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1a1a2e; --paper:#fff8e7; --yellow:#ffd23f; --red:#e63946; --green:#2a9d5c;
-  --blue:#3a86ff; --card:#ffffff; --muted:#5b5b6e;
+  --muted:#5b5b6e; --navy:#111a3b; --gold:#f5b82e; --bg:#f3f5fa; --line:#dde2ee;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Comic Neue',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45;
-  background-image:radial-gradient(rgba(26,26,46,.08) 1.2px,transparent 1.2px);background-size:14px 14px}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
-h1,h2,.bang{font-family:'Bangers',Impact,sans-serif;letter-spacing:.04em;font-weight:400}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:12px 16px 0}
+[hidden]{display:none!important}
+.bang{font-family:'Bangers',Impact,sans-serif;letter-spacing:.04em;font-weight:400}
 
-/* hero */
-.hero{padding:36px 0 20px;text-align:center}
-.hero .kicker{display:inline-block;background:var(--ink);color:var(--yellow);padding:4px 12px;font-weight:700;font-size:.85rem;transform:rotate(-2deg);margin-bottom:10px}
-.hero h1{font-size:clamp(2.4rem,9vw,4.4rem);line-height:1;text-shadow:3px 3px 0 var(--yellow)}
-.hero p{max-width:560px;margin:12px auto 0;font-size:1.1rem;color:var(--muted)}
-.meet{display:flex;align-items:center;gap:14px;justify-content:center;margin-top:18px;flex-wrap:wrap}
-.meet svg{width:84px;height:84px;border:3px solid var(--ink);border-radius:50%;background:#bde0fe}
-.meet span{font-weight:700}
+/* ---------- HOME ---------- */
+.hero{display:grid;gap:14px}
+@media(min-width:900px){.hero{grid-template-columns:1.6fr 1fr}}
+.brand{background:var(--navy);color:#fff;border-radius:14px;padding:18px}
+.brand-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.brand-top .name{color:var(--gold);font-weight:700;font-size:1.05rem;letter-spacing:.03em}
+.pill{display:inline-block;background:rgba(31,211,122,.16);color:#2be08a;font-weight:700;font-size:.72rem;letter-spacing:.06em;padding:4px 10px;border-radius:999px}
+.brand h1{color:var(--gold);font-size:clamp(1.5rem,4.6vw,2.1rem);line-height:1.1;margin-top:18px;letter-spacing:.02em}
+.brand .tagline{font-weight:700;font-size:1.1rem;margin-top:10px}
+.brand .desc{font-size:.95rem;opacity:.92;margin-top:10px;max-width:640px}
 
-/* nav */
-.nav{display:flex;gap:8px;overflow-x:auto;padding:14px 0;position:sticky;top:0;background:var(--paper);z-index:5;border-bottom:3px solid var(--ink);scrollbar-width:none}
-.nav::-webkit-scrollbar{display:none}
-.nav a{flex:none;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem;border:2px solid var(--ink);border-radius:999px;padding:6px 14px;background:#fff;box-shadow:2px 2px 0 var(--ink)}
-.nav a:active{transform:translate(2px,2px);box-shadow:none}
+/* Zerodha referral card */
+.ref{background:var(--navy);color:#fff;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;border:2px dashed rgba(245,184,46,.5)}
+.ref h2{color:var(--gold);font-size:1.25rem;line-height:1.15}
+.ref .lead{font-weight:700}
+.ref p{font-size:.92rem;opacity:.92}
+.ref .btn{display:block;text-align:center;background:#f9cd3c;color:var(--navy);font-weight:700;font-size:1rem;text-decoration:none;padding:14px 16px;border-radius:8px;margin-top:auto;transition:background .15s}
+.ref .btn:hover{background:#ffd95e}
+.ref .btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.ref .note{font-size:.72rem;opacity:.7}.sec{font-size:1rem;font-weight:700;margin:22px 0 12px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px}
+@media(min-width:900px){.cats{grid-template-columns:repeat(3,1fr);gap:22px 18px}}
+.cat{text-decoration:none;display:block}
+.art{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 rgba(0,0,0,.08);transition:transform .15s}
+.cat:hover .art,.cat:focus-visible .art{transform:translateY(-3px)}
+.art .ico{font-size:clamp(2.4rem,9vw,3.6rem);filter:drop-shadow(0 3px 0 rgba(0,0,0,.25))}
+.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ct{font-weight:700;font-size:.98rem;margin-top:9px}
+.cs{font-size:.85rem;color:var(--muted)}
+.cc{font-size:.72rem;font-weight:700;color:#3a56c7;margin-top:2px}
+.cc.soon{color:#9aa0b4}
 
-/* episode */
-.episode{margin:34px 0 54px}
+/* ---------- CATEGORY PAGE ---------- */
+.back{display:inline-block;margin:6px 0 12px;font-weight:700;font-size:.9rem;text-decoration:none;color:#3a56c7}
+.back:hover{text-decoration:underline}
+.cathead{display:flex;align-items:center;gap:14px;color:#fff;border-radius:14px;padding:18px}
+.cathead .ico{font-size:2.8rem;flex:none;filter:drop-shadow(0 3px 0 rgba(0,0,0,.25))}
+.cathead .kick{font-size:.72rem;font-weight:700;letter-spacing:.1em;opacity:.85}
+.cathead h1{font-size:1.6rem;line-height:1.1}
+.cathead p{opacity:.92;font-size:.95rem}
+.intro{margin:14px 2px;color:#333;max-width:720px}
+.eplist{display:grid;gap:10px;margin-top:6px}
+.eprow{display:flex;align-items:center;gap:12px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;transition:box-shadow .15s,transform .15s}
+.eprow:hover{box-shadow:0 4px 14px rgba(17,26,59,.12);transform:translateY(-1px)}
+.epn{flex:none;background:var(--navy);color:var(--gold);font-weight:700;font-size:.72rem;letter-spacing:.06em;padding:5px 9px;border-radius:8px}
+.ept{flex:1;min-width:0}
+.ept b{display:block;font-size:1rem}
+.ept small{display:block;color:var(--muted);font-size:.85rem}
+.go{flex:none;color:#3a56c7;font-weight:700}
+.go.done{color:var(--green)}
+.empty{background:#fff;border:2px dashed var(--line);border-radius:12px;padding:26px 16px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:4px}
+
+/* ---------- EPISODE (comic) ---------- */
+.ep-wrap{background:var(--paper);background-image:radial-gradient(rgba(26,26,46,.08) 1.2px,transparent 1.2px);background-size:14px 14px;border-radius:14px;padding:18px 14px 22px;font-family:'Comic Neue',system-ui,sans-serif}
 .ep-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .ep-num{background:var(--red);color:#fff;font-family:'Bangers';letter-spacing:.06em;padding:2px 12px;border:3px solid var(--ink);transform:rotate(-2deg);box-shadow:3px 3px 0 var(--ink)}
-.ep-head h2{font-size:clamp(1.9rem,6vw,2.8rem);line-height:1}
+.ep-head h2{font-family:'Bangers',Impact,sans-serif;font-weight:400;letter-spacing:.04em;font-size:clamp(1.9rem,6vw,2.8rem);line-height:1}
 .grid{display:grid;grid-template-columns:1fr;gap:14px}
 @media(min-width:720px){.grid{grid-template-columns:1fr 1fr;gap:16px}}
 .panel{position:relative;border:4px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--ink);min-height:300px;overflow:hidden;display:flex;flex-direction:column}
@@ -53,8 +94,6 @@ h1,h2,.bang{font-family:'Bangers',Impact,sans-serif;letter-spacing:.04em;font-we
 .bubble:before{content:"";position:absolute;left:-14px;bottom:14px;border:9px solid transparent;border-right:14px solid var(--ink);border-left:0}
 .bubble:after{content:"";position:absolute;left:-9px;bottom:16px;border:7px solid transparent;border-right:11px solid #fff;border-left:0}
 .thought{font-style:italic;font-weight:400;color:var(--muted);display:block;margin-top:3px;font-size:.9rem}
-
-/* phone screenshot */
 .shot{flex:1;background:#dfe6f1;display:flex;align-items:center;justify-content:center;padding:44px 12px 16px}
 .phone{width:100%;max-width:310px;background:#fff;border:3px solid var(--ink);border-radius:18px;overflow:hidden;font-family:system-ui,sans-serif;box-shadow:0 4px 0 rgba(0,0,0,.2)}
 .ph-top{background:var(--ink);color:#fff;padding:8px 12px;font-size:.75rem;display:flex;justify-content:space-between;opacity:.95}
@@ -71,21 +110,13 @@ h1,h2,.bang{font-family:'Bangers',Impact,sans-serif;letter-spacing:.04em;font-we
 .row .rt{text-align:right}
 .row .rt b{font-size:.78rem}
 .ph-foot{padding:6px 12px 8px;font-size:.62rem;color:#999;text-align:center}
-.stamp{position:absolute;right:8px;bottom:8px;z-index:3;font-family:'Bangers';letter-spacing:.05em;font-size:.95rem;border:3px solid;padding:1px 10px;transform:rotate(-6deg);background:#fff;opacity:.95}
+.stamp{position:absolute;right:8px;top:8px;z-index:3;font-family:'Bangers';letter-spacing:.05em;font-size:.95rem;border:3px solid;padding:1px 10px;transform:rotate(-6deg);background:#fff;opacity:.95}
+@media(max-width:480px){.stamp{font-size:.78rem;padding:1px 7px;right:6px;top:6px}}
 .stamp.neg{border-color:var(--red)}.stamp.pos{border-color:var(--green)}
-
-/* wisdom banner */
 .wisdom{margin-top:18px;background:var(--ink);color:#fff;border:4px solid var(--ink);box-shadow:6px 6px 0 var(--yellow);padding:16px 18px;display:grid;gap:10px}
 .wisdom .big{font-family:'Bangers';font-size:clamp(1.5rem,5vw,2.1rem);color:var(--yellow);letter-spacing:.04em;line-height:1.1}
 .wisdom .do{background:#fff;color:var(--ink);padding:8px 12px;border-left:6px solid var(--green);font-size:.98rem}
 .wisdom .do b{color:var(--green)}
-
-[hidden]{display:none!important}
-.gate{margin:10px 0 40px;text-align:center;padding:22px 16px;border:4px solid var(--ink);background:var(--yellow);box-shadow:6px 6px 0 var(--ink)}
-.gate .bang{font-size:1.8rem;letter-spacing:.05em}
-.gate p{max-width:520px;margin:6px auto 14px;font-weight:700}
-.gate button{font-family:'Bangers';letter-spacing:.05em;font-size:1.25rem;background:var(--red);color:#fff;border:3px solid var(--ink);padding:10px 18px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);max-width:100%}
-.gate button:active{transform:translate(3px,3px);box-shadow:none}
 .mathbox{margin-top:18px;border:4px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--ink);padding:14px 16px}
 .mathbox h3{font-family:'Bangers';letter-spacing:.05em;font-size:1.5rem;margin-bottom:10px;font-weight:400}
 .cmp{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
@@ -97,37 +128,36 @@ h1,h2,.bang{font-family:'Bangers',Impact,sans-serif;letter-spacing:.04em;font-we
 .cmp .ok{background:#e0f6e8}.cmp .bad{background:#ffe5e5}
 .mathbox p{margin-top:6px}
 .mathbox .stat{background:var(--ink);color:#fff;padding:8px 12px;font-weight:700}
+.mathbox ul{margin:6px 0 0 20px}.mathbox li{margin:4px 0}
+.cycle{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.cycle span{border:3px solid var(--ink);padding:3px 9px;font-weight:700;font-size:.9rem;background:#fff}
+.cycle .hot{background:var(--red);color:#fff}
+.cycle .gd{background:var(--yellow)}
+.tbl{width:100%;border-collapse:collapse;margin:6px 0}
+.tbl th,.tbl td{border:2px solid var(--ink);padding:6px 8px;text-align:left;font-size:.95rem}
+.tbl th{background:var(--yellow)}
+.tbl td:last-child{font-weight:700}
+.pager{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}
+.pager a{flex:1;min-width:140px;text-align:center;text-decoration:none;font-family:'Bangers';letter-spacing:.05em;font-size:1.1rem;background:#fff;border:3px solid var(--ink);padding:8px 12px;box-shadow:3px 3px 0 var(--ink)}
+.pager a.primary{background:var(--red);color:#fff}
+.pager a:active{transform:translate(3px,3px);box-shadow:none}
+
+/* warning gate (F&O) */
+.gate{margin:10px 0;text-align:center;padding:22px 16px;border:4px solid var(--ink);background:var(--yellow);box-shadow:6px 6px 0 var(--ink);font-family:'Comic Neue',system-ui,sans-serif}
+.gate .bang{font-size:1.8rem;letter-spacing:.05em}
+.gate p{max-width:520px;margin:6px auto 14px;font-weight:700}
+.gate button{font-family:'Bangers';letter-spacing:.05em;font-size:1.25rem;background:var(--red);color:#fff;border:3px solid var(--ink);padding:10px 18px;cursor:pointer;box-shadow:4px 4px 0 var(--ink);max-width:100%}
+.gate button:active{transform:translate(3px,3px);box-shadow:none}
 
 /* footer */
-footer{border-top:4px solid var(--ink);padding:24px 0 40px;background:#fff}
-footer .disc{font-size:.85rem;color:var(--muted);max-width:760px}
+footer{margin-top:34px;border-top:1px solid var(--line);padding:20px 0 40px;background:#fff}
+footer .disc{font-size:.8rem;color:var(--muted);max-width:760px}
 footer .disc b{color:var(--ink)}
-.soon{margin:10px 0 40px;text-align:center;padding:18px;border:3px dashed var(--ink);background:#fffdf3}
-.soon h3{font-family:'Bangers';font-size:1.6rem;letter-spacing:.04em}
-.soon p{color:var(--muted)}
 </style>
 </head>
 <body>
 
-<header class="wrap hero">
-  <div class="kicker">PRACTICAL WISDOM · NOT TIPS</div>
-  <h1>Market Wisdom Comics</h1>
-  <p>Learn to invest and trade wisely by watching the mistakes everyone makes, and the simple habits that avoid them.</p>
-  <div class="meet">
-    <div id="meet-ravi"></div>
-    <span>Meet Ravi. He makes the mistakes so you don't have to.</span>
-  </div>
-</header>
-
-<div class="wrap">
-  <nav class="nav" id="nav"></nav>
-  <main id="episodes"></main>
-
-  <div class="soon">
-    <h3>More episodes coming</h3>
-    <p>Overtrading · No stop-loss · Revenge trading · Starting early · Emergency fund</p>
-  </div>
-</div>
+<div class="wrap" id="app"></div>
 
 <footer>
   <div class="wrap">
@@ -136,12 +166,36 @@ footer .disc b{color:var(--ink)}
 </footer>
 
 <script>
-/* ---------- helpers ---------- */
+/* =====================================================================
+   1. SECTIONS (the 6 cards on the home page)
+   - img: drop your own artwork at this path; if the file is missing the
+     gradient + icon is shown instead.
+   - intro: short text shown at the top of the section page.
+   ===================================================================== */
+const CATS = [
+  {key:'psychology', n:'01', title:'Psychology',        tag:'Master your emotions',       icon:'🧠', grad:['#243b6b','#8a4fd6'], img:'Psychology-1.jpeg',
+   intro:'Markets test your emotions more than your intelligence. Fear and greed cost traders more than bad analysis ever does.'},
+  {key:'risk',       n:'02', title:'Risk Management',   tag:'Protect your capital',       icon:'⚖️', grad:['#1d4e89','#3fa796'], img:'Risk%20Mgmt-2.jpeg',
+   intro:'You can be wrong often and still survive, if no single mistake can hurt you badly. These episodes are about staying in the game.'},
+  {key:'mistakes',   n:'03', title:'Trading Mistakes',  tag:'Improve your execution',     icon:'📉', grad:['#1e3a3a','#b23a48'], img:'Discipline-3.jpeg',
+   intro:'The same handful of mistakes show up again and again. Spot them early and you are ahead of most traders.'},
+  {key:'fno',        n:'04', title:'F&amp;O Wisdom',    tag:'Understand derivatives',     icon:'📈', grad:['#1f7a4d','#e0a526'], img:'FnO-4.jpeg',
+   intro:'Futures and options can be powerful tools, and they are also the fastest way to lose money. Understand them before you touch them.'},
+  {key:'investing',  n:'05', title:'Investment Wisdom', tag:'Build wealth thoughtfully',  icon:'🌱', grad:['#2d6a4f','#74c69d'], img:'investment.jpg',
+   intro:'Wealth is built slowly, with patience, good habits and boring consistency.'},
+  {key:'traps',      n:'06', title:'Market Traps',      tag:'Avoid misleading claims',    icon:'🪤', grad:['#14141f','#d62828'], img:'Traps-6.jpeg',
+   intro:'Tips, groups, guaranteed returns and "sure shots". Learn to recognise the bait before you bite.'}
+];
+
+/* =====================================================================
+   2. HELPERS (comic drawing)
+   ===================================================================== */
 const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
 const pct = n => (n>=0?'+':'') + n.toFixed(1) + '%';
 const cls = n => n>=0 ? 'pos' : 'neg';
+const sinr = n => (n>=0?'+':'−') + inr(Math.abs(n));
+const plain = s => s.replace(/&amp;/g,'&');
 
-/* ---------- Ravi (SVG character) ---------- */
 function ravi(mood){
   const mouths = {
     worried:'<path d="M46 86 Q60 78 74 86" stroke="#1a1a2e" stroke-width="3" fill="none" stroke-linecap="round"/>',
@@ -175,7 +229,6 @@ function ravi(mood){
   </svg>`;
 }
 
-/* ---------- mock portfolio screenshot ---------- */
 function portfolio(p){
   const inv = p.holdings.reduce((s,h)=>s+h.inv,0);
   const cur = p.holdings.reduce((s,h)=>s+h.cur,0);
@@ -189,7 +242,7 @@ function portfolio(p){
     <div class="ph-top"><span>${p.time||'3:25 PM'}</span><span>Holdings</span></div>
     <div class="ph-title">${p.title}</div>
     <div class="ph-sum">
-      <div>Invested<b>${inr(p.investedOverride ?? inv)}</b></div>
+      <div>Invested<b>${inr(inv)}</b></div>
       <div>${p.curLabel||'Current value'}<b>${inr(cur)}</b></div>
       <div class="pl-big">${p.plLabel||'Total P&amp;L'}<b class="${cls(pl)}">${pl>=0?'+':'−'}${inr(Math.abs(pl))} (${pct(plp)})</b></div>
     </div>
@@ -197,10 +250,6 @@ function portfolio(p){
     <div class="ph-foot">Illustrative screen · fictional stocks</div>
   </div>`;
 }
-function stamp(text,positive){ return `<div class="stamp ${positive?'pos':'neg'}">${text}</div>`; }
-
-/* ---------- mock F&O positions screenshot ---------- */
-const sinr = n => (n>=0?'+':'−') + inr(Math.abs(n));
 function positions(p){
   const pl = p.rows.reduce((s,r)=>s+r.pnl,0);
   const rows = p.rows.map(r=>`<div class="row"><div><div class="nm">${r.name}</div><div class="sb">${r.sub}</div></div>
@@ -217,19 +266,22 @@ function positions(p){
     <div class="ph-foot">Illustrative screen · fictional instruments</div>
   </div>`;
 }
-const shot = o => o.rows ? positions(o) : portfolio(o);
-
-/* ---------- scene panel ---------- */
-function scene(s, kind){
-  return `<div class="scene ${kind}">
+const shot  = o => o.rows ? positions(o) : portfolio(o);
+const stamp = (t,pos) => `<div class="stamp ${pos?'pos':'neg'}">${t}</div>`;
+const scene = (s,kind) => `<div class="scene ${kind}">
     <div class="caption">${s.caption}</div>
     <div class="actor">${ravi(s.mood)}<div class="bubble">${s.bubble}${s.thought?`<span class="thought">${s.thought}</span>`:''}</div></div>
   </div>`;
-}
 
-/* ---------- episodes ---------- */
+/* =====================================================================
+   3. EPISODES
+   To add an episode: copy one block, give it a new id, set `cat` to one
+   of: psychology | risk | mistakes | fno | investing | traps
+   `num` is the episode number shown on the badge. `warn:true` puts a
+   warning screen in front of the episode (used for F&O).
+   ===================================================================== */
 const EPISODES = [
- { id:'ep1', title:'All Eggs, One Basket',
+ { id:'ep1', num:1, cat:'risk', title:'All Eggs, One Basket', hook:'₹1 lakh in one stock vs spread across ten.',
    s1:{caption:'Ravi gets excited about one stock.',mood:'excited',bubble:'This one is going to the moon! I\'m putting my whole ₹1,00,000 in Zoomex Tech!',thought:'(What could go wrong?)'},
    wrong:{title:'Ravi · 1 stock',holdings:[{name:'ZOOMEX TECH',sub:'Inv ₹1,00,000 · 1 stock',inv:100000,cur:20000}], stamp:'OUCH!'},
    s3:{caption:'Same ₹1,00,000. Wiser Ravi.',mood:'happy',bubble:'Let me split it into 10 different businesses, ₹10,000 each.',thought:'(I will check each one first.)'},
@@ -242,7 +294,7 @@ const EPISODES = [
    wisdom:'Diversification does not guarantee profit. It stops one mistake from destroying you.',
    todo:'Open your portfolio. If any single stock is more than 10–15% of it, ask yourself: "If this fell 70%, could I sleep?"'},
 
- { id:'ep2', title:'The "Sure Shot" Tip',
+ { id:'ep2', num:2, cat:'traps', title:'The "Sure Shot" Tip', hook:'Why nobody can promise you a sure shot.',
    s1:{caption:'A WhatsApp group. 9:15 AM.',mood:'excited',bubble:'"Rocketel Pharma will give 3x in one month. Sure shot!" I\'m buying ₹50,000 now!',thought:'(The tip has 200 likes!)'},
    wrong:{title:'Ravi · tip trade',holdings:[{name:'ROCKETEL PHARMA',sub:'Inv ₹50,000 · bought on a tip',inv:50000,cur:27500}], stamp:'NO "SURE SHOT"'},
    s3:{caption:'Next time, Ravi spends 15 minutes.',mood:'thinking',bubble:'Does it earn profit? Is the debt low? Do I understand what it sells?',thought:'(No answers? Then I skip it.)'},
@@ -250,15 +302,15 @@ const EPISODES = [
    wisdom:'A tip is someone else\'s opinion. Your money needs your own reasons.',
    todo:'Before buying anything, write 3 lines: what the company does, how it earns, and why you are buying. Can\'t write them? Don\'t buy.'},
 
- { id:'ep3', title:'Averaging Down the Drain',
+ { id:'ep3', num:3, cat:'risk', title:'Averaging Down the Drain', hook:'Why buying more of a falling stock can hurt.',
    s1:{caption:'The stock was ₹500. Now ₹400. Then ₹250.',mood:'worried',bubble:'It\'s cheaper now, so I\'ll buy more. And more! Average price will come down!',thought:'(I just can\'t accept the loss.)'},
-   wrong:{title:'Ravi · averaging down',holdings:[{name:'NOVABIZ RETAIL',sub:'425 qty · avg ₹353 · LTP ₹150',inv:150000,cur:63750}], stamp:'3 BUYS, 1 MISTAKE', },
+   wrong:{title:'Ravi · averaging down',holdings:[{name:'NOVABIZ RETAIL',sub:'425 qty · avg ₹353 · LTP ₹150',inv:150000,cur:63750}], stamp:'3 BUYS, 1 MISTAKE'},
    s3:{caption:'At ₹400, Ravi asks one question.',mood:'thinking',bubble:'"If I had no position, would I buy this today?" The answer is no. I\'m cutting the loss.',thought:'(Small loss. Money saved for better ideas.)'},
    right:{title:'Ravi · cut the loss',holdings:[{name:'NOVABIZ RETAIL (SOLD)',sub:'Bought ₹50,000 · sold at ₹400',inv:50000,cur:40000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'LOSS CONTAINED'},
    wisdom:'Don\'t add money to hope. Add only to what you\'d happily buy fresh today.',
    todo:'For every stock you hold, ask: "Would I buy this today at this price?" If no, write down why you are still holding.'},
 
- { id:'ep4', title:'Panic in the Crash',
+ { id:'ep4', num:4, cat:'psychology', title:'Panic in the Crash', hook:'Selling at the bottom vs staying the course.',
    s1:{caption:'The market falls 30% in two months.',mood:'shocked',bubble:'Everything is red! I\'m selling it all before it goes to zero!',thought:'(News channels are screaming.)'},
    wrong:{title:'Ravi · sold in panic',holdings:[{name:'BHARAT INDEX FUND (SOLD)',sub:'Invested ₹2,00,000 · sold at the bottom',inv:200000,cur:140000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'LOSS LOCKED IN'},
    s3:{caption:'Different Ravi. Same crash.',mood:'happy',bubble:'My ₹10,000 SIP continues. Lower prices mean I get more units for the same money.',thought:'(Boring. But it works.)'},
@@ -266,7 +318,7 @@ const EPISODES = [
    wisdom:'A fall is only a loss if you sell. The plan matters more than the headline.',
    todo:'Decide today, while calm: "If my portfolio falls 30%, I will do ___." Write it down and keep it.'},
 
- { id:'ep5', gated:true, title:'Leverage &amp; F&amp;O: The Fast Lane',
+ { id:'ep5', num:5, cat:'fno', warn:true, title:'Leverage &amp; F&amp;O: The Fast Lane', hook:'How 10x leverage turns small moves into big losses.',
    s1:{caption:'A friend says: "Why wait years? Use leverage!"',mood:'excited',bubble:'₹1 lakh margin gives me ₹10 lakh of position! If the market rises just 5%, I make ₹50,000 in a day!',thought:'(Nobody mentioned what happens if it falls.)'},
    wrong:{title:'Ravi · F&amp;O positions',capital:100000,rows:[
      {name:'ZENITH50 FUT',sub:'Qty 40 · Buy 25,000 · LTP 23,000 · 10x leverage',pnl:-80000},
@@ -289,26 +341,223 @@ const EPISODES = [
       <p class="stat">⚠️ SEBI's own studies have found that around 9 in 10 individual F&amp;O traders lose money.</p>
     </div>`,
    wisdom:'Leverage multiplies your mistakes as fast as your profits. Survive first, earn second.',
-   todo:'New to markets? Skip F&amp;O for your first year. If you do trade, never risk more than 1–2% of your capital on one trade, and write the stop-loss before you enter.'}
+   todo:'New to markets? Skip F&amp;O for your first year. If you do trade, never risk more than 1–2% of your capital on one trade, and write the stop-loss before you enter.'},
+
+ /* ---------- PSYCHOLOGY series (Ravi) ---------- */
+ { id:'ep6', num:6, cat:'psychology', title:"FOMO: Fear of Missing Out", hook:"Everyone is buying. Should Ravi?",
+   s1:{caption:"Brightnova Energy is up 40% in 3 days. The whole tea stall is talking about it.",mood:'excited',bubble:"Everyone is making money! If I don't buy now, I'll miss the party! ₹1,00,000, all in!",thought:"(It's already up 40%... but what if it doubles?)"},
+   wrong:{title:'Ravi · bought the rally',holdings:[{name:'BRIGHTNOVA ENERGY',sub:'Qty 400 · Buy ₹250 (the top) · LTP ₹170',inv:100000,cur:68000}], stamp:'BOUGHT THE TOP'},
+   s3:{caption:"Same stock, same noise. Wiser Ravi.",mood:'thinking',bubble:"There will always be another stock. Missing a rally costs me nothing. Chasing one can cost me a lot.",thought:"(My ₹10,000 SIP continues. Boring is fine.)"},
+   right:{title:'Ravi · stayed on plan',holdings:[{name:'BHARAT INDEX FUND',sub:'6 monthly SIPs of ₹10,000 · no chasing (illustrative)',inv:60000,cur:62400}], stamp:'NO CHASING'},
+   extra:`<div class="mathbox"><h3>THE 3-QUESTION FOMO TEST</h3>
+      <ul>
+        <li><b>What has changed in the business,</b> not the price?</li>
+        <li><b>Would I still want it</b> if nobody was talking about it?</li>
+        <li><b>How much can I lose</b> if I buy at today's price and it falls 30%?</li>
+      </ul>
+      <p>Can't answer all three? Put it on a watchlist, wait three days, and decide with a cool head.</p></div>`,
+   wisdom:"There is always another bus. Missing a rally costs nothing. Chasing one can cost a lot.",
+   todo:"Next time a stock jumps 20% or more and you feel the itch, write it on a watchlist and wait 3 days before buying anything."},
+
+ { id:'ep7', num:7, cat:'psychology', title:"Revenge Trading", hook:"After a loss, Ravi wants his money back. Right now.",
+   s1:{caption:"Ravi loses ₹5,000 by 10:30 AM.",mood:'worried',bubble:"The market took my money. I'll take it back! Double the size this time, forget the stop-loss!",thought:"(One big win and I'm even...)"},
+   wrong:{title:'Ravi · revenge spiral',capital:100000,rows:[
+     {name:'ZENITH50 FUT · Trade 1',sub:'Normal size · stop-loss hit',pnl:-5000},
+     {name:'ZENITH50 FUT · Trade 2',sub:'2x size · no stop-loss',pnl:-10000},
+     {name:'ZENITH50 FUT · Trade 3',sub:'4x size · "must recover today"',pnl:-20000}], stamp:'THE LOSS SPIRAL'},
+   s3:{caption:"Same ₹5,000 loss. Different Ravi.",mood:'happy',bubble:"One loss is a fee for playing. Chasing it is a mistake. I'm closing the terminal and having chai.",thought:"(Tomorrow is a fresh day.)"},
+   right:{title:'Ravi · stopped for the day',capital:100000,rows:[
+     {name:'ZENITH50 FUT · Day 1',sub:'Stop-loss hit · stopped trading for the day',pnl:-5000},
+     {name:'ZENITH50 FUT · Day 2',sub:'Planned setup · target hit',pnl:3000}], stamp:'STILL IN THE GAME'},
+   extra:`<div class="mathbox"><h3>THE PRICE OF REVENGE</h3>
+      <div class="cmp">
+        <div class="c ok"><span>Stopped after 1 loss</span><b>−₹5,000</b><i>Capital left: ₹95,000</i></div>
+        <div class="c bad"><span>Chased it with bigger trades</span><b>−₹35,000</b><i>Capital left: ₹65,000</i></div>
+      </div>
+      <p>Each revenge trade was <b>bigger</b> than the last. That is how one bad morning becomes a bad month.</p></div>`,
+   wisdom:"The market doesn't owe you your money back. Win it over weeks, not in one trade.",
+   todo:"Write a daily loss limit today (for example 2% of your capital). When it's hit, close the app and walk away until tomorrow."},
+
+ { id:'ep8', num:8, cat:'psychology', title:"Panic Selling: The Scary Headline", hook:"A frightening headline. A red screen. Ravi hits SELL.",
+   s1:{caption:"Breaking news: “Evergreen Agro faces inquiry!” The stock falls 12% in an hour.",mood:'shocked',bubble:"Inquiry?! It will go to zero! SELL EVERYTHING, right now!",thought:"(Didn't even read the actual news.)"},
+   wrong:{title:'Ravi · sold on the headline',holdings:[{name:'EVERGREEN AGRO (SOLD)',sub:'Sold at −12% · two weeks later it was back to ₹61,500',inv:60000,cur:52800}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'SOLD THE DIP'},
+   s3:{caption:"Same headline. Ravi takes a deep breath.",mood:'thinking',bubble:"Has the business changed, or only the price? Let me read the company's own statement first.",thought:"(Routine inquiry. No impact on sales or profit.)"},
+   right:{title:'Ravi · checked the facts',holdings:[{name:'EVERGREEN AGRO',sub:'Held · read the facts before reacting',inv:60000,cur:61500}], stamp:'FACTS BEFORE FEAR'},
+   extra:`<div class="mathbox"><h3>3 QUESTIONS BEFORE YOU SELL ON NEWS</h3>
+      <ul>
+        <li><b>Has the business really changed?</b> Sales, profit, debt, management.</li>
+        <li><b>Has my reason for buying been broken?</b></li>
+        <li><b>Is this news, or just noise?</b> Prices swing before facts arrive.</li>
+      </ul>
+      <p>If the reason you bought has truly broken, selling is the right call. The mistake is selling <b>without checking</b>.</p>
+      <p>This is different from Episode 4: that was a market-wide crash, this is one scary headline on one stock.</p></div>`,
+   wisdom:"A scary headline is not a reason to sell. A changed business is.",
+   todo:"For each stock you own, write one line: “I bought this because ___.” Before selling on news, check if that reason is still true."},
+
+ { id:'ep9', num:9, cat:'psychology', title:"Overconfidence", hook:"Three wins in a row. Ravi thinks he's a genius.",
+   s1:{caption:"Ravi wins 3 trades in a row. He is glowing.",mood:'excited',bubble:"I can't lose! Forget small bets. ₹4,00,000 on one stock, no stop-loss!",thought:"(Luck? What luck? It's all skill.)"},
+   wrong:{title:'Ravi · after the win streak',holdings:[{name:'STELLARBYTE TECH',sub:'Qty 2,000 · Buy ₹200 · LTP ₹130 · no stop-loss',inv:400000,cur:260000}], stamp:'3 WINS ≠ SKILL'},
+   s3:{caption:"Same 3 wins. Humble Ravi.",mood:'thinking',bubble:"Three wins could be luck. I'll keep my size the same and review my journal.",thought:"(Process first. Ego later. Or never.)"},
+   right:{title:'Ravi · same size, every time',capital:100000,rows:[
+     {name:'TRADE 1 · ARVIND STEELWORKS',sub:'Risked ₹1,000 · target hit',pnl:2000},
+     {name:'TRADE 2 · CITYGRID POWER',sub:'Risked ₹1,000 · target hit',pnl:2000},
+     {name:'TRADE 3 · GOLDLEAF TEXTILES',sub:'Risked ₹1,000 · target hit',pnl:2000},
+     {name:'TRADE 4 · BLUEWAVE FOODS',sub:'Risked ₹1,000 · stop-loss hit',pnl:-1000},
+     {name:'TRADE 5 · HILLTOP HOTELS',sub:'Risked ₹1,000 · stop-loss hit',pnl:-1000}], stamp:'SAME SIZE, EVERY TIME'},
+   extra:`<div class="mathbox"><h3>A WIN STREAK IS NOT A SKILL TEST</h3>
+      <p>If every trade were a coin flip, 3 wins in a row would happen <b>1 time in 8</b>.</p>
+      <p class="stat">Among 1,000 traders, about 125 will have a 3-win streak this week, by pure luck.</p>
+      <p>The traders who survive are the ones who do not size up because of a streak.</p></div>`,
+   wisdom:"Confidence should come from your process, not from your last three trades.",
+   todo:"Keep your position size the same after wins. Increase it only after months of a written, tested process, never because of a streak."},
+
+ { id:'ep10', num:10, cat:'psychology', title:"Greed and Fear", hook:"The two voices in every trader's head.",
+   s1:{caption:"Ravi bought at ₹100. His target was ₹120. The stock touches ₹125!",mood:'excited',bubble:"₹125 already? It could hit ₹200! Why sell now? A little more...",thought:"(Greed whispers: just a little more.)"},
+   wrong:{title:'Ravi · greed, then fear',holdings:[{name:'INFRAKING PROJECTS (SOLD)',sub:'Qty 1,000 · Buy ₹100 · peaked ₹125 · sold ₹90 in fear',inv:100000,cur:90000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'GREED THEN FEAR'},
+   s3:{caption:"Same stock. Ravi decided his exit BEFORE buying.",mood:'happy',bubble:"My plan said target ₹120, stop-loss ₹92. The price hit ₹120, so I sold. Done.",thought:"(It went to ₹135 later. That's fine. Profit is profit.)"},
+   right:{title:'Ravi · followed the plan',holdings:[{name:'INFRAKING PROJECTS (SOLD)',sub:'Qty 1,000 · Buy ₹100 · sold at plan target ₹120',inv:100000,cur:120000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'PLAN BEATS EMOTION'},
+   extra:`<div class="mathbox"><h3>THE EMOTION CYCLE</h3>
+      <div class="cycle"><span>Hope</span><span>Excitement</span><span class="gd">GREED (the peak)</span><span>Anxiety</span><span class="hot">FEAR</span><span class="hot">PANIC (the bottom)</span></div>
+      <p>Most people feel greedy at the top and scared at the bottom, which is exactly when to do the opposite. A written plan makes the decision before the emotion arrives.</p></div>`,
+   wisdom:"Decide your exit before you enter, when your head is cool, not when your heart is racing.",
+   todo:"For every trade or investment, write three numbers before you buy: your entry, your target and your stop-loss. Then follow them."},
+
+ { id:'ep11', num:11, cat:'psychology', title:"Impatience", hook:"“Nothing is happening!” Ravi quits too early.",
+   s1:{caption:"Month 8 of Ravi's SIP. The fund is up only 3.6%.",mood:'worried',bubble:"This is too slow! My friend made 40% in a month on a hot stock. I'm stopping this SIP!",thought:"(Patience is for people who don't want to be rich.)"},
+   wrong:{title:'Ravi · quit after 8 months',holdings:[{name:'BHARAT INDEX FUND (STOPPED)',sub:'8 SIPs of ₹10,000 · “nothing is happening”',inv:80000,cur:82857}], stamp:'QUIT TOO EARLY'},
+   s3:{caption:"Same SIP. Patient Ravi.",mood:'happy',bubble:"Good things take time. I'll keep going and check once every few months, not every day.",thought:"(The best part of compounding comes late.)"},
+   right:{title:'Ravi · stayed 5 years',holdings:[{name:'BHARAT INDEX FUND',sub:'60 SIPs of ₹10,000 · assumed 12% a year (illustrative)',inv:600000,cur:816697}], stamp:'TIME DID THE WORK'},
+   extra:`<div class="mathbox"><h3>TIME DOES THE HEAVY LIFTING</h3>
+      <table class="tbl"><tr><th>₹10,000 a month for</th><th>You put in</th><th>Could become*</th></tr>
+        <tr><td>1 year</td><td>₹1.2 lakh</td><td>₹1.27 lakh</td></tr>
+        <tr><td>5 years</td><td>₹6 lakh</td><td>₹8.17 lakh</td></tr>
+        <tr><td>10 years</td><td>₹12 lakh</td><td>₹23.0 lakh</td></tr>
+        <tr><td>20 years</td><td>₹24 lakh</td><td>₹98.9 lakh</td></tr></table>
+      <p>*Illustration at an <b>assumed</b> 12% a year. Real returns vary, can be negative for years, and are never guaranteed. Notice that most of the growth comes in the later years, which is why quitting early costs the most.</p></div>`,
+   wisdom:"Wealth is rarely built in a month. It's built by not quitting.",
+   todo:"Choose one long-term plan (such as a SIP), set a review date six months away, and do not judge it before then."},
+
+ { id:'ep12', num:12, cat:'psychology', title:"Ego: “I Can't Be Wrong”", hook:"“It's not a loss until I sell.” Famous last words.",
+   s1:{caption:"Ravi's stock is down 70%. A friend gently asks about it.",mood:'worried',bubble:"I'm not wrong, the market is wrong! I'll sell when it comes back to my price.",thought:"(Selling means admitting I made a mistake.)"},
+   wrong:{title:'Ravi · refused to sell',holdings:[{name:'DELTA CHIPLABS',sub:'Qty 500 · Buy ₹300 · LTP ₹90 · “waiting to break even”',inv:150000,cur:45000}], stamp:'EGO IS EXPENSIVE'},
+   s3:{caption:"Same stock. At −10%, Ravi swallows his pride.",mood:'thinking',bubble:"I was wrong about this one. It happens. The market doesn't know my buying price, so I'm moving on.",thought:"(Small loss. Big lesson. Money back to work.)"},
+   right:{title:'Ravi · admitted it, moved on',holdings:[{name:'DELTA CHIPLABS → BHARAT INDEX FUND',sub:'Sold at ₹270 (−10%) and reinvested ₹1,35,000 (illustrative)',inv:150000,cur:145800}], stamp:'WRONG, BUT SAFE'},
+   extra:`<div class="mathbox"><h3>THE RECOVERY MATHS</h3>
+      <table class="tbl"><tr><th>If you lose</th><th>You need to gain just to break even</th></tr>
+        <tr><td>10%</td><td>+11.1%</td></tr><tr><td>20%</td><td>+25%</td></tr><tr><td>30%</td><td>+42.9%</td></tr>
+        <tr><td>50%</td><td>+100%</td></tr><tr><td>70%</td><td>+233%</td></tr></table>
+      <p>Every month Ravi waited, his money sat in a stock that needed a miracle, while better ideas passed by.</p></div>`,
+   wisdom:"The market doesn't know your buying price. Being wrong is cheap. Refusing to admit it is expensive.",
+   todo:"Set a maximum loss (for example 8–10%) when you buy. If it's hit, sell without a debate, then write one line in your journal about what you learned."},
+
+ { id:'ep13', num:13, cat:'psychology', title:"Overtrading", hook:"30 trades before lunch. Who is really winning?",
+   s1:{caption:"Ravi is bored. The screen is flashing. Every candle looks like a chance.",mood:'excited',bubble:"I must do something! More trades, more profit, right? 30 trades today!",thought:"(Boredom is my strategy.)"},
+   wrong:{title:'Ravi · 30 trades in a day',capital:100000,rows:[
+     {name:'GROSS P&amp;L · 30 trades',sub:'Wins and losses added up',pnl:2000},
+     {name:'BROKERAGE · 60 orders',sub:'Charged on every buy and every sell',pnl:-1200},
+     {name:'STT, GST, EXCHANGE &amp; STAMP',sub:'Taxes and charges (illustrative)',pnl:-1300}], stamp:'BUSY, NOT PROFITABLE'},
+   s3:{caption:"Same Ravi. Same screen. A rule on the wall.",mood:'thinking',bubble:"No setup, no trade. Maximum 3 trades a day. Waiting is also a position.",thought:"(Sitting on my hands is a skill.)"},
+   right:{title:'Ravi · 3 planned trades',capital:100000,rows:[
+     {name:'TRADE 1 · planned setup',sub:'Target hit',pnl:1800},
+     {name:'TRADE 2 · planned setup',sub:'Target hit',pnl:1800},
+     {name:'TRADE 3 · planned setup',sub:'Stop-loss hit · risked ₹1,000',pnl:-1000},
+     {name:'BROKERAGE + OTHER CHARGES',sub:'6 orders (illustrative)',pnl:-300}], stamp:'FEWER, BETTER'},
+   extra:`<div class="mathbox"><h3>THE HIDDEN COST OF BEING BUSY</h3>
+      <div class="cmp">
+        <div class="c ok"><span>3 trades a day</span><b>≈ ₹300 a day in costs</b><i>≈ ₹6,000 a month</i></div>
+        <div class="c bad"><span>30 trades a day</span><b>≈ ₹2,500 a day in costs</b><i>≈ ₹50,000 a month, ₹6 lakh a year</i></div>
+      </div>
+      <p>Costs are paid on every trade, win or lose. The more you trade, the more you must earn just to stay even. Figures are illustrative; check your own contract notes.</p></div>`,
+   wisdom:"Every trade has a cost. Fewer, better trades beat many random ones.",
+   todo:"Add up last month's brokerage and charges from your contract notes. Then set a maximum number of trades per day, and close the terminal when you hit it."}
 ];
 
-/* ---------- render ---------- */
-document.getElementById('meet-ravi').innerHTML = ravi('happy');
+/* =====================================================================
+   4. PROGRESS (remembered in this browser only; safe if storage is blocked)
+   ===================================================================== */
+const store = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k)||'null'); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+};
+let done = new Set(store.get('mw_done')||[]);
+const markDone = id => { done.add(id); store.set('mw_done',[...done]); };
+let warned = new Set();
+try{ warned = new Set(JSON.parse(sessionStorage.getItem('mw_warned')||'[]')); }catch(e){}
+const markWarned = id => { warned.add(id); try{ sessionStorage.setItem('mw_warned',JSON.stringify([...warned])); }catch(e){} };
 
-const nav = document.getElementById('nav');
-const main = document.getElementById('episodes');
+/* =====================================================================
+   5. VIEWS
+   ===================================================================== */
+const gradient = c => `linear-gradient(135deg,${c.grad[0]},${c.grad[1]})`;
+const epsOf = key => EPISODES.filter(e=>e.cat===key).sort((a,b)=>a.num-b.num);
 
-EPISODES.forEach((e,i)=>{
-  const n = i+1;
-  nav.insertAdjacentHTML('beforeend', `<a href="#${e.id}"${e.gated?' data-gated="1"':''}>Ep ${n} · ${e.title}</a>`);
-  if(e.gated){ main.insertAdjacentHTML('beforeend', `<div class="gate" id="gate">
-    <div class="bang">⚠️ HEADS-UP</div>
-    <p>Leverage &amp; F&amp;O is the fastest way to lose money in the market. Finish Episodes 1–4 first.</p>
-    <button id="unlock" type="button">I've read 1–4. Show me Leverage &amp; F&amp;O ▶</button>
-  </div>`); }
-  main.insertAdjacentHTML('beforeend', `
-  <section class="episode" id="${e.id}"${e.gated?' hidden':''}>
-    <div class="ep-head"><span class="ep-num">EPISODE ${n}</span><h2>${e.title}</h2></div>
+function viewHome(){
+  const cards = CATS.map(c=>{
+    const n = epsOf(c.key).length;
+    return `<a class="cat" href="#/c/${c.key}">
+      <div class="art" style="background:${gradient(c)}"><span class="ico" aria-hidden="true">${c.icon}</span><img src="${c.img}" alt="" loading="lazy" onerror="this.remove()"></div>
+      <div class="ct">${c.n}. ${c.title}</div>
+      <div class="cs">${c.tag}</div>
+      <div class="cc ${n?'':'soon'}">${n? n+(n>1?' episodes':' episode') : 'Coming soon'}</div>
+    </a>`;
+  }).join('');
+  return `<div class="hero">
+  <section class="brand">
+    <div class="brand-top">
+      <span class="name">MARKET WISDOM</span>
+      <span class="pill">PRACTICAL WISDOM · NOT TIPS</span>
+    </div>
+    <h1>OOPS! THE MARKET STRIKES AGAIN!</h1>
+    <div class="tagline">Laugh at the mistakes. Learn the lessons. Trade with wisdom.</div>
+    <p class="desc">Learn from the mistakes traders make every day. Become a more disciplined market participant.</p>
+  </section>
+  <aside class="ref" aria-label="Open a Demat account">
+    <h2>READY TO START INVESTING?</h2>
+    <div class="lead">Open your Demat account with Zerodha.</div>
+    <p>Learn first, then invest on your own terms.</p>
+    <a class="btn" href="https://zerodha.com/open-account?c=ZMPMQU" target="_blank" rel="noopener sponsored">OPEN DEMAT ACCOUNT →</a>
+    
+  </aside>
+</div>
+    <h2 class="sec">Explore your learning sections</h2>
+    <div class="cats">${cards}</div>`;
+}
+
+function viewCategory(key){
+  const c = CATS.find(x=>x.key===key); if(!c) return viewHome();
+  const eps = epsOf(key);
+  const list = eps.length
+    ? `<div class="eplist">${eps.map(e=>`<a class="eprow" href="#/e/${e.id}">
+        <span class="epn">EP ${e.num}</span>
+        <span class="ept"><b>${e.title}</b><small>${e.hook||''}</small></span>
+        <span class="go ${done.has(e.id)?'done':''}">${done.has(e.id)?'✓ Read':'Read ▶'}</span></a>`).join('')}</div>`
+    : `<div class="empty"><b>Episodes coming soon</b>We are drawing the first ones for this section.</div>`;
+  return `<a class="back" href="#/">← All sections</a>
+    <header class="cathead" style="background:${gradient(c)}">
+      <span class="ico" aria-hidden="true">${c.icon}</span>
+      <div><div class="kick">SECTION ${c.n}</div><h1>${c.title}</h1><p>${c.tag}</p></div>
+    </header>
+    <p class="intro">${c.intro||''}</p>
+    ${list}`;
+}
+
+function viewEpisode(id){
+  const e = EPISODES.find(x=>x.id===id); if(!e) return viewHome();
+  const c = CATS.find(x=>x.key===e.cat);
+  const back = `<a class="back" href="#/c/${c.key}">← ${c.title}</a>`;
+  if(e.warn && !warned.has(e.id)){
+    return back + `<div class="gate">
+      <div class="bang">⚠️ HEADS-UP</div>
+      <p>Leverage &amp; F&amp;O is the fastest way to lose money in the market. Read the Risk Management episodes first, then come back.</p>
+      <button type="button" data-unlock="${e.id}">I understand. Show me the episode ▶</button>
+      <p style="margin:14px 0 0"><a href="#/c/risk">Take me to Risk Management instead</a></p>
+    </div>`;
+  }
+  markDone(e.id);
+  const eps = epsOf(e.cat), i = eps.findIndex(x=>x.id===e.id);
+  const prev = eps[i-1], next = eps[i+1];
+  return back + `<article class="ep-wrap">
+    <div class="ep-head"><span class="ep-num">EPISODE ${e.num}</span><h2>${e.title}</h2></div>
     <div class="grid">
       <div class="panel"><span class="tag wrong">THE MISTAKE</span>${scene(e.s1,'w')}</div>
       <div class="panel"><span class="tag wrong">WHAT HAPPENED</span><div class="shot">${shot(e.wrong)}</div>${stamp(e.wrong.stamp,false)}</div>
@@ -320,19 +569,34 @@ EPISODES.forEach((e,i)=>{
       <div class="big">💡 ${e.wisdom}</div>
       <div class="do"><b>Do this today:</b> ${e.todo}</div>
     </div>
-  </section>`);
-});
-function reveal(){
-  const s = document.getElementById('ep5'), g = document.getElementById('gate');
-  if(g) g.hidden = true;
-  s.hidden = false;
-  setTimeout(()=>s.scrollIntoView({behavior:'smooth',block:'start'}),50);
+    <nav class="pager" aria-label="Episode navigation">
+      ${prev?`<a href="#/e/${prev.id}">◀ Previous</a>`:''}
+      <a href="#/c/${c.key}">All in ${c.title}</a>
+      ${next?`<a class="primary" href="#/e/${next.id}">Next episode ▶</a>`:`<a class="primary" href="#/">More sections ▶</a>`}
+    </nav>
+  </article>`;
+}
+
+/* =====================================================================
+   6. ROUTER  (#/  home · #/c/<section> · #/e/<episode>)
+   ===================================================================== */
+const app = document.getElementById('app');
+function route(){
+  const [t,id] = location.hash.replace(/^#\/?/,'').split('/');
+  let html, title = 'Market Wisdom: Think Better. Trade Wiser.';
+  if(t==='c' && CATS.some(c=>c.key===id)){ html = viewCategory(id); title = plain(CATS.find(c=>c.key===id).title)+' · Market Wisdom'; }
+  else if(t==='e' && EPISODES.some(e=>e.id===id)){ html = viewEpisode(id); title = plain(EPISODES.find(e=>e.id===id).title)+' · Market Wisdom'; }
+  else html = viewHome();
+  app.innerHTML = html;
+  document.title = title;
+  window.scrollTo(0,0);
 }
 document.addEventListener('click',ev=>{
-  const a = ev.target.closest('[data-gated],#unlock');
-  if(a){ ev.preventDefault(); reveal(); }
+  const b = ev.target.closest('[data-unlock]');
+  if(b){ markWarned(b.dataset.unlock); route(); }
 });
-if(location.hash==='#ep5') reveal();
+window.addEventListener('hashchange',route);
+route();
 </script>
 </body>
 </html>
