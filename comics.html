@@ -258,8 +258,8 @@ function positions(p){
     <div class="ph-top"><span>${p.time||'3:25 PM'}</span><span>Positions</span></div>
     <div class="ph-title">${p.title}</div>
     <div class="ph-sum">
-      <div>Starting capital<b>${inr(p.capital)}</b></div>
-      <div>Capital now<b>${inr(p.capital+pl)}</b></div>
+      <div>${p.capLabel||'Starting capital'}<b>${inr(p.capital)}</b></div>
+      <div>${p.nowLabel||'Capital now'}<b>${inr(p.capital+pl)}</b></div>
       <div class="pl-big">Net P&amp;L<b class="${cls(pl)}">${sinr(pl)} (${pct(pl/p.capital*100)})</b></div>
     </div>
     ${rows}
@@ -469,7 +469,112 @@ const EPISODES = [
       </div>
       <p>Costs are paid on every trade, win or lose. The more you trade, the more you must earn just to stay even. Figures are illustrative; check your own contract notes.</p></div>`,
    wisdom:"Every trade has a cost. Fewer, better trades beat many random ones.",
-   todo:"Add up last month's brokerage and charges from your contract notes. Then set a maximum number of trades per day, and close the terminal when you hit it."}
+   todo:"Add up last month's brokerage and charges from your contract notes. Then set a maximum number of trades per day, and close the terminal when you hit it."},
+
+ /* ---------- RISK MANAGEMENT series (Ravi) ---------- */
+ { id:'ep14', num:14, cat:'risk', title:"Trading Without a Stop-Loss", hook:"No exit plan is not a plan. It is hope with a ticker.",
+   s1:{caption:"Ravi buys Kestrel Motors at ₹500. No stop-loss. The stock starts sliding.",mood:'worried',bubble:"Stop-loss is for nervous people. It will bounce back. Any day now!",thought:"(Day 1: −8%. Day 5: −20%. Day 30: I stopped looking.)"},
+   wrong:{title:'Ravi · no stop-loss',holdings:[{name:'KESTREL MOTORS',sub:'Qty 100 · Buy ₹500 · LTP ₹280 · no exit plan',inv:50000,cur:28000}], stamp:'STILL FALLING'},
+   s3:{caption:"Same stock. This time Ravi fits a seatbelt before the journey.",mood:'thinking',bubble:"Buy at ₹500, stop-loss at ₹470. If it hits, I lose about ₹1,000 and I'm out. No arguing with myself.",thought:"(Quantity = ₹1,000 risk ÷ ₹30 per share = 33 shares.)"},
+   right:{title:'Ravi · stop-loss placed',capital:100000,rows:[
+     {name:'KESTREL MOTORS',sub:'Qty 33 · Buy ₹500 · stop-loss ₹470 hit',pnl:-990},
+     {name:'NEXT IDEA · planned setup',sub:'Risked ₹1,000 · target hit at 2x the risk',pnl:2000}], stamp:'SEATBELT ON'},
+   extra:`<div class="mathbox"><h3>THE SEATBELT MATHS</h3>
+      <div class="cmp">
+        <div class="c ok"><span>With a stop-loss at ₹470</span><b>−₹990</b><i>Out early. Capital: ₹99,010</i></div>
+        <div class="c bad"><span>No stop-loss, ₹500 → ₹280</span><b>−₹22,000</b><i>Still holding. Still falling.</i></div>
+      </div>
+      <p>A 44% fall needs a <b>+79%</b> gain just to break even. A small, planned loss is cheap. An open-ended one is not.</p>
+      <ul>
+        <li><b>Place it where your reason is wrong,</b> not where the pain feels bearable. Too tight and normal swings knock you out.</li>
+        <li><b>Decide it before you buy.</b> Once you are in, emotions write terrible stop-losses.</li>
+        <li><b>Know its limit.</b> In a sharp gap or a fast market, the exit price can be worse than your stop. It limits the damage; it does not make it zero.</li>
+      </ul></div>`,
+   wisdom:"A stop-loss is the small price you pay so that one bad trade never becomes a bad year.",
+   todo:"Before your next buy, write the stop-loss price and the rupee loss it means. If you can't accept that number, buy fewer shares or skip the trade."},
+
+ { id:'ep15', num:15, cat:'risk', title:"Oversizing Positions", hook:"Right idea, wrong size. One trade should never be able to hurt this much.",
+   s1:{caption:"Ravi has ₹1,00,000. He is very sure about Quickwave Logistics.",mood:'excited',bubble:"Why risk small when I can win BIG? ₹80,000 on Quickwave, right now!",thought:"(Position size? I'll just go with my gut.)"},
+   wrong:{title:'Ravi · 80% in one trade',capital:100000,rows:[
+     {name:'QUICKWAVE LOGISTICS',sub:'Qty 400 · Buy ₹200 · LTP ₹150 · 80% of capital',pnl:-20000}], stamp:'ONE TRADE, 20% GONE'},
+   s3:{caption:"Same ₹1,00,000. This time Ravi does the sizing sum first.",mood:'thinking',bubble:"I risk ₹1,000 a trade. My stop-loss is 5% away. So my position can be ₹20,000, not ₹80,000.",thought:"(Size is the one thing I fully control.)"},
+   right:{title:'Ravi · sized by risk',capital:100000,rows:[
+     {name:'TRADE 1 · ₹20,000 position',sub:'Stop-loss 5% away · risked ₹1,000',pnl:-1000},
+     {name:'TRADE 2 · ₹20,000 position',sub:'Stop-loss 5% away · risked ₹1,000',pnl:-1000},
+     {name:'TRADE 3 · ₹20,000 position',sub:'Stop-loss 5% away · risked ₹1,000',pnl:-1000}], stamp:'3 LOSSES, STILL CALM'},
+   extra:`<div class="mathbox"><h3>SIZE THE TRADE BY THE RISK</h3>
+      <p class="stat">Position size = (Capital × risk %) ÷ stop-loss distance %</p>
+      <p>Example: ₹1,00,000 × 1% = ₹1,000 of risk. With a stop-loss 5% away: ₹1,000 ÷ 5% = <b>₹20,000</b> position.</p>
+      <table class="tbl"><tr><th>Risk per trade</th><th>Capital left after 10 losses in a row</th></tr>
+        <tr><td>1%</td><td>₹90,438</td></tr><tr><td>2%</td><td>₹81,707</td></tr><tr><td>5%</td><td>₹59,874</td></tr>
+        <tr><td>10%</td><td>₹34,868</td></tr><tr><td>20%</td><td>₹10,737</td></tr></table>
+      <p>Starting capital ₹1,00,000, each loss taken on the capital that remains. Even good methods have losing streaks. Small size lets you live through them.</p></div>`,
+   wisdom:"You don't control whether a trade wins. You do control how big it is.",
+   todo:"Pick a risk-per-trade number (1–2% of capital is common) and write it down. Before every trade, work out the position size from it instead of guessing."},
+
+ { id:'ep16', num:16, cat:'risk', title:"Borrowed Money, Borrowed Trouble", hook:"The loan does not shrink when your stock does.",
+   s1:{caption:"Ravi spots a \"hot\" stock. His savings are small, so he takes a personal loan.",mood:'excited',bubble:"Borrow ₹2,00,000, make 40% in a year, repay the loan, keep the profit. Easy maths!",thought:"(Interest is just a small detail.)"},
+   wrong:{title:'Ravi · invested a loan',capital:200000,capLabel:'Borrowed money invested',nowLabel:'Value left',rows:[
+     {name:'HYPERLOOP MOBILITY',sub:'Bought with a loan · fell 30% · EMI still due',pnl:-60000},
+     {name:'LOAN INTEREST · about 6 months',sub:'14% a year on ₹2,00,000 (approx.)',pnl:-14000}], stamp:'STILL OWES ₹2 LAKH'},
+   s3:{caption:"Same hot stock. This time Ravi uses only spare money.",mood:'happy',bubble:"Only ₹20,000 that I won't need for 5 years. No loan, no EMI. If it falls, I can afford to wait.",thought:"(Time is on my side only when I'm not in debt.)"},
+   right:{title:'Ravi · own spare money',holdings:[{name:'HYPERLOOP MOBILITY',sub:'Inv ₹20,000 · own money · no loan, no EMI',inv:20000,cur:14000}], stamp:'NO EMI PRESSURE'},
+   extra:`<div class="mathbox"><h3>THE BORROWED-MONEY MATHS</h3>
+      <div class="cmp">
+        <div class="c ok"><span>Own money: ₹20,000</span><b>30% fall → −₹6,000</b><i>Nothing to repay. Free to wait.</i></div>
+        <div class="c bad"><span>Borrowed: ₹2,00,000</span><b>30% fall → −₹60,000</b><i>Still owe ₹2,00,000 plus interest</i></div>
+      </div>
+      <ul>
+        <li><b>The loan has a deadline.</b> The EMI is due every month, whether the stock has recovered or not.</li>
+        <li><b>A hurdle before profit.</b> At 14% interest, your investment must beat 14% a year just to cover the loan, before any profit or tax.</li>
+        <li><b>Forced selling.</b> Borrowing from a broker (margin funding) can mean your shares are sold for you when prices fall, at the worst moment.</li>
+      </ul>
+      <p>Credit cards and money borrowed from friends or family follow the same maths. The market never agrees to your repayment date.</p></div>`,
+   wisdom:"Borrowed money has a deadline. The market does not know about it.",
+   todo:"Before investing any money, ask: \"If I lose all of this, can I still pay my bills and EMIs?\" If not, it isn't investable money. Skip loans, credit cards and money you need within 3–5 years."},
+
+ { id:'ep17', num:17, cat:'risk', title:"Ignoring the Risk-Reward Ratio", hook:"Right 7 times out of 10 and still losing money. How?",
+   s1:{caption:"Ravi sets up his trade: buy ₹100, target ₹105, stop-loss ₹85.",mood:'excited',bubble:"The target is so close, I'll hit it almost every time. I'll win 7 out of 10!",thought:"(Risk ₹15 to make ₹5? Details, details.)"},
+   wrong:{title:'Ravi · 10 trades, risk 3 : reward 1',capital:100000,rows:[
+     {name:'7 WINNING TRADES',sub:'Target hit · +₹500 each',pnl:3500},
+     {name:'3 LOSING TRADES',sub:'Stop-loss hit · −₹1,500 each',pnl:-4500}], stamp:'WON 7, STILL LOST'},
+   s3:{caption:"Same stock. This time Ravi checks the reward against the risk first.",mood:'thinking',bubble:"I risk ₹10 to make ₹20 or more. Even if I'm right only 4 times in 10, I'm fine. Can't get 2x the risk? I skip it.",thought:"(A good trade pays for the bad ones.)"},
+   right:{title:'Ravi · 10 trades, risk 1 : reward 2',capital:100000,rows:[
+     {name:'4 WINNING TRADES',sub:'Target hit · +₹2,000 each',pnl:8000},
+     {name:'6 LOSING TRADES',sub:'Stop-loss hit · −₹1,000 each',pnl:-6000}], stamp:'WON 4, STILL AHEAD'},
+   extra:`<div class="mathbox"><h3>THE WIN RATE YOU NEED TO BREAK EVEN</h3>
+      <table class="tbl"><tr><th>You risk ₹1 to make</th><th>Win rate needed to break even</th></tr>
+        <tr><td>₹0.33 (Ravi's mistake)</td><td>75%</td></tr><tr><td>₹0.50</td><td>66.7%</td></tr>
+        <tr><td>₹1</td><td>50%</td></tr><tr><td>₹2</td><td>33.3%</td></tr><tr><td>₹3</td><td>25%</td></tr></table>
+      <p>Ravi needed to win 3 trades in 4 and won only 7 in 10, so he lost money despite a "great" win rate. Brokerage and taxes push the break-even rate a little higher still.</p>
+      <p>A big reward target is only useful if the market can realistically reach it. Don't draw a 1:5 target that never gets hit.</p></div>`,
+   wisdom:"Win rate alone tells you nothing. What matters is how much you make when right versus how much you lose when wrong.",
+   todo:"For every trade, write entry, stop-loss and target, then divide the reward by the risk. If it is below about 2 to 1, ask why you are taking it."},
+
+ { id:'ep18', num:18, cat:'risk', title:"Not Protecting Your Capital", hook:"All savings in, no rules, one surprise bill.",
+   s1:{caption:"Ravi puts ALL ₹5,00,000 of his savings into his trading account, emergency money too.",mood:'excited',bubble:"More capital means more profit! Why keep money idle in a savings account?",thought:"(What if I need it suddenly? I won't.)"},
+   wrong:{title:'Ravi · everything in trading',capital:500000,rows:[
+     {name:'MONTH 1 · big trades',sub:'No loss limit, no pause',pnl:-60000},
+     {name:'MONTH 2 · trying to recover',sub:'Bigger bets to win it back',pnl:-70000},
+     {name:'MONTH 3 · "just one more"',sub:'Then a ₹1,50,000 family expense arrives',pnl:-70000}], stamp:'ALL IN, 40% DOWN'},
+   s3:{caption:"Same ₹5,00,000. This time Ravi makes three buckets first.",mood:'thinking',bubble:"₹1,50,000 emergency fund. ₹3,00,000 long-term SIP. Only ₹50,000 for trading. If I lose 10% in a month, I stop and review.",thought:"(Capital is my only employee. Protect it.)"},
+   right:{title:'Ravi · trading bucket only',capital:50000,rows:[
+     {name:'MONTH 1 · loss limit hit',sub:'Lost 10% → stopped trading and reviewed',pnl:-5000},
+     {name:'MONTH 2 · half-size trades',sub:'Followed the written plan',pnl:1500},
+     {name:'MONTH 3 · planned setups',sub:'Stop-loss and size rules followed',pnl:2500}], stamp:'CAPITAL PROTECTED'},
+   extra:`<div class="mathbox"><h3>THE 3-BUCKET RULE</h3>
+      <ul>
+        <li><b>Bucket 1 · Emergency fund.</b> About 3–6 months of expenses in a savings account or similar safe place. Never in the market.</li>
+        <li><b>Bucket 2 · Long-term investing.</b> Money for goals 5+ years away, such as a SIP. Left alone.</li>
+        <li><b>Bucket 3 · Risk money.</b> Only money you could lose without changing your life. Only this bucket is ever used for trading.</li>
+      </ul>
+      <div class="cmp">
+        <div class="c ok"><span>With 3 buckets</span><b>Lose the whole trading bucket → −₹50,000</b><i>That is 10% of total savings. Painful, survivable.</i></div>
+        <div class="c bad"><span>Everything in trading</span><b>−40% → ₹3,00,000 left</b><i>A ₹1,50,000 bill forces selling at a loss.</i></div>
+      </div>
+      <p>Add loss limits to protect the trading bucket: about 1% per trade, 2% per day, 10% per month. When a limit is hit, stop and review.</p></div>`,
+   wisdom:"Profits are a bonus. Staying in the game is the job.",
+   todo:"Split your savings into three buckets today: emergency, long-term, and risk money. Only the third bucket is ever allowed near a trade."}
 ];
 
 /* =====================================================================
