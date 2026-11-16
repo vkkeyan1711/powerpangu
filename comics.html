@@ -277,8 +277,8 @@ const scene = (s,kind) => `<div class="scene ${kind}">
    3. EPISODES
    To add an episode: copy one block, give it a new id, set `cat` to one
    of: psychology | risk | mistakes | fno | investing | traps
-   `num` is the episode number WITHIN its section (every section starts at 1). `warn:true` puts a
-   warning screen in front of the episode (used for F&O).
+   `num` is the episode number WITHIN its section (every section starts at 1). `warn:true` on any episode puts a
+   warning screen (shown once per visit) in front of that whole section (used for F&O).
    ===================================================================== */
 const EPISODES = [
  { id:'ep1', num:1, cat:'risk', title:'All Eggs, One Basket', hook:'₹1 lakh in one stock vs spread across ten.',
@@ -684,11 +684,198 @@ const EPISODES = [
       <p>This is an <b>example</b>. Build your own, but make every trade pass it. Four of Ravi's five random trades had no reason a stranger could check. “Cheap”, “lucky” and “bored” are not reasons.</p>
       <p>Random trades have no edge, yet they still pay brokerage and taxes every time. Stay out when nothing qualifies. Staying out is a decision too.</p></div>`,
    wisdom:"If you can't say why you're taking a trade in one clear line, you are only gambling with extra steps.",
-   todo:"Write a 4-point checklist today. Before every trade, tick all four. If even one box is empty, skip it."}
+   todo:"Write a 4-point checklist today. Before every trade, tick all four. If even one box is empty, skip it."},
+
+ /* ---------- F&O WISDOM series (Ravi) · fictional index ZENITH50, illustrative lot = 75 units ---------- */
+ { id:'ep24', num:2, cat:'fno', title:"Buying Cheap Options", hook:"Only ₹5! What could possibly go wrong?",
+   s1:{caption:"ZENITH50 trades at 24,000. A far-away call costs just ₹5. Ravi is thrilled.",mood:'excited',bubble:"Only ₹5! If the index jumps, I make 10x. It’s basically free money!",thought:"(Cheap price, huge upside. Why doesn’t everyone do this?)"},
+   wrong:{title:'Ravi · “cheap” options',capital:100000,rows:[
+     {name:'WEEK 1 · 24800 CE',sub:'16 lots · Buy ₹5 · expired worthless',pnl:-6000},
+     {name:'WEEK 2 · 24800 CE',sub:'16 lots · Buy ₹5 · expired worthless',pnl:-6000},
+     {name:'WEEK 3 · 24800 CE',sub:'16 lots · Buy ₹5 · sold at ₹9 after a spike',pnl:4800},
+     {name:'WEEK 4 · 24800 CE',sub:'16 lots · Buy ₹5 · expired worthless',pnl:-6000}], stamp:'LOTTERY TICKETS'},
+   s3:{caption:"Same ₹5 option. This time Ravi asks: why is it so cheap?",mood:'thinking',bubble:"It’s cheap because the market thinks it will almost never get there. I’ll decide my total risk first, then pick a sensible strike.",thought:"(The price tells me the odds. It isn’t a bargain.)"},
+   right:{title:'Ravi · small bets, clear exits',capital:100000,rows:[
+     {name:'24200 CE · 1 lot',sub:'Buy ₹25 · exit rule hit at ₹15 · risked ₹750',pnl:-750},
+     {name:'24200 CE · 1 lot',sub:'Buy ₹25 · exit rule hit at ₹15 · risked ₹750',pnl:-750},
+     {name:'24200 CE · 1 lot',sub:'Buy ₹25 · target ₹50 hit',pnl:1875}], stamp:'SMALL BETS, CLEAR EXITS'},
+   extra:`<div class="mathbox"><h3>A ₹5 OPTION IS NOT A BARGAIN</h3>
+      <div class="cmp">
+        <div class="c bad"><span>Ravi’s 4 “lottery tickets”</span><b>3 expired worthless, 1 paid</b><i>Net −₹13,200 in four weeks</i></div>
+        <div class="c ok"><span>3 small planned bets</span><b>Net +₹375</b><i>Each loss capped near ₹750</i></div>
+      </div>
+      <ul>
+        <li><b>Price equals odds.</b> A far-away strike is cheap because it needs a big move in a few days. The market gives it a low chance.</li>
+        <li><b>“Cheap” makes you oversize.</b> ₹5 felt harmless, so Ravi bought 16 lots. Judge the <b>total rupees at risk</b>, not the per-unit price.</li>
+        <li><b>The rare win is the one you remember.</b> It keeps you buying the next ticket.</li>
+      </ul>
+      <p class="stat">⚠️ SEBI’s August 2026 study found that about 88% of individual F&amp;O traders lost money in FY26.</p>
+      <p>Index, premiums and lot size here are fictional and illustrative.</p></div>`,
+   wisdom:"Cheap is a price, not a bargain. A ₹5 option is cheap because the market thinks it will almost never pay.",
+   todo:"Before buying any option, write the total rupees you could lose and the exit rule that limits it. Ignore how “cheap” the per-unit price looks."},
+
+ { id:'ep25', num:3, cat:'fno', title:"Ignoring Theta Decay", hook:"The index didn’t fall. Ravi’s option melted anyway.",
+   s1:{caption:"Monday. ZENITH50 is at 24,000. Ravi buys a 24,000 call at ₹150, with 5 days to expiry.",mood:'happy',bubble:"The index will go up this week. I just have to wait!",thought:"(Time is on my side, right? ...Right?)"},
+   wrong:{title:'Ravi · held and waited',holdings:[{name:'ZENITH50 24000 CE',sub:'Qty 75 · Buy ₹150 · LTP ₹67 · index flat, 1 day left',inv:11250,cur:5025}], stamp:'TIME ATE IT'},
+   s3:{caption:"Same trade. This time Ravi sets a time limit.",mood:'thinking',bubble:"If the index hasn’t moved by Tuesday evening, I exit. Holding an option costs me time, every single day.",thought:"(Waiting isn’t free.)"},
+   right:{title:'Ravi · used a time stop',holdings:[{name:'ZENITH50 24000 CE (SOLD)',sub:'Qty 75 · Buy ₹150 · sold ₹116 on Tuesday by the time rule',inv:11250,cur:8700}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'TIME STOP USED'},
+   extra:`<div class="mathbox"><h3>THE MELTING ICE CUBE</h3>
+      <table class="tbl"><tr><th>Days left</th><th>Option price</th><th>Lost that day</th><th>Per lot (75)</th></tr>
+        <tr><td>5</td><td>₹150</td><td>–</td><td>–</td></tr>
+        <tr><td>4</td><td>₹134</td><td>−₹16</td><td>−₹1,200</td></tr>
+        <tr><td>3</td><td>₹116</td><td>−₹18</td><td>−₹1,350</td></tr>
+        <tr><td>2</td><td>₹95</td><td>−₹21</td><td>−₹1,575</td></tr>
+        <tr><td>1</td><td>₹67</td><td>−₹28</td><td>−₹2,100</td></tr>
+        <tr><td>Expiry</td><td>₹0</td><td>−₹67</td><td>−₹5,025</td></tr></table>
+      <p>Illustration for an at-the-money option when the index and volatility stay unchanged. The exact numbers vary, but the pattern does not: <b>the decay gets faster as expiry nears</b>.</p>
+      <p>This is <b>theta decay</b>. An option is a wasting asset. Time works for the person who sold it and against the person who bought it, so you can be right about direction and still be too slow.</p></div>`,
+   wisdom:"Buying an option is renting time. The rent is due every day, even when you are right but slow.",
+   todo:"Before buying any option, write two things: how far the index must move, and by which day. If it hasn’t moved by then, exit."},
+
+ { id:'ep26', num:4, cat:'fno', title:"Expiry-Day Gambling", hook:"“Zero to hero” in one hour. That’s the pitch.",
+   s1:{caption:"Expiry day, 1:30 PM. A ₹20 option could become ₹100 in an hour. Ravi spots a “zero to hero”.",mood:'excited',bubble:"Only a few hours left, so it’s super cheap. One big move and I make 5x!",thought:"(That guy on Reels made ₹40,000 in 20 minutes.)"},
+   wrong:{title:'Ravi · four expiry days',capital:100000,rows:[
+     {name:'EXPIRY 1 · 24100 CE',sub:'Qty 750 · Buy ₹20 · expired worthless',pnl:-15000},
+     {name:'EXPIRY 2 · 24000 PE',sub:'Qty 750 · Buy ₹18 · panic-sold at ₹6',pnl:-9000},
+     {name:'EXPIRY 3 · 24200 CE · “double it”',sub:'Qty 1,500 · Buy ₹12 · expired worthless',pnl:-18000},
+     {name:'EXPIRY 4 · 23900 PE',sub:'Qty 750 · Buy ₹25 · big move! sold at ₹60',pnl:26250}], stamp:'1 WIN, 3 LOSSES'},
+   s3:{caption:"Same temptation. This time Ravi has an expiry-day rule.",mood:'thinking',bubble:"The last hours are a coin flip with a house edge. I sit out expiry day and trade only my planned setups earlier in the week.",thought:"(The one win is the one I’d remember. The losses are the ones I’d pay for.)"},
+   right:{title:'Ravi · sat out, stayed in',capital:100000,rows:[
+     {name:'EXPIRY DAYS · 4',sub:'Sat out · noted how premiums moved',pnl:0},
+     {name:'MID-WEEK PLANNED TRADE',sub:'Risked ₹1,000 · stop-loss hit',pnl:-1000},
+     {name:'MID-WEEK PLANNED TRADE',sub:'Risked ₹1,000 · target hit at 2x',pnl:2000}], stamp:'SAT OUT, STAYED IN'},
+   extra:`<div class="mathbox"><h3>WHY THE LAST HOURS ARE STACKED AGAINST YOU</h3>
+      <ul>
+        <li><b>Only hours left.</b> The index must move far and fast, right now, or the option is worth nothing.</li>
+        <li><b>The scoreboard lies.</b> Ravi’s one win (+₹26,250) felt huge, but the three losses cost ₹42,000.</li>
+        <li><b>Costs bite.</b> Brokerage and taxes are paid on every trade, win or lose, and on tiny premiums they take a visible bite.</li>
+        <li><b>It becomes a loop.</b> A big win makes you bet bigger (Ravi doubled his size on Expiry 3), and that loop usually ends one way.</li>
+      </ul>
+      <p class="stat">SEBI’s FY25–26 behaviour study found individual index-options trading heavily concentrated in short-duration contracts.</p>
+      <p>Regulators have noticed too: weekly expiries are now limited to one benchmark index per exchange, and expiry-day margins on short options have been raised.</p></div>`,
+   wisdom:"If your plan is “hope for a miracle in the last hour”, it isn’t a plan. It’s a lottery ticket.",
+   todo:"Write an expiry-day rule today (for example: no new option buying in the last hours). Then watch one expiry day without trading and note how the premiums behave."},
+
+ { id:'ep27', num:5, cat:'fno', title:"Trading Without Understanding IV", hook:"Ravi was right about the news and still lost money. How?",
+   s1:{caption:"Orbit Pharma announces results tomorrow. Its 400 call costs ₹13. Ravi is sure the news will be good.",mood:'excited',bubble:"Results will be good, the stock will rise, and my call will rise. Simple!",thought:"(Why is the option so expensive today? Never mind.)"},
+   wrong:{title:'Ravi · bought before results',holdings:[{name:'ORBIT PHARMA 400 CE',sub:'Qty 1,000 · Buy ₹13 · stock rose 1.5%, option fell to ₹9',inv:13000,cur:9000}], stamp:'RIGHT AND STILL LOST'},
+   s3:{caption:"Same results, same hunch. This time Ravi checks the IV first.",mood:'thinking',bubble:"IV is about double its usual level. The market already expects a big move. I’ll skip this option and keep my risk small.",thought:"(Buying when everyone is nervous means paying the highest price.)"},
+   right:{title:'Ravi · checked IV first',capital:100000,rows:[
+     {name:'ORBIT PHARMA 400 CE · SKIPPED',sub:'IV about double its usual level · no trade',pnl:0},
+     {name:'ORBIT PHARMA · 50 shares',sub:'Buy ₹400 · LTP ₹406 · stop-loss ₹388 · risked ₹600',pnl:300}], stamp:'IV CHECKED FIRST'},
+   extra:`<div class="mathbox"><h3>WHAT IS IV? (IN ONE MINUTE)</h3>
+      <p><b>Implied volatility (IV)</b> is how big a move the market is pricing into an option. High IV means an expensive option. IV usually rises before big events (results, budgets, elections) and drops sharply right after. That drop is called the <b>IV crush</b>.</p>
+      <table class="tbl"><tr><th>Orbit Pharma</th><th>Before results</th><th>After results</th></tr>
+        <tr><td>Stock</td><td>₹400</td><td>₹406 (+1.5%)</td></tr>
+        <tr><td>IV (illustrative)</td><td>60%</td><td>28%</td></tr>
+        <tr><td>400 CE price</td><td>₹13</td><td>₹9</td></tr></table>
+      <p>Had IV stayed at 60%, the same option would be worth about ₹16 and Ravi would have made a profit. The fall in IV cancelled out his gain from being right.</p>
+      <ul>
+        <li><b>Check today’s IV against its usual range.</b> For the index, India VIX gives a similar picture.</li>
+        <li><b>Be careful buying options right before big events.</b> You are paying for the surprise in advance.</li>
+        <li><b>Remember the three dials:</b> direction, time and volatility all move the price.</li>
+      </ul></div>`,
+   wisdom:"In options you trade direction, time and volatility. Being right on one doesn’t save you from being wrong on another.",
+   todo:"Before buying an option, check whether its IV is high or low compared with its usual range. Be extra careful just before big events."},
+
+ { id:'ep28', num:6, cat:'fno', title:"Excessive Leverage: The Gap", hook:"Ravi had a stop-loss. The market opened right past it.",
+   s1:{caption:"Ravi has ₹5,00,000. He takes 2 lots of ZENITH50 futures at 24,000, with a stop-loss at 23,800.",mood:'excited',bubble:"₹36 lakh of exposure on ₹5 lakh! I have a stop-loss, so I’m totally safe!",thought:"(A stop-loss is a safety net. Right?)"},
+   wrong:{title:'Ravi · 7x leverage',capital:500000,rows:[
+     {name:'ZENITH50 FUT · 2 lots',sub:'Qty 150 · Buy 24,000 · opened at 23,280 after bad news · stop 23,800 skipped',pnl:-108000}], stamp:'GAPPED PAST THE STOP'},
+   s3:{caption:"Same ₹5,00,000. This time Ravi checks his total exposure first.",mood:'thinking',bubble:"My exposure is ₹36 lakh, over 7x my capital. One bad gap could wipe out a big part of my savings. I’ll keep exposure small, or skip futures.",thought:"(Capital is for staying alive, not for maxing out.)"},
+   right:{title:'Ravi · no leverage',capital:500000,rows:[
+     {name:'ZENITH50 INDEX FUND',sub:'₹2,00,000 · no leverage · the same 3% fall',pnl:-6000},
+     {name:'CASH RESERVE',sub:'₹3,00,000 · untouched · no margin call',pnl:0}], stamp:'NO LEVERAGE, NO PANIC'},
+   extra:`<div class="mathbox"><h3>THE EXPOSURE CHECK</h3>
+      <p class="stat">Leverage = total value of your positions ÷ your capital</p>
+      <p>Ravi: 2 lots × 75 × 24,000 = ₹36,00,000 ÷ ₹5,00,000 = <b>7.2x</b>.</p>
+      <table class="tbl"><tr><th>Leverage</th><th>A 3% fall costs you</th></tr>
+        <tr><td>1x (no leverage)</td><td>3% of capital · ₹15,000</td></tr>
+        <tr><td>3.6x (1 lot)</td><td>10.8% of capital · ₹54,000</td></tr>
+        <tr><td>7.2x (Ravi’s 2 lots)</td><td>21.6% of capital · ₹1,08,000</td></tr>
+        <tr><td>10x</td><td>30% of capital · ₹1,50,000</td></tr></table>
+      <p><b>A stop-loss is an order, not a guarantee.</b> If the market opens 3% lower, your stop triggers at the opening price, not at your level. Ravi planned to lose ₹30,000 (200 points × 150 units). He lost ₹1,08,000.</p>
+      <p>Lot sizes and margins on this fictional index are illustrative. Check current contract sizes and margin rules for real products.</p></div>`,
+   wisdom:"Leverage doesn’t change how often you’re wrong. It changes how much being wrong costs.",
+   todo:"Divide the total value of your open positions by your capital. If it is well above 1x, work out in rupees what a 3% overnight gap would cost and whether you could live with that."},
+
+ { id:'ep29', num:7, cat:'fno', title:"Increasing Lots After Losses", hook:"Lose 1 lot, buy 2. Lose 2, buy 4. What could go wrong?",
+   s1:{caption:"Ravi loses ₹2,000 on a 1-lot trade. His plan to “win it back”: double the lots after every loss.",mood:'worried',bubble:"Lose with 1 lot? Buy 2. Lose with 2? Buy 4. One win and I’m back to even, plus profit!",thought:"(It can’t keep losing forever... can it?)"},
+   wrong:{title:'Ravi · doubling after losses',capital:100000,rows:[
+     {name:'TRADE 1 · 1 lot',sub:'Stop-loss hit',pnl:-2000},
+     {name:'TRADE 2 · 2 lots',sub:'Stop-loss hit · doubled to win it back',pnl:-4000},
+     {name:'TRADE 3 · 4 lots',sub:'Stop-loss hit · doubled again',pnl:-8000},
+     {name:'TRADE 4 · 8 lots',sub:'Stop-loss hit · doubled again',pnl:-16000},
+     {name:'TRADE 5 · 16 lots',sub:'Stop-loss hit · the next bet needs 32 lots',pnl:-32000}], stamp:'THE DOUBLING TRAP'},
+   s3:{caption:"Same five losses. This time Ravi keeps his size fixed.",mood:'thinking',bubble:"Same size every trade. After 3 losses in a row I pause and review. I don’t bet bigger just to feel better.",thought:"(Five losses at 1 lot hurt. Five losses at 16 lots end the game.)"},
+   right:{title:'Ravi · fixed size',capital:100000,rows:[
+     {name:'TRADES 1–5 · 1 lot each',sub:'Five stop-losses · ₹2,000 each · paused to review after 3',pnl:-10000},
+     {name:'TRADE 6 · 1 lot',sub:'Target hit at 2x the risk',pnl:4000}], stamp:'SAME SIZE, STILL ALIVE'},
+   extra:`<div class="mathbox"><h3>THE DOUBLING LADDER</h3>
+      <table class="tbl"><tr><th>Losses in a row</th><th>Doubling after each loss</th><th>Fixed 1 lot</th></tr>
+        <tr><td>3</td><td>−₹14,000</td><td>−₹6,000</td></tr>
+        <tr><td>4</td><td>−₹30,000</td><td>−₹8,000</td></tr>
+        <tr><td>5</td><td>−₹62,000</td><td>−₹10,000</td></tr>
+        <tr><td>6</td><td>−₹1,26,000</td><td>−₹12,000</td></tr></table>
+      <p>After 6 straight losses the doubling plan has lost <b>more than Ravi’s whole ₹1,00,000</b>. The 7th bet cannot even be placed.</p>
+      <p class="stat">At a 50% win rate, 5 losses in a row happen about 1 time in 32. At a 40% win rate, about 1 in 13.</p>
+      <p>Doubling doesn’t improve your odds. It only makes the one losing streak that always arrives bigger than your capital. It is the “system” version of Revenge Trading from the Psychology section.</p></div>`,
+   wisdom:"Bigger bets after losses don’t improve your odds. They raise the price of the losing streak that is bound to come.",
+   todo:"Write a size rule today: the same size on every trade, and smaller (never bigger) after a losing streak. Never let the last loss decide the next trade’s size."},
+
+ { id:'ep30', num:8, cat:'fno', title:"Not Understanding Margin Requirements", hook:"Ravi was told the margin was ₹1.4 lakh. He assumed that was his maximum loss.",
+   s1:{caption:"Ravi has ₹2,00,000. He sells 1 lot of a ZENITH50 put, and ₹8,250 of premium lands in his account.",mood:'happy',bubble:"The broker blocked only ₹1,40,000 as margin. So that’s the most I can lose, right? Easy money!",thought:"(Nobody told me what “margin” really means.)"},
+   wrong:{title:'Ravi · margin shortfall',capital:200000,rows:[
+     {name:'ZENITH50 24000 PE · SOLD 1 lot',sub:'Sold ₹110 · index fell 500 pts · force-closed at ₹520',pnl:-30750}], stamp:'FORCED SQUARE-OFF'},
+   s3:{caption:"Same trade. This time Ravi checks the margin calculator and keeps a buffer.",mood:'thinking',bubble:"Margin is a deposit, not my maximum loss. It can rise when the market gets wild. So I keep plenty of spare funds and a stop-loss.",thought:"(Margin calculator first. Trade second.)"},
+   right:{title:'Ravi · buffer + stop-loss',capital:400000,rows:[
+     {name:'ZENITH50 24000 PE · SOLD 1 lot',sub:'Sold ₹110 · stop-loss at ₹300 hit · no shortfall',pnl:-14250}], stamp:'BUFFER + STOP-LOSS'},
+   extra:`<div class="mathbox"><h3>WHERE THE MARGIN GOES</h3>
+      <table class="tbl"><tr><th>Ravi’s account (illustrative)</th><th>Amount</th></tr>
+        <tr><td>Funds in account</td><td>₹2,00,000</td></tr>
+        <tr><td>Margin blocked at entry</td><td>₹1,40,000</td></tr>
+        <tr><td>Margin needed after the fall (volatility up)</td><td>₹1,75,000</td></tr>
+        <tr><td>Loss on the open position (mark-to-market)</td><td>₹30,750</td></tr>
+        <tr><td>Total needed: ₹1,75,000 + ₹30,750</td><td>₹2,05,750</td></tr>
+        <tr><td>Shortfall</td><td>₹5,750</td></tr></table>
+      <ul>
+        <li><b>Margin is a deposit, not the maximum loss.</b> A sold option can lose many times the premium you collected.</li>
+        <li><b>It can rise overnight</b> when the market turns volatile, and daily losses must be covered in cash.</li>
+        <li><b>A shortfall means forced exits.</b> Your broker can close positions without asking, at the worst price, and penalties may apply.</li>
+        <li><b>Rules differ by product.</b> Option buyers pay the full premium upfront and cannot borrow for it. Sellers need margin, and extra margin applies to short index options on expiry day.</li>
+      </ul>
+      <p>Amounts and rules change often. Use your broker’s margin calculator and the latest exchange and SEBI circulars.</p></div>`,
+   wisdom:"Margin is the deposit, not the price. The price can be many times higher.",
+   todo:"Before any F&O trade, use your broker’s margin calculator and ask: if the market moves 3% against me, will I still have enough funds without being forced out? If not, don’t take the trade."},
+
+ { id:'ep31', num:9, cat:'fno', title:"Holding Options Until Worthless", hook:"“It’s already so cheap, what’s ₹10 more?” Famous last words.",
+   s1:{caption:"Ravi buys a 24,200 call at ₹60. It falls to ₹30, then ₹10. Expiry is near.",mood:'worried',bubble:"It’s only ₹10 now. It’s already cheap. Maybe the index will rally at the last minute!",thought:"(I’ll just hold. What’s ₹10 more?)"},
+   wrong:{title:'Ravi · held to expiry',holdings:[{name:'ZENITH50 24200 CE',sub:'Qty 150 · Buy ₹60 · fell to ₹30, then ₹10, expired at ₹0',inv:9000,cur:0}], stamp:'EXPIRED AT ZERO'},
+   s3:{caption:"Same option. This time Ravi decided his exit before buying.",mood:'thinking',bubble:"If the premium halves, I sell. Half my money back beats all of it gone. Unlike a stock, an option can’t wait years for me.",thought:"(Hope has a deadline. It’s called expiry.)"},
+   right:{title:'Ravi · 50% premium stop',capital:100000,rows:[
+     {name:'ZENITH50 24200 CE',sub:'Qty 150 · Buy ₹60 · sold at ₹30 by the 50% rule',pnl:-4500},
+     {name:'NEXT PLANNED TRADE',sub:'Risked ₹1,500 · target hit at 2x the risk',pnl:3000}], stamp:'HALF SAVED'},
+   extra:`<div class="mathbox"><h3>THE ROAD BACK GETS STEEPER</h3>
+      <table class="tbl"><tr><th>Premium (bought at ₹60)</th><th>Loss so far</th><th>Gain needed to break even</th></tr>
+        <tr><td>₹45</td><td>−25%</td><td>+33%</td></tr>
+        <tr><td>₹30</td><td>−50%</td><td>+100%</td></tr>
+        <tr><td>₹15</td><td>−75%</td><td>+300%</td></tr>
+        <tr><td>₹10</td><td>−83%</td><td>+500%</td></tr>
+        <tr><td>₹0</td><td>−100%</td><td>Impossible</td></tr></table>
+      <p>Ravi’s exit at ₹30 kept <b>₹4,500 of his ₹9,000</b>. Holding to zero kept nothing.</p>
+      <ul>
+        <li><b>Options have a deadline.</b> A stock can wait years to recover. An out-of-the-money option cannot.</li>
+        <li><b>Set the exit before you buy:</b> a premium stop (for example −50%) or a time stop.</li>
+        <li><b>“It’s already cheap” is a trap.</b> The premium is low because the odds are low.</li>
+      </ul></div>`,
+   wisdom:"In options, hope has a deadline. It’s called expiry.",
+   todo:"Write a premium stop (for example, sell if the premium halves) and a time stop before you buy any option. Then follow them."}
 ];
 
 /* Safety net: renumber each section 1, 2, 3... in its current order, so numbers can never skip or restart wrongly. */
 CATS.forEach(c => EPISODES.filter(e=>e.cat===c.key).sort((a,b)=>a.num-b.num).forEach((e,i)=>{ e.num = i+1; }));
+/* Sections that contain a warn:true episode show the warning screen once per visit, before any episode in that section. */
+const GATED = new Set(EPISODES.filter(x=>x.warn).map(x=>x.cat));
 
 /* =====================================================================
    4. PROGRESS (remembered in this browser only; safe if storage is blocked)
@@ -763,11 +950,11 @@ function viewEpisode(id){
   const e = EPISODES.find(x=>x.id===id); if(!e) return viewHome();
   const c = CATS.find(x=>x.key===e.cat);
   const back = `<a class="back" href="#/c/${c.key}">← ${c.title}</a>`;
-  if(e.warn && !warned.has(e.id)){
+  if(GATED.has(e.cat) && !warned.has(e.cat)){
     return back + `<div class="gate">
       <div class="bang">⚠️ HEADS-UP</div>
       <p>Leverage &amp; F&amp;O is the fastest way to lose money in the market. Read the Risk Management episodes first, then come back.</p>
-      <button type="button" data-unlock="${e.id}">I understand. Show me the episode ▶</button>
+      <button type="button" data-unlock="${e.cat}">I understand. Show me the episode ▶</button>
       <p style="margin:14px 0 0"><a href="#/c/risk">Take me to Risk Management instead</a></p>
     </div>`;
   }
