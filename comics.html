@@ -277,7 +277,7 @@ const scene = (s,kind) => `<div class="scene ${kind}">
    3. EPISODES
    To add an episode: copy one block, give it a new id, set `cat` to one
    of: psychology | risk | mistakes | fno | investing | traps
-   `num` is the episode number shown on the badge. `warn:true` puts a
+   `num` is the episode number WITHIN its section (every section starts at 1). `warn:true` puts a
    warning screen in front of the episode (used for F&O).
    ===================================================================== */
 const EPISODES = [
@@ -294,7 +294,7 @@ const EPISODES = [
    wisdom:'Diversification does not guarantee profit. It stops one mistake from destroying you.',
    todo:'Open your portfolio. If any single stock is more than 10–15% of it, ask yourself: "If this fell 70%, could I sleep?"'},
 
- { id:'ep2', num:2, cat:'traps', title:'The "Sure Shot" Tip', hook:'Why nobody can promise you a sure shot.',
+ { id:'ep2', num:1, cat:'traps', title:'The "Sure Shot" Tip', hook:'Why nobody can promise you a sure shot.',
    s1:{caption:'A WhatsApp group. 9:15 AM.',mood:'excited',bubble:'"Rocketel Pharma will give 3x in one month. Sure shot!" I\'m buying ₹50,000 now!',thought:'(The tip has 200 likes!)'},
    wrong:{title:'Ravi · tip trade',holdings:[{name:'ROCKETEL PHARMA',sub:'Inv ₹50,000 · bought on a tip',inv:50000,cur:27500}], stamp:'NO "SURE SHOT"'},
    s3:{caption:'Next time, Ravi spends 15 minutes.',mood:'thinking',bubble:'Does it earn profit? Is the debt low? Do I understand what it sells?',thought:'(No answers? Then I skip it.)'},
@@ -302,7 +302,7 @@ const EPISODES = [
    wisdom:'A tip is someone else\'s opinion. Your money needs your own reasons.',
    todo:'Before buying anything, write 3 lines: what the company does, how it earns, and why you are buying. Can\'t write them? Don\'t buy.'},
 
- { id:'ep3', num:3, cat:'risk', title:'Averaging Down the Drain', hook:'Why buying more of a falling stock can hurt.',
+ { id:'ep3', num:2, cat:'risk', title:'Averaging Down the Drain', hook:'Why buying more of a falling stock can hurt.',
    s1:{caption:'The stock was ₹500. Now ₹400. Then ₹250.',mood:'worried',bubble:'It\'s cheaper now, so I\'ll buy more. And more! Average price will come down!',thought:'(I just can\'t accept the loss.)'},
    wrong:{title:'Ravi · averaging down',holdings:[{name:'NOVABIZ RETAIL',sub:'425 qty · avg ₹353 · LTP ₹150',inv:150000,cur:63750}], stamp:'3 BUYS, 1 MISTAKE'},
    s3:{caption:'At ₹400, Ravi asks one question.',mood:'thinking',bubble:'"If I had no position, would I buy this today?" The answer is no. I\'m cutting the loss.',thought:'(Small loss. Money saved for better ideas.)'},
@@ -310,7 +310,7 @@ const EPISODES = [
    wisdom:'Don\'t add money to hope. Add only to what you\'d happily buy fresh today.',
    todo:'For every stock you hold, ask: "Would I buy this today at this price?" If no, write down why you are still holding.'},
 
- { id:'ep4', num:4, cat:'psychology', title:'Panic in the Crash', hook:'Selling at the bottom vs staying the course.',
+ { id:'ep4', num:1, cat:'psychology', title:'Panic in the Crash', hook:'Selling at the bottom vs staying the course.',
    s1:{caption:'The market falls 30% in two months.',mood:'shocked',bubble:'Everything is red! I\'m selling it all before it goes to zero!',thought:'(News channels are screaming.)'},
    wrong:{title:'Ravi · sold in panic',holdings:[{name:'BHARAT INDEX FUND (SOLD)',sub:'Invested ₹2,00,000 · sold at the bottom',inv:200000,cur:140000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'LOSS LOCKED IN'},
    s3:{caption:'Different Ravi. Same crash.',mood:'happy',bubble:'My ₹10,000 SIP continues. Lower prices mean I get more units for the same money.',thought:'(Boring. But it works.)'},
@@ -318,7 +318,7 @@ const EPISODES = [
    wisdom:'A fall is only a loss if you sell. The plan matters more than the headline.',
    todo:'Decide today, while calm: "If my portfolio falls 30%, I will do ___." Write it down and keep it.'},
 
- { id:'ep5', num:5, cat:'fno', warn:true, title:'Leverage &amp; F&amp;O: The Fast Lane', hook:'How 10x leverage turns small moves into big losses.',
+ { id:'ep5', num:1, cat:'fno', warn:true, title:'Leverage &amp; F&amp;O: The Fast Lane', hook:'How 10x leverage turns small moves into big losses.',
    s1:{caption:'A friend says: "Why wait years? Use leverage!"',mood:'excited',bubble:'₹1 lakh margin gives me ₹10 lakh of position! If the market rises just 5%, I make ₹50,000 in a day!',thought:'(Nobody mentioned what happens if it falls.)'},
    wrong:{title:'Ravi · F&amp;O positions',capital:100000,rows:[
      {name:'ZENITH50 FUT',sub:'Qty 40 · Buy 25,000 · LTP 23,000 · 10x leverage',pnl:-80000},
@@ -344,7 +344,7 @@ const EPISODES = [
    todo:'New to markets? Skip F&amp;O for your first year. If you do trade, never risk more than 1–2% of your capital on one trade, and write the stop-loss before you enter.'},
 
  /* ---------- PSYCHOLOGY series (Ravi) ---------- */
- { id:'ep6', num:6, cat:'psychology', title:"FOMO: Fear of Missing Out", hook:"Everyone is buying. Should Ravi?",
+ { id:'ep6', num:2, cat:'psychology', title:"FOMO: Fear of Missing Out", hook:"Everyone is buying. Should Ravi?",
    s1:{caption:"Brightnova Energy is up 40% in 3 days. The whole tea stall is talking about it.",mood:'excited',bubble:"Everyone is making money! If I don't buy now, I'll miss the party! ₹1,00,000, all in!",thought:"(It's already up 40%... but what if it doubles?)"},
    wrong:{title:'Ravi · bought the rally',holdings:[{name:'BRIGHTNOVA ENERGY',sub:'Qty 400 · Buy ₹250 (the top) · LTP ₹170',inv:100000,cur:68000}], stamp:'BOUGHT THE TOP'},
    s3:{caption:"Same stock, same noise. Wiser Ravi.",mood:'thinking',bubble:"There will always be another stock. Missing a rally costs me nothing. Chasing one can cost me a lot.",thought:"(My ₹10,000 SIP continues. Boring is fine.)"},
@@ -359,7 +359,7 @@ const EPISODES = [
    wisdom:"There is always another bus. Missing a rally costs nothing. Chasing one can cost a lot.",
    todo:"Next time a stock jumps 20% or more and you feel the itch, write it on a watchlist and wait 3 days before buying anything."},
 
- { id:'ep7', num:7, cat:'psychology', title:"Revenge Trading", hook:"After a loss, Ravi wants his money back. Right now.",
+ { id:'ep7', num:3, cat:'psychology', title:"Revenge Trading", hook:"After a loss, Ravi wants his money back. Right now.",
    s1:{caption:"Ravi loses ₹5,000 by 10:30 AM.",mood:'worried',bubble:"The market took my money. I'll take it back! Double the size this time, forget the stop-loss!",thought:"(One big win and I'm even...)"},
    wrong:{title:'Ravi · revenge spiral',capital:100000,rows:[
      {name:'ZENITH50 FUT · Trade 1',sub:'Normal size · stop-loss hit',pnl:-5000},
@@ -378,7 +378,7 @@ const EPISODES = [
    wisdom:"The market doesn't owe you your money back. Win it over weeks, not in one trade.",
    todo:"Write a daily loss limit today (for example 2% of your capital). When it's hit, close the app and walk away until tomorrow."},
 
- { id:'ep8', num:8, cat:'psychology', title:"Panic Selling: The Scary Headline", hook:"A frightening headline. A red screen. Ravi hits SELL.",
+ { id:'ep8', num:4, cat:'psychology', title:"Panic Selling: The Scary Headline", hook:"A frightening headline. A red screen. Ravi hits SELL.",
    s1:{caption:"Breaking news: “Evergreen Agro faces inquiry!” The stock falls 12% in an hour.",mood:'shocked',bubble:"Inquiry?! It will go to zero! SELL EVERYTHING, right now!",thought:"(Didn't even read the actual news.)"},
    wrong:{title:'Ravi · sold on the headline',holdings:[{name:'EVERGREEN AGRO (SOLD)',sub:'Sold at −12% · two weeks later it was back to ₹61,500',inv:60000,cur:52800}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'SOLD THE DIP'},
    s3:{caption:"Same headline. Ravi takes a deep breath.",mood:'thinking',bubble:"Has the business changed, or only the price? Let me read the company's own statement first.",thought:"(Routine inquiry. No impact on sales or profit.)"},
@@ -390,11 +390,11 @@ const EPISODES = [
         <li><b>Is this news, or just noise?</b> Prices swing before facts arrive.</li>
       </ul>
       <p>If the reason you bought has truly broken, selling is the right call. The mistake is selling <b>without checking</b>.</p>
-      <p>This is different from Episode 4: that was a market-wide crash, this is one scary headline on one stock.</p></div>`,
+      <p>This is different from Episode 1 (Panic in the Crash): that was a market-wide crash, this is one scary headline on one stock.</p></div>`,
    wisdom:"A scary headline is not a reason to sell. A changed business is.",
    todo:"For each stock you own, write one line: “I bought this because ___.” Before selling on news, check if that reason is still true."},
 
- { id:'ep9', num:9, cat:'psychology', title:"Overconfidence", hook:"Three wins in a row. Ravi thinks he's a genius.",
+ { id:'ep9', num:5, cat:'psychology', title:"Overconfidence", hook:"Three wins in a row. Ravi thinks he's a genius.",
    s1:{caption:"Ravi wins 3 trades in a row. He is glowing.",mood:'excited',bubble:"I can't lose! Forget small bets. ₹4,00,000 on one stock, no stop-loss!",thought:"(Luck? What luck? It's all skill.)"},
    wrong:{title:'Ravi · after the win streak',holdings:[{name:'STELLARBYTE TECH',sub:'Qty 2,000 · Buy ₹200 · LTP ₹130 · no stop-loss',inv:400000,cur:260000}], stamp:'3 WINS ≠ SKILL'},
    s3:{caption:"Same 3 wins. Humble Ravi.",mood:'thinking',bubble:"Three wins could be luck. I'll keep my size the same and review my journal.",thought:"(Process first. Ego later. Or never.)"},
@@ -411,7 +411,7 @@ const EPISODES = [
    wisdom:"Confidence should come from your process, not from your last three trades.",
    todo:"Keep your position size the same after wins. Increase it only after months of a written, tested process, never because of a streak."},
 
- { id:'ep10', num:10, cat:'psychology', title:"Greed and Fear", hook:"The two voices in every trader's head.",
+ { id:'ep10', num:6, cat:'psychology', title:"Greed and Fear", hook:"The two voices in every trader's head.",
    s1:{caption:"Ravi bought at ₹100. His target was ₹120. The stock touches ₹125!",mood:'excited',bubble:"₹125 already? It could hit ₹200! Why sell now? A little more...",thought:"(Greed whispers: just a little more.)"},
    wrong:{title:'Ravi · greed, then fear',holdings:[{name:'INFRAKING PROJECTS (SOLD)',sub:'Qty 1,000 · Buy ₹100 · peaked ₹125 · sold ₹90 in fear',inv:100000,cur:90000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'GREED THEN FEAR'},
    s3:{caption:"Same stock. Ravi decided his exit BEFORE buying.",mood:'happy',bubble:"My plan said target ₹120, stop-loss ₹92. The price hit ₹120, so I sold. Done.",thought:"(It went to ₹135 later. That's fine. Profit is profit.)"},
@@ -422,7 +422,7 @@ const EPISODES = [
    wisdom:"Decide your exit before you enter, when your head is cool, not when your heart is racing.",
    todo:"For every trade or investment, write three numbers before you buy: your entry, your target and your stop-loss. Then follow them."},
 
- { id:'ep11', num:11, cat:'psychology', title:"Impatience", hook:"“Nothing is happening!” Ravi quits too early.",
+ { id:'ep11', num:7, cat:'psychology', title:"Impatience", hook:"“Nothing is happening!” Ravi quits too early.",
    s1:{caption:"Month 8 of Ravi's SIP. The fund is up only 3.6%.",mood:'worried',bubble:"This is too slow! My friend made 40% in a month on a hot stock. I'm stopping this SIP!",thought:"(Patience is for people who don't want to be rich.)"},
    wrong:{title:'Ravi · quit after 8 months',holdings:[{name:'BHARAT INDEX FUND (STOPPED)',sub:'8 SIPs of ₹10,000 · “nothing is happening”',inv:80000,cur:82857}], stamp:'QUIT TOO EARLY'},
    s3:{caption:"Same SIP. Patient Ravi.",mood:'happy',bubble:"Good things take time. I'll keep going and check once every few months, not every day.",thought:"(The best part of compounding comes late.)"},
@@ -437,7 +437,7 @@ const EPISODES = [
    wisdom:"Wealth is rarely built in a month. It's built by not quitting.",
    todo:"Choose one long-term plan (such as a SIP), set a review date six months away, and do not judge it before then."},
 
- { id:'ep12', num:12, cat:'psychology', title:"Ego: “I Can't Be Wrong”", hook:"“It's not a loss until I sell.” Famous last words.",
+ { id:'ep12', num:8, cat:'psychology', title:"Ego: “I Can't Be Wrong”", hook:"“It's not a loss until I sell.” Famous last words.",
    s1:{caption:"Ravi's stock is down 70%. A friend gently asks about it.",mood:'worried',bubble:"I'm not wrong, the market is wrong! I'll sell when it comes back to my price.",thought:"(Selling means admitting I made a mistake.)"},
    wrong:{title:'Ravi · refused to sell',holdings:[{name:'DELTA CHIPLABS',sub:'Qty 500 · Buy ₹300 · LTP ₹90 · “waiting to break even”',inv:150000,cur:45000}], stamp:'EGO IS EXPENSIVE'},
    s3:{caption:"Same stock. At −10%, Ravi swallows his pride.",mood:'thinking',bubble:"I was wrong about this one. It happens. The market doesn't know my buying price, so I'm moving on.",thought:"(Small loss. Big lesson. Money back to work.)"},
@@ -450,7 +450,7 @@ const EPISODES = [
    wisdom:"The market doesn't know your buying price. Being wrong is cheap. Refusing to admit it is expensive.",
    todo:"Set a maximum loss (for example 8–10%) when you buy. If it's hit, sell without a debate, then write one line in your journal about what you learned."},
 
- { id:'ep13', num:13, cat:'psychology', title:"Overtrading", hook:"30 trades before lunch. Who is really winning?",
+ { id:'ep13', num:9, cat:'psychology', title:"Overtrading", hook:"30 trades before lunch. Who is really winning?",
    s1:{caption:"Ravi is bored. The screen is flashing. Every candle looks like a chance.",mood:'excited',bubble:"I must do something! More trades, more profit, right? 30 trades today!",thought:"(Boredom is my strategy.)"},
    wrong:{title:'Ravi · 30 trades in a day',capital:100000,rows:[
      {name:'GROSS P&amp;L · 30 trades',sub:'Wins and losses added up',pnl:2000},
@@ -472,7 +472,7 @@ const EPISODES = [
    todo:"Add up last month's brokerage and charges from your contract notes. Then set a maximum number of trades per day, and close the terminal when you hit it."},
 
  /* ---------- RISK MANAGEMENT series (Ravi) ---------- */
- { id:'ep14', num:14, cat:'risk', title:"Trading Without a Stop-Loss", hook:"No exit plan is not a plan. It is hope with a ticker.",
+ { id:'ep14', num:3, cat:'risk', title:"Trading Without a Stop-Loss", hook:"No exit plan is not a plan. It is hope with a ticker.",
    s1:{caption:"Ravi buys Kestrel Motors at ₹500. No stop-loss. The stock starts sliding.",mood:'worried',bubble:"Stop-loss is for nervous people. It will bounce back. Any day now!",thought:"(Day 1: −8%. Day 5: −20%. Day 30: I stopped looking.)"},
    wrong:{title:'Ravi · no stop-loss',holdings:[{name:'KESTREL MOTORS',sub:'Qty 100 · Buy ₹500 · LTP ₹280 · no exit plan',inv:50000,cur:28000}], stamp:'STILL FALLING'},
    s3:{caption:"Same stock. This time Ravi fits a seatbelt before the journey.",mood:'thinking',bubble:"Buy at ₹500, stop-loss at ₹470. If it hits, I lose about ₹1,000 and I'm out. No arguing with myself.",thought:"(Quantity = ₹1,000 risk ÷ ₹30 per share = 33 shares.)"},
@@ -493,7 +493,7 @@ const EPISODES = [
    wisdom:"A stop-loss is the small price you pay so that one bad trade never becomes a bad year.",
    todo:"Before your next buy, write the stop-loss price and the rupee loss it means. If you can't accept that number, buy fewer shares or skip the trade."},
 
- { id:'ep15', num:15, cat:'risk', title:"Oversizing Positions", hook:"Right idea, wrong size. One trade should never be able to hurt this much.",
+ { id:'ep15', num:4, cat:'risk', title:"Oversizing Positions", hook:"Right idea, wrong size. One trade should never be able to hurt this much.",
    s1:{caption:"Ravi has ₹1,00,000. He is very sure about Quickwave Logistics.",mood:'excited',bubble:"Why risk small when I can win BIG? ₹80,000 on Quickwave, right now!",thought:"(Position size? I'll just go with my gut.)"},
    wrong:{title:'Ravi · 80% in one trade',capital:100000,rows:[
      {name:'QUICKWAVE LOGISTICS',sub:'Qty 400 · Buy ₹200 · LTP ₹150 · 80% of capital',pnl:-20000}], stamp:'ONE TRADE, 20% GONE'},
@@ -512,7 +512,7 @@ const EPISODES = [
    wisdom:"You don't control whether a trade wins. You do control how big it is.",
    todo:"Pick a risk-per-trade number (1–2% of capital is common) and write it down. Before every trade, work out the position size from it instead of guessing."},
 
- { id:'ep16', num:16, cat:'risk', title:"Borrowed Money, Borrowed Trouble", hook:"The loan does not shrink when your stock does.",
+ { id:'ep16', num:5, cat:'risk', title:"Borrowed Money, Borrowed Trouble", hook:"The loan does not shrink when your stock does.",
    s1:{caption:"Ravi spots a \"hot\" stock. His savings are small, so he takes a personal loan.",mood:'excited',bubble:"Borrow ₹2,00,000, make 40% in a year, repay the loan, keep the profit. Easy maths!",thought:"(Interest is just a small detail.)"},
    wrong:{title:'Ravi · invested a loan',capital:200000,capLabel:'Borrowed money invested',nowLabel:'Value left',rows:[
      {name:'HYPERLOOP MOBILITY',sub:'Bought with a loan · fell 30% · EMI still due',pnl:-60000},
@@ -533,7 +533,7 @@ const EPISODES = [
    wisdom:"Borrowed money has a deadline. The market does not know about it.",
    todo:"Before investing any money, ask: \"If I lose all of this, can I still pay my bills and EMIs?\" If not, it isn't investable money. Skip loans, credit cards and money you need within 3–5 years."},
 
- { id:'ep17', num:17, cat:'risk', title:"Ignoring the Risk-Reward Ratio", hook:"Right 7 times out of 10 and still losing money. How?",
+ { id:'ep17', num:6, cat:'risk', title:"Ignoring the Risk-Reward Ratio", hook:"Right 7 times out of 10 and still losing money. How?",
    s1:{caption:"Ravi sets up his trade: buy ₹100, target ₹105, stop-loss ₹85.",mood:'excited',bubble:"The target is so close, I'll hit it almost every time. I'll win 7 out of 10!",thought:"(Risk ₹15 to make ₹5? Details, details.)"},
    wrong:{title:'Ravi · 10 trades, risk 3 : reward 1',capital:100000,rows:[
      {name:'7 WINNING TRADES',sub:'Target hit · +₹500 each',pnl:3500},
@@ -551,7 +551,7 @@ const EPISODES = [
    wisdom:"Win rate alone tells you nothing. What matters is how much you make when right versus how much you lose when wrong.",
    todo:"For every trade, write entry, stop-loss and target, then divide the reward by the risk. If it is below about 2 to 1, ask why you are taking it."},
 
- { id:'ep18', num:18, cat:'risk', title:"Not Protecting Your Capital", hook:"All savings in, no rules, one surprise bill.",
+ { id:'ep18', num:7, cat:'risk', title:"Not Protecting Your Capital", hook:"All savings in, no rules, one surprise bill.",
    s1:{caption:"Ravi puts ALL ₹5,00,000 of his savings into his trading account, emergency money too.",mood:'excited',bubble:"More capital means more profit! Why keep money idle in a savings account?",thought:"(What if I need it suddenly? I won't.)"},
    wrong:{title:'Ravi · everything in trading',capital:500000,rows:[
      {name:'MONTH 1 · big trades',sub:'No loss limit, no pause',pnl:-60000},
@@ -574,8 +574,121 @@ const EPISODES = [
       </div>
       <p>Add loss limits to protect the trading bucket: about 1% per trade, 2% per day, 10% per month. When a limit is hit, stop and review.</p></div>`,
    wisdom:"Profits are a bonus. Staying in the game is the job.",
-   todo:"Split your savings into three buckets today: emergency, long-term, and risk money. Only the third bucket is ever allowed near a trade."}
+   todo:"Split your savings into three buckets today: emergency, long-term, and risk money. Only the third bucket is ever allowed near a trade."},
+
+ /* ---------- TRADING MISTAKES series (Ravi) ---------- */
+ { id:'ep19', num:1, cat:'mistakes', title:"Entering Without a Plan", hook:"A green chart, a quick click, and no idea what happens next.",
+   s1:{caption:"Ravi sees a green chart on Glowmart Retail and clicks BUY.",mood:'excited',bubble:"It looks strong! I'll buy 100 now and figure out the rest later.",thought:"(Stop-loss? Target? Later. Maybe.)"},
+   wrong:{title:'Ravi · winging it',capital:100000,rows:[
+     {name:'GLOWMART RETAIL',sub:'Qty 100 · Buy ₹250 · no stop, no target · sold in panic at ₹210',pnl:-4000}], stamp:'WINGING IT'},
+   s3:{caption:"Same stock. This time Ravi writes the plan BEFORE he buys.",mood:'thinking',bubble:"Entry ₹250. Stop-loss ₹240. Target ₹275. Risk ₹1,000, so 100 shares. Now I can click.",thought:"(If the price moves, I already know what I'll do.)"},
+   right:{title:'Ravi · plan first',capital:100000,rows:[
+     {name:'GLOWMART RETAIL · planned',sub:'Entry ₹250 · stop ₹240 · target ₹275 · stop hit',pnl:-1000},
+     {name:'NEXT TRADE · written plan',sub:'Same checklist · target hit at 2.5x the risk',pnl:2500}], stamp:'PLAN FIRST'},
+   extra:`<div class="mathbox"><h3>THE 5-LINE TRADE PLAN</h3>
+      <ul>
+        <li><b>Why:</b> the setup, in one line. “Because it looks good” is not a line.</li>
+        <li><b>Entry:</b> the price or zone where I will buy.</li>
+        <li><b>Stop-loss:</b> the price where my reason is wrong.</li>
+        <li><b>Target:</b> where I will take profit.</li>
+        <li><b>Size:</b> my risk in rupees ÷ the distance to the stop-loss. (₹1,000 ÷ ₹10 = 100 shares.)</li>
+      </ul>
+      <div class="cmp">
+        <div class="c bad"><span>No plan</span><b>−₹4,000</b><i>Decided in a panic, at the worst price</i></div>
+        <div class="c ok"><span>With a plan</span><b>−₹1,000</b><i>A small loss, taken calmly, exactly as written</i></div>
+      </div>
+      <p>Notice that Ravi's first planned trade still lost. A trade can follow the plan perfectly and lose. That is a good trade with a bad outcome, and that is fine. It is the unplanned trade that costs more.</p></div>`,
+   wisdom:"If you don't know your exit before you enter, the market will pick it for you.",
+   todo:"Before your next buy, write the 5 lines on paper or in your phone. No plan, no trade."},
+
+ { id:'ep20', num:2, cat:'mistakes', title:"Exiting Too Early", hook:"A small profit feels safe. It can be an expensive habit.",
+   s1:{caption:"Ravi buys at ₹100. His plan: target ₹115, stop-loss ₹95. The stock touches ₹103.",mood:'worried',bubble:"In profit! Book it before it vanishes! Profit is profit!",thought:"(My hands are sweating. Sell, sell, sell.)"},
+   wrong:{title:'Ravi · sold on nerves',holdings:[{name:'BLUEPEAK AUTO (SOLD)',sub:'Qty 200 · Buy ₹100 · sold ₹103 · it later hit ₹115',inv:20000,cur:20600}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'SOLD TOO SOON'},
+   s3:{caption:"Same trade. This time Ravi reads his own plan out loud.",mood:'thinking',bubble:"My reason hasn't broken, and my stop-loss protects me. I exit at the target, not when I'm nervous.",thought:"(The plan was written when I was calm.)"},
+   right:{title:'Ravi · exited by the plan',holdings:[{name:'BLUEPEAK AUTO (SOLD)',sub:'Qty 200 · Buy ₹100 · sold at plan target ₹115',inv:20000,cur:23000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'PLAN COMPLETED'},
+   extra:`<div class="mathbox"><h3>SAME TRADE, THREE EXITS</h3>
+      <table class="tbl"><tr><th>How Ravi exits (200 shares)</th><th>Profit</th></tr>
+        <tr><td>All at ₹103, on nerves</td><td>+₹600</td></tr>
+        <tr><td>Half at ₹105, trail a stop on the rest, exit at ₹115</td><td>+₹2,000</td></tr>
+        <tr><td>All at the plan target of ₹115</td><td>+₹3,000</td></tr></table>
+      <p class="stat">Wins of ₹600 against losses of ₹1,000 means you must win about 63% of your trades just to break even.</p>
+      <p>Cutting winners short while your stop-loss lets losers run to their full size is a slow leak. It is the same maths as the risk-reward episode in Risk Management.</p>
+      <p>Two honest caveats. If the <b>reason for the trade breaks</b> (the business or the news truly changes), exiting early is the right call. And no exit method guarantees the target: sometimes the stop-loss is the one that gets hit. The fix is exiting by <b>rules</b>, not by nerves.</p></div>`,
+   wisdom:"A profit is a profit, but a tiny profit repeated next to full-size losses is a slow leak.",
+   todo:"Write your target and your trailing-stop or partial-profit rule before you buy. Exit when the plan says so, not when your nerves do."},
+
+ { id:'ep21', num:3, cat:'mistakes', title:"Holding Losing Trades Too Long", hook:"A two-week trade becomes a “long-term investment”. Funny how that happens.",
+   s1:{caption:"Ravi bought Silverline Textiles at ₹400 for a 2-week trade. Stop-loss: ₹380. It is now ₹360.",mood:'worried',bubble:"I'll cancel the stop-loss. I'm not a trader anymore, I'm a long-term investor!",thought:"(Funny how I became an investor right after it fell.)"},
+   wrong:{title:'Ravi · “long-term investor”',holdings:[{name:'SILVERLINE TEXTILES',sub:'Qty 250 · Buy ₹400 · LTP ₹290 · stuck for 14 months',inv:100000,cur:72500}], stamp:'STUCK FOR 14 MONTHS'},
+   s3:{caption:"Same trade. Same fall. Ravi respects the plan.",mood:'thinking',bubble:"Stop-loss hit at ₹380. Loss ₹5,000. The trade is over, and my money is free to move on.",thought:"(A trade has an exit. I never planned to be an investor.)"},
+   right:{title:'Ravi · took the small loss',capital:100000,rows:[
+     {name:'SILVERLINE TEXTILES',sub:'Qty 250 · stop-loss ₹380 hit in week 2',pnl:-5000},
+     {name:'FREED ₹95,000 · INDEX FUND',sub:'14 months · illustrative, assumed 12% a year, not guaranteed',pnl:13400}], stamp:'CAPITAL FREED'},
+   extra:`<div class="mathbox"><h3>THE REAL PRICE OF A LOSER</h3>
+      <div class="cmp">
+        <div class="c ok"><span>Cut at ₹380</span><b>−₹5,000</b><i>₹95,000 is free to use again</i></div>
+        <div class="c bad"><span>Held to ₹290</span><b>−₹27,500</b><i>₹72,500 stuck for 14 months</i></div>
+      </div>
+      <p>To get from ₹72,500 back to ₹1,00,000 Ravi needs a <b>+38%</b> gain, and the money earns nothing in the meantime. That hidden cost is called <b>opportunity cost</b>.</p>
+      <ul>
+        <li><b>The test:</b> if you had ₹1,00,000 in cash today, would you buy this stock as a long-term investment, after researching the business?</li>
+        <li><b>The rule:</b> never change a trade's timeframe after it starts losing. If you truly want to hold long term, decide that <b>before</b> you buy, with reasons.</li>
+      </ul></div>`,
+   wisdom:"A losing trade does not become a long-term investment because it fell. It becomes a long-term problem.",
+   todo:"Open your holdings and find anything you bought as a short-term trade and now call “long-term”. Write what your original plan said, then follow it or write a research-based reason to hold."},
+
+ { id:'ep22', num:4, cat:'mistakes', title:"Changing Strategies Frequently", hook:"Four strategies in four weeks. Zero conclusions.",
+   s1:{caption:"Week 1: breakouts. Week 2: moving averages. Week 3: a YouTuber's “secret setup”.",mood:'excited',bubble:"The last strategy didn't work, but THIS one will! I'm switching again!",thought:"(Two losses in a row. Time to try something new.)"},
+   wrong:{title:'Ravi · a new plan every week',capital:100000,rows:[
+     {name:'WEEK 1 · breakout strategy',sub:'Dropped after 2 losses',pnl:-2000},
+     {name:'WEEK 2 · moving-average crossover',sub:'Dropped after 3 losses',pnl:-3000},
+     {name:'WEEK 3 · YouTube “secret setup”',sub:'Dropped after 1 big loss',pnl:-4000},
+     {name:'WEEK 4 · a friend\'s indicator',sub:'Dropped after 2 losses',pnl:-2500}], stamp:'4 PLANS, ZERO DATA'},
+   s3:{caption:"Same Ravi. One strategy. One notebook.",mood:'thinking',bubble:"30 trades with the same rules, then I review the numbers, not my mood.",thought:"(Three losses prove nothing. Thirty trades say something.)"},
+   right:{title:'Ravi · one plan, given time',capital:100000,rows:[
+     {name:'TRADES 1–10',sub:'Rough patch · rules unchanged · journal kept',pnl:-1500},
+     {name:'TRADES 11–20',sub:'Same rules · journal kept',pnl:2000},
+     {name:'TRADES 21–30',sub:'Same rules · review due after this',pnl:1500}], stamp:'ONE PLAN, GIVEN TIME'},
+   extra:`<div class="mathbox"><h3>HOW TO TEST A STRATEGY WITHOUT FOOLING YOURSELF</h3>
+      <ul>
+        <li><b>Write the rules</b> in 6–8 lines: entry, stop-loss, target, size, what to skip.</li>
+        <li><b>Test small.</b> Paper-trade or use tiny size for at least 30 trades.</li>
+        <li><b>Keep a journal:</b> entry, stop, target, result, and any rule you broke.</li>
+        <li><b>Review at the checkpoint only</b> (for example every 30 trades) and change one thing at a time.</li>
+      </ul>
+      <p class="stat">A strategy that wins exactly half its trades will still lose 7 or more of 10 trades about 17% of the time.</p>
+      <p>So 2 or 3 losses in a row say almost nothing about a strategy. Ravi's switching cost him ₹11,500 in four weeks and left him with no useful data. Dropping a strategy is fine, once the <b>numbers</b> say so.</p></div>`,
+   wisdom:"A strategy needs time to show its true colours. Switching every week means you never see them.",
+   todo:"Pick one written strategy. Trade it small for 30 trades, log every trade, and decide to keep, fix or drop it only at the review."},
+
+ { id:'ep23', num:5, cat:'mistakes', title:"Taking Random Trades", hook:"“Why this stock?” “Why not!” Famous last words.",
+   s1:{caption:"2 PM. The market is quiet. Ravi is bored. A friend mentions a stock.",mood:'happy',bubble:"Why this stock? Why now? Why not! Click.",thought:"(I flipped a mental coin. Heads: buy.)"},
+   wrong:{title:'Ravi · five random trades',capital:100000,rows:[
+     {name:'TRADE 1 · “a friend’s pick”',sub:'No setup · no stop-loss',pnl:-1800},
+     {name:'TRADE 2 · “looks cheap at ₹12”',sub:'Low price, not low risk',pnl:-1400},
+     {name:'TRADE 3 · “saw it on TV”',sub:'Lucky',pnl:800},
+     {name:'TRADE 4 · “felt lucky”',sub:'No reason written',pnl:-2200},
+     {name:'TRADE 5 · “bored at 2 PM”',sub:'No setup · no stop-loss',pnl:-900}], stamp:'NO EDGE, NO RESULT'},
+   s3:{caption:"Same Ravi. Same boredom. A checklist on the screen.",mood:'thinking',bubble:"Why this trade? Why now? How much can I lose? Three clear answers or I don't take it.",thought:"(If I can't explain it in one line, it's a random trade.)"},
+   right:{title:'Ravi · checklist only',capital:100000,rows:[
+     {name:'TRADE 1 · passed all checks',sub:'Stop-loss hit · risked ₹1,000',pnl:-1000},
+     {name:'TRADE 2 · passed all checks',sub:'Target hit · 2.2x the risk',pnl:2200},
+     {name:'NO-TRADE DAYS · 3',sub:'Nothing passed the checklist · stayed out',pnl:0}], stamp:'FEWER, SELECTED'},
+   extra:`<div class="mathbox"><h3>THE “WHY THIS, WHY NOW?” CHECKLIST</h3>
+      <ul>
+        <li><b>Setup:</b> does it match a setup I have written down and tested?</li>
+        <li><b>Risk:</b> is the stop-loss close enough that I lose no more than my set amount?</li>
+        <li><b>Reward:</b> is the target at least twice the risk?</li>
+        <li><b>Trigger:</b> would I take it if nobody had mentioned it, no TV, no tip, no boredom?</li>
+      </ul>
+      <p>This is an <b>example</b>. Build your own, but make every trade pass it. Four of Ravi's five random trades had no reason a stranger could check. “Cheap”, “lucky” and “bored” are not reasons.</p>
+      <p>Random trades have no edge, yet they still pay brokerage and taxes every time. Stay out when nothing qualifies. Staying out is a decision too.</p></div>`,
+   wisdom:"If you can't say why you're taking a trade in one clear line, you are only gambling with extra steps.",
+   todo:"Write a 4-point checklist today. Before every trade, tick all four. If even one box is empty, skip it."}
 ];
+
+/* Safety net: renumber each section 1, 2, 3... in its current order, so numbers can never skip or restart wrongly. */
+CATS.forEach(c => EPISODES.filter(e=>e.cat===c.key).sort((a,b)=>a.num-b.num).forEach((e,i)=>{ e.num = i+1; }));
 
 /* =====================================================================
    4. PROGRESS (remembered in this browser only; safe if storage is blocked)
