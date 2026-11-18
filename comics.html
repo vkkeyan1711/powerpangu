@@ -173,10 +173,10 @@ footer .disc b{color:var(--ink)}
    - intro: short text shown at the top of the section page.
    ===================================================================== */
 const CATS = [
-  {key:'psychology', n:'01', title:'Psychology',        tag:'Master your emotions',       icon:'🧠', grad:['#243b6b','#8a4fd6'], img:'Psychology-1.jpeg',
-   intro:'Markets test your emotions more than your intelligence. Fear and greed cost traders more than bad analysis ever does.'},
-  {key:'risk',       n:'02', title:'Risk Management',   tag:'Protect your capital',       icon:'⚖️', grad:['#1d4e89','#3fa796'], img:'Risk%20Mgmt-2.jpeg',
+  {key:'risk',       n:'01', title:'Risk Management',   tag:'Protect your capital',       icon:'⚖️', grad:['#1d4e89','#3fa796'], img:'Risk%20Mgmt-2.jpeg',
    intro:'You can be wrong often and still survive, if no single mistake can hurt you badly. These episodes are about staying in the game.'},
+  {key:'psychology', n:'02', title:'Psychology',        tag:'Master your emotions',       icon:'🧠', grad:['#243b6b','#8a4fd6'], img:'Psychology-1.jpeg',
+   intro:'Markets test your emotions more than your intelligence. Fear and greed cost traders more than bad analysis ever does.'},
   {key:'mistakes',   n:'03', title:'Trading Mistakes',  tag:'Improve your execution',     icon:'📉', grad:['#1e3a3a','#b23a48'], img:'Discipline-3.jpeg',
    intro:'The same handful of mistakes show up again and again. Spot them early and you are ahead of most traders.'},
   {key:'fno',        n:'04', title:'F&amp;O Wisdom',    tag:'Understand derivatives',     icon:'📈', grad:['#1f7a4d','#e0a526'], img:'FnO-4.jpeg',
@@ -312,9 +312,9 @@ const EPISODES = [
 
  { id:'ep4', num:1, cat:'psychology', title:'Panic in the Crash', hook:'Selling at the bottom vs staying the course.',
    s1:{caption:'The market falls 30% in two months.',mood:'shocked',bubble:'Everything is red! I\'m selling it all before it goes to zero!',thought:'(News channels are screaming.)'},
-   wrong:{title:'Ravi · sold in panic',holdings:[{name:'BHARAT INDEX FUND (SOLD)',sub:'Invested ₹2,00,000 · sold at the bottom',inv:200000,cur:140000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'LOSS LOCKED IN'},
-   s3:{caption:'Different Ravi. Same crash.',mood:'happy',bubble:'My ₹10,000 SIP continues. Lower prices mean I get more units for the same money.',thought:'(Boring. But it works.)'},
-   right:{title:'Ravi · SIP continued',holdings:[{name:'BHARAT INDEX FUND',sub:'12 monthly SIPs · after recovery (illustrative)',inv:120000,cur:141000}], stamp:'STAYED THE COURSE'},
+   wrong:{title:'Ravi · sold in panic',holdings:[{name:'WHOLE PORTFOLIO (SOLD)',sub:'8 stocks · Invested ₹2,00,000 · sold at the bottom',inv:200000,cur:140000}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'LOSS LOCKED IN'},
+   s3:{caption:'Different Ravi. Same crash.',mood:'happy',bubble:'I own good businesses, and nothing about their profits has changed. A fall is only a loss if I sell. I will hold and wait.',thought:'(Boring. But it works.)'},
+   right:{title:'Ravi · held his stocks',holdings:[{name:'WHOLE PORTFOLIO (HELD)',sub:'8 quality stocks · held through the fall · after recovery (illustrative)',inv:200000,cur:216000}], stamp:'STAYED THE COURSE'},
    wisdom:'A fall is only a loss if you sell. The plan matters more than the headline.',
    todo:'Decide today, while calm: "If my portfolio falls 30%, I will do ___." Write it down and keep it.'},
 
@@ -323,7 +323,7 @@ const EPISODES = [
    wrong:{title:'Ravi · F&amp;O positions',capital:100000,rows:[
      {name:'ZENITH50 FUT',sub:'Qty 40 · Buy 25,000 · LTP 23,000 · 10x leverage',pnl:-80000},
      {name:'ZENITH50 24800 CE',sub:'Qty 100 · Buy ₹150 · LTP ₹0 · revenge trade',pnl:-15000}], stamp:'WIPED OUT'},
-   s3:{caption:'Ravi learns the maths of risk.',mood:'thinking',bubble:'I will risk only 1% of my capital, ₹1,000, per trade, and write my stop-loss before I enter.',thought:'(Or skip F&O completely and keep my SIP going.)'},
+   s3:{caption:'Ravi learns the maths of risk.',mood:'thinking',bubble:'I will risk only 1% of my capital, ₹1,000, per trade, and write my stop-loss before I enter.',thought:'(Or skip F&O completely and keep building a plain stock portfolio.)'},
    right:{title:'Ravi · 5 small trades',capital:100000,rows:[
      {name:'ARVIND STEELWORKS',sub:'Stop-loss hit · risked ₹1,000',pnl:-1000},
      {name:'DELTA CHIPLABS',sub:'Stop-loss hit · risked ₹1,000',pnl:-1000},
@@ -347,8 +347,8 @@ const EPISODES = [
  { id:'ep6', num:2, cat:'psychology', title:"FOMO: Fear of Missing Out", hook:"Everyone is buying. Should Ravi?",
    s1:{caption:"Brightnova Energy is up 40% in 3 days. The whole tea stall is talking about it.",mood:'excited',bubble:"Everyone is making money! If I don't buy now, I'll miss the party! ₹1,00,000, all in!",thought:"(It's already up 40%... but what if it doubles?)"},
    wrong:{title:'Ravi · bought the rally',holdings:[{name:'BRIGHTNOVA ENERGY',sub:'Qty 400 · Buy ₹250 (the top) · LTP ₹170',inv:100000,cur:68000}], stamp:'BOUGHT THE TOP'},
-   s3:{caption:"Same stock, same noise. Wiser Ravi.",mood:'thinking',bubble:"There will always be another stock. Missing a rally costs me nothing. Chasing one can cost me a lot.",thought:"(My ₹10,000 SIP continues. Boring is fine.)"},
-   right:{title:'Ravi · stayed on plan',holdings:[{name:'BHARAT INDEX FUND',sub:'6 monthly SIPs of ₹10,000 · no chasing (illustrative)',inv:60000,cur:62400}], stamp:'NO CHASING'},
+   s3:{caption:"Same stock, same noise. Wiser Ravi.",mood:'thinking',bubble:"There will always be another stock. Missing a rally costs me nothing. Chasing one can cost me a lot.",thought:"(My plan says: only buy what I have researched. Boring is fine.)"},
+   right:{title:'Ravi · stayed on plan',holdings:[{name:'STEADYFAB INDUSTRIES',sub:'Qty 300 · Buy ₹200 · LTP ₹208 · researched, planned, no chasing',inv:60000,cur:62400}], stamp:'NO CHASING'},
    extra:`<div class="mathbox"><h3>THE 3-QUESTION FOMO TEST</h3>
       <ul>
         <li><b>What has changed in the business,</b> not the price?</li>
@@ -422,26 +422,27 @@ const EPISODES = [
    wisdom:"Decide your exit before you enter, when your head is cool, not when your heart is racing.",
    todo:"For every trade or investment, write three numbers before you buy: your entry, your target and your stop-loss. Then follow them."},
 
+
  { id:'ep11', num:7, cat:'psychology', title:"Impatience", hook:"“Nothing is happening!” Ravi quits too early.",
-   s1:{caption:"Month 8 of Ravi's SIP. The fund is up only 3.6%.",mood:'worried',bubble:"This is too slow! My friend made 40% in a month on a hot stock. I'm stopping this SIP!",thought:"(Patience is for people who don't want to be rich.)"},
-   wrong:{title:'Ravi · quit after 8 months',holdings:[{name:'BHARAT INDEX FUND (STOPPED)',sub:'8 SIPs of ₹10,000 · “nothing is happening”',inv:80000,cur:82857}], stamp:'QUIT TOO EARLY'},
-   s3:{caption:"Same SIP. Patient Ravi.",mood:'happy',bubble:"Good things take time. I'll keep going and check once every few months, not every day.",thought:"(The best part of compounding comes late.)"},
-   right:{title:'Ravi · stayed 5 years',holdings:[{name:'BHARAT INDEX FUND',sub:'60 SIPs of ₹10,000 · assumed 12% a year (illustrative)',inv:600000,cur:816697}], stamp:'TIME DID THE WORK'},
+   s1:{caption:"Month 8. Ravi's stock is up only 3.5%. His friend's hot stock is up 40%.",mood:'worried',bubble:"This is too slow! Nothing is happening! I'm selling and jumping into that hot stock!",thought:"(Patience is for people who don't want to be rich.)"},
+   wrong:{title:'Ravi · sold after 8 months',holdings:[{name:'MERIDIAN DAIRY (SOLD)',sub:"Qty 500 · Buy ₹200 · sold ₹207 · “nothing is happening” · it later reached ₹352",inv:100000,cur:103500}], plLabel:'Realised P&amp;L', curLabel:'Sale value', stamp:'QUIT TOO EARLY'},
+   s3:{caption:"Same stock. Patient Ravi.",mood:'happy',bubble:"The company keeps growing its profit every year. I'll check its results every quarter, not its price every hour.",thought:"(The best part of compounding comes late.)"},
+   right:{title:'Ravi · held 5 years',holdings:[{name:'MERIDIAN DAIRY',sub:'Qty 500 · Buy ₹200 · LTP ₹352 · held 5 years · assumed ~12% a year (illustrative)',inv:100000,cur:176000}], stamp:'TIME DID THE WORK'},
    extra:`<div class="mathbox"><h3>TIME DOES THE HEAVY LIFTING</h3>
-      <table class="tbl"><tr><th>₹10,000 a month for</th><th>You put in</th><th>Could become*</th></tr>
-        <tr><td>1 year</td><td>₹1.2 lakh</td><td>₹1.27 lakh</td></tr>
-        <tr><td>5 years</td><td>₹6 lakh</td><td>₹8.17 lakh</td></tr>
-        <tr><td>10 years</td><td>₹12 lakh</td><td>₹23.0 lakh</td></tr>
-        <tr><td>20 years</td><td>₹24 lakh</td><td>₹98.9 lakh</td></tr></table>
-      <p>*Illustration at an <b>assumed</b> 12% a year. Real returns vary, can be negative for years, and are never guaranteed. Notice that most of the growth comes in the later years, which is why quitting early costs the most.</p></div>`,
-   wisdom:"Wealth is rarely built in a month. It's built by not quitting.",
-   todo:"Choose one long-term plan (such as a SIP), set a review date six months away, and do not judge it before then."},
+      <table class="tbl"><tr><th>₹1,00,000 in a good business, held for</th><th>Could become*</th></tr>
+        <tr><td>1 year</td><td>₹1.12 lakh</td></tr>
+        <tr><td>5 years</td><td>₹1.76 lakh</td></tr>
+        <tr><td>10 years</td><td>₹3.11 lakh</td></tr>
+        <tr><td>20 years</td><td>₹9.65 lakh</td></tr></table>
+      <p>*Illustration at an <b>assumed</b> 12% a year, for a healthy business that keeps growing its profits. Real returns vary, can be negative for years, and individual stocks can fall and never recover. Notice that most of the growth comes in the later years, which is why quitting early costs the most.</p></div>`,
+   wisdom:"Wealth is rarely built in a month. It's built by not quitting a good business too early.",
+   todo:"Pick one long-term holding that passed your research, write down why you own it, set a review date six months away, and do not judge it by its price before then."},
 
  { id:'ep12', num:8, cat:'psychology', title:"Ego: “I Can't Be Wrong”", hook:"“It's not a loss until I sell.” Famous last words.",
    s1:{caption:"Ravi's stock is down 70%. A friend gently asks about it.",mood:'worried',bubble:"I'm not wrong, the market is wrong! I'll sell when it comes back to my price.",thought:"(Selling means admitting I made a mistake.)"},
    wrong:{title:'Ravi · refused to sell',holdings:[{name:'DELTA CHIPLABS',sub:'Qty 500 · Buy ₹300 · LTP ₹90 · “waiting to break even”',inv:150000,cur:45000}], stamp:'EGO IS EXPENSIVE'},
    s3:{caption:"Same stock. At −10%, Ravi swallows his pride.",mood:'thinking',bubble:"I was wrong about this one. It happens. The market doesn't know my buying price, so I'm moving on.",thought:"(Small loss. Big lesson. Money back to work.)"},
-   right:{title:'Ravi · admitted it, moved on',holdings:[{name:'DELTA CHIPLABS → BHARAT INDEX FUND',sub:'Sold at ₹270 (−10%) and reinvested ₹1,35,000 (illustrative)',inv:150000,cur:145800}], stamp:'WRONG, BUT SAFE'},
+   right:{title:'Ravi · admitted it, moved on',holdings:[{name:'DELTA CHIPLABS → STEADYFAB INDUSTRIES',sub:'Sold at ₹270 (−10%) and moved ₹1,35,000 into a researched stock (illustrative)',inv:150000,cur:145800}], stamp:'WRONG, BUT SAFE'},
    extra:`<div class="mathbox"><h3>THE RECOVERY MATHS</h3>
       <table class="tbl"><tr><th>If you lose</th><th>You need to gain just to break even</th></tr>
         <tr><td>10%</td><td>+11.1%</td></tr><tr><td>20%</td><td>+25%</td></tr><tr><td>30%</td><td>+42.9%</td></tr>
@@ -557,7 +558,7 @@ const EPISODES = [
      {name:'MONTH 1 · big trades',sub:'No loss limit, no pause',pnl:-60000},
      {name:'MONTH 2 · trying to recover',sub:'Bigger bets to win it back',pnl:-70000},
      {name:'MONTH 3 · "just one more"',sub:'Then a ₹1,50,000 family expense arrives',pnl:-70000}], stamp:'ALL IN, 40% DOWN'},
-   s3:{caption:"Same ₹5,00,000. This time Ravi makes three buckets first.",mood:'thinking',bubble:"₹1,50,000 emergency fund. ₹3,00,000 long-term SIP. Only ₹50,000 for trading. If I lose 10% in a month, I stop and review.",thought:"(Capital is my only employee. Protect it.)"},
+   s3:{caption:"Same ₹5,00,000. This time Ravi makes three buckets first.",mood:'thinking',bubble:"₹1,50,000 emergency fund. ₹3,00,000 for long-term stock investing. Only ₹50,000 for trading. If I lose 10% in a month, I stop and review.",thought:"(Capital is my only employee. Protect it.)"},
    right:{title:'Ravi · trading bucket only',capital:50000,rows:[
      {name:'MONTH 1 · loss limit hit',sub:'Lost 10% → stopped trading and reviewed',pnl:-5000},
      {name:'MONTH 2 · half-size trades',sub:'Followed the written plan',pnl:1500},
@@ -565,7 +566,7 @@ const EPISODES = [
    extra:`<div class="mathbox"><h3>THE 3-BUCKET RULE</h3>
       <ul>
         <li><b>Bucket 1 · Emergency fund.</b> About 3–6 months of expenses in a savings account or similar safe place. Never in the market.</li>
-        <li><b>Bucket 2 · Long-term investing.</b> Money for goals 5+ years away, such as a SIP. Left alone.</li>
+        <li><b>Bucket 2 · Long-term investing.</b> Money for goals 5+ years away, put into quality stocks you plan to hold for years. Left alone.</li>
         <li><b>Bucket 3 · Risk money.</b> Only money you could lose without changing your life. Only this bucket is ever used for trading.</li>
       </ul>
       <div class="cmp">
@@ -623,7 +624,7 @@ const EPISODES = [
    s3:{caption:"Same trade. Same fall. Ravi respects the plan.",mood:'thinking',bubble:"Stop-loss hit at ₹380. Loss ₹5,000. The trade is over, and my money is free to move on.",thought:"(A trade has an exit. I never planned to be an investor.)"},
    right:{title:'Ravi · took the small loss',capital:100000,rows:[
      {name:'SILVERLINE TEXTILES',sub:'Qty 250 · stop-loss ₹380 hit in week 2',pnl:-5000},
-     {name:'FREED ₹95,000 · INDEX FUND',sub:'14 months · illustrative, assumed 12% a year, not guaranteed',pnl:13400}], stamp:'CAPITAL FREED'},
+     {name:'FREED ₹95,000 · A BETTER IDEA',sub:'14 months · reinvested in a researched stock · illustrative, not guaranteed',pnl:13400}], stamp:'CAPITAL FREED'},
    extra:`<div class="mathbox"><h3>THE REAL PRICE OF A LOSER</h3>
       <div class="cmp">
         <div class="c ok"><span>Cut at ₹380</span><b>−₹5,000</b><i>₹95,000 is free to use again</i></div>
@@ -784,7 +785,7 @@ const EPISODES = [
      {name:'ZENITH50 FUT · 2 lots',sub:'Qty 150 · Buy 24,000 · opened at 23,280 after bad news · stop 23,800 skipped',pnl:-108000}], stamp:'GAPPED PAST THE STOP'},
    s3:{caption:"Same ₹5,00,000. This time Ravi checks his total exposure first.",mood:'thinking',bubble:"My exposure is ₹36 lakh, over 7x my capital. One bad gap could wipe out a big part of my savings. I’ll keep exposure small, or skip futures.",thought:"(Capital is for staying alive, not for maxing out.)"},
    right:{title:'Ravi · no leverage',capital:500000,rows:[
-     {name:'ZENITH50 INDEX FUND',sub:'₹2,00,000 · no leverage · the same 3% fall',pnl:-6000},
+     {name:'BLUE-CHIP STOCKS',sub:'₹2,00,000 · no leverage · the same 3% fall',pnl:-6000},
      {name:'CASH RESERVE',sub:'₹3,00,000 · untouched · no margin call',pnl:0}], stamp:'NO LEVERAGE, NO PANIC'},
    extra:`<div class="mathbox"><h3>THE EXPOSURE CHECK</h3>
       <p class="stat">Leverage = total value of your positions ÷ your capital</p>
@@ -969,7 +970,7 @@ const EPISODES = [
         <li><b>Do I need this cash for a planned goal soon?</b> That is a goal reason, not a panic reason.</li>
       </ul>
       <p class="stat">Sold at ₹375, Ravi needs a +33.3% rise just to get back to ₹500. He locked in the fall and gave up the recovery.</p>
-      <p>This is different from <b>Panic in the Crash</b> (an index fund in a market-wide fall) and <b>Panic Selling: The Scary Headline</b> (one headline on one stock). Here the trap is selling a strong company simply because everything is red.</p>
+      <p>This is different from <b>Panic in the Crash</b> (a whole-market crash) and <b>Panic Selling: The Scary Headline</b> (one headline on one stock). Here the trap is selling a strong company simply because everything is red.</p>
       <p>Two honest points. Quality stocks can fall too, and some never recover, so sell if the business truly breaks. And if a fall forces you to sell, you may be missing an emergency fund (see the <b>3-Bucket Rule</b> in Risk Management).</p></div>`,
    wisdom:"In a panic, sell nothing you would happily buy again at today's price.",
    todo:"Write one line for each of your best holdings: “I own this because ___.” In the next fall, sell only if that line stops being true."},
@@ -979,52 +980,55 @@ const EPISODES = [
    wrong:{title:'Ravi · one pot, no plan',holdings:[{name:'9 RANDOM STOCKS',sub:'No goal · no timeline · wedding bill due in year 2 · market down 25%',inv:600000,cur:450000}], stamp:'FORCED TO SELL LOW'},
    s3:{caption:"Same ₹6,00,000. This time Ravi names each goal and its deadline.",mood:'thinking',bubble:"Wedding in 2 years, a house down payment in 5 years, retirement in 30. Each goal has its own timeline, so each gets its own kind of investment.",thought:"(Money needed soon should not be exposed to big falls.)"},
    right:{title:'Ravi · money matched to goals',holdings:[
-     {name:'GOAL 1 · WEDDING (2 yrs)',sub:'Fixed deposit / liquid fund · safe and steady',inv:200000,cur:224000},
-     {name:'GOAL 2 · HOUSE (5 yrs)',sub:'Balanced mix · small dip in the same fall',inv:300000,cur:285000},
-     {name:'GOAL 3 · RETIREMENT (30 yrs)',sub:'Equity index fund · fell 25%, can wait',inv:100000,cur:75000}], stamp:'EACH RUPEE HAS A JOB'},
+     {name:'GOAL 1 · WEDDING (2 yrs)',sub:'Savings account / fixed deposit · kept out of the stock market',inv:200000,cur:224000},
+     {name:'GOAL 2 · HOUSE (5 yrs)',sub:'Large, steady companies plus cash · small dip in the same fall',inv:300000,cur:285000},
+     {name:'GOAL 3 · RETIREMENT (30 yrs)',sub:'Quality stocks held long term · fell 25%, can wait',inv:100000,cur:75000}], stamp:'EACH RUPEE HAS A JOB'},
    extra:`<div class="mathbox"><h3>GOAL → TIMELINE → TYPE OF INVESTMENT</h3>
       <table class="tbl"><tr><th>Time to goal</th><th>What matters most</th><th>Broad idea</th></tr>
-        <tr><td>Under 3 years</td><td>Safety of capital</td><td>Fixed deposit, liquid or short-term debt fund</td></tr>
-        <tr><td>3 to 7 years</td><td>Balance</td><td>A mix of debt and equity</td></tr>
-        <tr><td>7+ years</td><td>Growth, with patience</td><td>Mostly equity</td></tr></table>
+        <tr><td>Under 3 years</td><td>Safety of capital</td><td>Savings account or fixed deposit, not the stock market</td></tr>
+        <tr><td>3 to 7 years</td><td>Balance</td><td>Large, steady companies plus some cash</td></tr>
+        <tr><td>7+ years</td><td>Growth, with patience</td><td>Quality stocks, held long term</td></tr></table>
       <p><b>Write each goal as three things:</b> what, how much, by when. And remember inflation: a house that costs ₹10 lakh today could cost about <b>₹13.4 lakh</b> in 5 years at 6% a year inflation.</p>
       <p>In the wiser version, the wedding was paid from the safe bucket, with no selling in a crash. The market fell the same 25% in both stories. Only Ravi's <b>plan</b> was different.</p>
       <p>These are broad ideas, not advice. The right mix depends on your age, income and comfort with risk, so consider a SEBI-registered adviser.</p></div>`,
    wisdom:"Money without a goal wanders. Money with a goal and a deadline knows where to sit.",
    todo:"List your next three money goals, each with an amount and a date. Sort them into under 3 years, 3 to 7 years, and 7+ years."},
 
- { id:'ep38', num:7, cat:'investing', title:"Ignoring Asset Allocation", hook:"All your money in one type of asset is a bet, not a plan.",
-   s1:{caption:"Ravi's equity fund has been rising for two years. He moves ALL ₹10,00,000 into it.",mood:'excited',bubble:"Why keep money in boring debt or gold? Equity is where the returns are. 100% equity, always!",thought:"(What if equity falls 30%? It won't. Probably.)"},
-   wrong:{title:'Ravi · 100% equity',holdings:[{name:'ALL-EQUITY: SMALLCAP FUND',sub:'Inv ₹10,00,000 · one asset class · equity falls 30%',inv:1000000,cur:700000}], stamp:'ONE BASKET'},
-   s3:{caption:"Same ₹10,00,000. This time Ravi splits it across asset classes.",mood:'thinking',bubble:"60% equity, 30% debt, 10% gold. They don't all fall together, so one bad year can't flatten everything.",thought:"(Asset allocation decides more of my ride than the stock I pick.)"},
-   right:{title:'Ravi · 60 / 30 / 10',holdings:[
-     {name:'EQUITY INDEX FUND (60%)',sub:'Inv ₹6,00,000 · fell 30%',inv:600000,cur:420000},
-     {name:'DEBT FUND (30%)',sub:'Inv ₹3,00,000 · rose 6%',inv:300000,cur:318000},
-     {name:'GOLD ETF (10%)',sub:'Inv ₹1,00,000 · rose 10%',inv:100000,cur:110000}], stamp:'A SMOOTHER RIDE'},
+
+ { id:'ep38', num:7, cat:'investing', title:"Ignoring Asset Allocation", hook:"All your money in one kind of stock is a bet, not a plan.",
+   s1:{caption:"Ravi's small-cap stocks have been rising for two years. He moves ALL ₹10,00,000 into them.",mood:'excited',bubble:"Why own big, boring companies, or hold any cash? Small-caps give the best returns! 100% small-caps, always!",thought:"(What if small-caps fall 35%? They won't. Probably.)"},
+   wrong:{title:'Ravi · 100% small-caps',holdings:[{name:'ALL SMALL-CAP STOCKS (6 stocks)',sub:'Inv ₹10,00,000 · one kind of stock · small-caps fall 35%',inv:1000000,cur:650000}], stamp:'ONE BASKET'},
+   s3:{caption:"Same ₹10,00,000. This time Ravi splits it by company size and keeps cash.",mood:'thinking',bubble:"50% large companies, 20% mid-sized, 10% small, 20% cash. They don't all fall equally, and cash lets me buy cheaper when others panic.",thought:"(How I split my money decides more of my ride than the stock I pick.)"},
+   right:{title:'Ravi · 50 / 20 / 10 / 20',holdings:[
+     {name:'LARGE-CAP STOCKS (50%)',sub:'Inv ₹5,00,000 · fell 20%',inv:500000,cur:400000},
+     {name:'MID-CAP STOCKS (20%)',sub:'Inv ₹2,00,000 · fell 28%',inv:200000,cur:144000},
+     {name:'SMALL-CAP STOCKS (10%)',sub:'Inv ₹1,00,000 · fell 35%',inv:100000,cur:65000},
+     {name:'CASH (20%)',sub:'Inv ₹2,00,000 · untouched, ready to use',inv:200000,cur:200000}], stamp:'A SMOOTHER RIDE'},
    extra:`<div class="mathbox"><h3>THE SAME FALL, TWO PORTFOLIOS</h3>
       <div class="cmp">
-        <div class="c bad"><span>100% equity</span><b>₹10,00,000 → ₹7,00,000</b><i>Needs +42.9% to get back</i></div>
-        <div class="c ok"><span>60 / 30 / 10 mix</span><b>₹10,00,000 → ₹8,48,000</b><i>Needs +17.9% to get back</i></div>
+        <div class="c bad"><span>100% small-caps</span><b>₹10,00,000 → ₹6,50,000</b><i>Needs +53.8% to get back</i></div>
+        <div class="c ok"><span>50 / 20 / 10 / 20 mix</span><b>₹10,00,000 → ₹8,09,000</b><i>Needs +23.6% to get back</i></div>
       </div>
-      <p><b>Rebalancing:</b> after the fall, equity is only about 49.5% of the mix. To get back to 60% (₹5,08,800), Ravi would move about <b>₹88,800</b> from debt and gold into equity. That means buying more of what has become cheaper, by rule rather than by emotion.</p>
-      <p>This is an <b>illustrative scenario</b>, not a forecast. Real falls and rises differ every time, and debt and gold can fall too. Allocation does not remove risk; it spreads it.</p>
+      <p><b>The cash is a weapon.</b> After the fall, Ravi still has ₹2,00,000 ready. He can buy good businesses from his watchlist at lower prices, by rule rather than by emotion. All-in Ravi has nothing left to buy with.</p>
+      <p>This is an <b>illustrative scenario</b>, not a forecast. Real falls differ every time, and large-caps can fall hard too. Spreading your money by company size, sector and cash does not remove risk; it spreads it.</p>
       <ul>
-        <li><b>Different from “All Eggs, One Basket”:</b> that was one stock. This is one whole asset class.</li>
-        <li><b>There is no single right mix.</b> It depends on age, goals, income stability and how much a fall would hurt you.</li>
+        <li><b>Different from “All Eggs, One Basket”:</b> that was one stock. This is one whole kind of stock, or one sector.</li>
+        <li><b>There is no single right mix.</b> It depends on your goals, your experience and how much a fall would hurt you.</li>
         <li><b>Review once or twice a year,</b> not every day.</li>
       </ul></div>`,
-   wisdom:"Your mix of assets shapes how bumpy your ride is. Decide it on purpose.",
-   todo:"Add up how much you hold in equity, debt, gold and cash. Write the percentages. If one is over 80% and you didn't choose that on purpose, ask yourself why."},
+   wisdom:"How you split your money shapes how bumpy your ride is. Decide it on purpose.",
+   todo:"Add up how much of your portfolio sits in large companies, small companies, any single sector, and cash. Write the percentages. If one slice is over 60% and you didn't choose that on purpose, ask yourself why."},
 
- { id:'ep39', num:8, cat:'investing', title:"Not Understanding Compounding", hook:"Half the money, more than double the result. How? Time.",
+
+ { id:'ep39', num:8, cat:'investing', title:"Not Understanding Compounding", hook:"Half the money, a bigger result. How? Time.",
    s1:{caption:"Ravi is 25. A friend explains compounding. Ravi shrugs.",mood:'happy',bubble:"I'll start investing when I earn more. A few years won't matter. Let me enjoy life first!",thought:"(Ten years of waiting can't cost that much... can it?)"},
-   wrong:{title:'Ravi · started at 35',holdings:[{name:'BHARAT INDEX FUND · SIP from age 35',sub:'240 SIPs of ₹10,000 · age 35 to 55 · assumed 12% a year (illustrative)',inv:2400000,cur:9892554}], stamp:'STARTED LATE'},
-   s3:{caption:"Same Ravi. This time he starts at 25, even with small amounts.",mood:'thinking',bubble:"₹10,000 a month for just 10 years, then I stop and let it grow untouched. Time does the heavy lifting.",thought:"(The earliest rupees get the most years to multiply.)"},
-   right:{title:'Ravi · started at 25, stopped at 35',holdings:[{name:'BHARAT INDEX FUND · SIP age 25 to 35',sub:'120 SIPs of ₹10,000 · then left alone until 55 · assumed 12% a year (illustrative)',inv:1200000,cur:25057088}], stamp:'TIME DID THE WORK'},
-   extra:`<div class="mathbox"><h3>HALF THE MONEY, 2.5x THE RESULT</h3>
+   wrong:{title:'Ravi · started at 35',holdings:[{name:'QUALITY STOCKS · bought at age 35',sub:'Bought ₹2,00,000 (double, to catch up) · held 20 years to age 55 · assumed 12% a year (illustrative)',inv:200000,cur:1929259}], stamp:'STARTED LATE'},
+   s3:{caption:"Same Ravi. This time he starts at 25, even with a small amount.",mood:'thinking',bubble:"I'll put just ₹1,00,000 into good businesses today and hold them. Time does the heavy lifting.",thought:"(The earliest rupees get the most years to multiply.)"},
+   right:{title:'Ravi · started at 25',holdings:[{name:'QUALITY STOCKS · bought at age 25',sub:'Bought ₹1,00,000 · held 30 years to age 55 · assumed 12% a year (illustrative)',inv:100000,cur:2995992}], stamp:'TIME DID THE WORK'},
+   extra:`<div class="mathbox"><h3>HALF THE MONEY, 1.55x THE RESULT</h3>
       <div class="cmp">
-        <div class="c bad"><span>Started at 35, invested 20 years</span><b>₹24 lakh in → ₹98.9 lakh</b><i>At 55 (assumed 12% a year)</i></div>
-        <div class="c ok"><span>Started at 25, invested 10 years, then stopped</span><b>₹12 lakh in → ₹2.51 crore</b><i>At 55 (assumed 12% a year)</i></div>
+        <div class="c bad"><span>Started at 35 with ₹2,00,000</span><b>₹2 lakh in → ₹19.3 lakh</b><i>At 55, held 20 years (assumed 12% a year)</i></div>
+        <div class="c ok"><span>Started at 25 with ₹1,00,000</span><b>₹1 lakh in → ₹30.0 lakh</b><i>At 55, held 30 years (assumed 12% a year)</i></div>
       </div>
       <h3 style="margin-top:12px">THE SNOWBALL: ₹1,00,000 AT AN ASSUMED 12%</h3>
       <table class="tbl"><tr><th>After</th><th>Simple interest (₹12,000 a year)</th><th>Compounding</th></tr>
@@ -1034,18 +1038,17 @@ const EPISODES = [
         <tr><td>24 years</td><td>₹3.88 lakh</td><td>₹15.18 lakh</td></tr>
         <tr><td>30 years</td><td>₹4.60 lakh</td><td>₹29.96 lakh</td></tr></table>
       <p>Money roughly <b>doubles every 6 years</b> at 12% (the Rule of 72: 72 ÷ 12). The last doubling adds more than all the earlier ones combined, which is why the early years are the most precious.</p>
-      <p>Honest caveat: 12% is an <b>assumption</b>, not a promise. Real returns swing, with bad years too, and nobody can guarantee them. The lesson is about time, not about that number. Continuing to invest through your 30s is still wise. This comparison only shows what each year of delay costs.</p></div>`,
+      <p>Honest caveat: 12% is an <b>assumption</b>, not a promise. Real returns swing, with bad years too, individual stocks can fall and never recover, and nobody can guarantee them. The lesson is about time, not about that number. Investing more in your 30s is still wise. This comparison only shows what each year of delay costs.</p></div>`,
    wisdom:"Compounding rewards time more than money. Every year you wait costs more than the year before.",
-   todo:"Start a small SIP this month, even ₹500 or ₹1,000, and raise it each year. Starting small today beats starting big later."},
+   todo:"Buy a small piece of a good business this month, even ₹5,000, and hold it. Add more each year as your income rises. Starting small today beats starting big later."},
 
- /* ---------- MARKET TRAPS: new episodes (ep40 to ep45) ---------- */
  { id:'ep40', num:2, cat:'traps', title:"Guaranteed Returns (5% Every Month!)", hook:"Fixed monthly profit, zero risk, limited seats. Ravi is already reaching for his wallet.",
    s1:{caption:"A hotel “wealth seminar”. Glossy brochure. Free samosas.",mood:'excited',bubble:"5% every month, GUARANTEED, zero risk! ₹2,00,000 today and ₹10,000 every month for life!",thought:"(Even my bank doesn't pay that. But the brochure has a handshake photo!)"},
    wrong:{title:'Ravi · the “guaranteed” scheme',curLabel:'Received back so far',plLabel:'Net result',holdings:[{name:'ASSURED PROFIT CLUB',sub:'Promised 5% a month · payouts stopped after month 2',inv:200000,cur:20000}], stamp:'NOBODY CAN GUARANTEE THIS'},
    s3:{caption:"Same seminar. Wiser Ravi asks one boring question.",mood:'thinking',bubble:"If this really pays 5% a month, why does the organiser need MY money? Who pays me, and where is the SEBI registration?",thought:"(The samosa was good. The promise was not.)"},
    right:{title:'Ravi · realistic expectations',holdings:[
      {name:'BANK FD',sub:'Inv ₹1,00,000 · known rate, modest (illustrative)',inv:100000,cur:106500},
-     {name:'BHARAT INDEX FUND',sub:'Inv ₹50,000 · no promise, long-term (illustrative)',inv:50000,cur:53200}], stamp:'ASKED “WHO PAYS?”'},
+     {name:'STEADYFAB INDUSTRIES',sub:'Inv ₹50,000 · researched stock, no promise (illustrative)',inv:50000,cur:53200}], stamp:'ASKED “WHO PAYS?”'},
    extra:`<div class="mathbox"><h3>THE 5%-A-MONTH MATH</h3>
       <p>Take the promise seriously for a moment. What would ₹1,00,000 become if it truly grew 5% every single month?</p>
       <table class="tbl"><tr><th>After</th><th>₹1,00,000 becomes</th></tr>
@@ -1068,7 +1071,7 @@ const EPISODES = [
    s3:{caption:"Same group. Wiser Ravi asks who is on the other side.",mood:'thinking',bubble:"A tiny ₹18 stock with no news, suddenly “sure to double”? If everyone buys together, who will buy from ME when I want to sell?",thought:"(Whoever is shouting the loudest probably bought first.)"},
    right:{title:'Ravi · skipped the “operation”',capital:100000,capLabel:"Ravi's capital",nowLabel:'Capital now',rows:[
      {name:'ZENMARK TEXTILES',sub:'Group said BUY · Ravi skipped it',pnl:0},
-     {name:'BHARAT INDEX FUND SIP',sub:'Boring monthly investing, no countdowns',pnl:1200}], stamp:'NO BAG TO HOLD'},
+     {name:'STEADYFAB INDUSTRIES · planned buy',sub:'Boring, researched, no countdowns',pnl:1200}], stamp:'NO BAG TO HOLD'},
    extra:`<div class="mathbox"><h3>HOW A PUMP AND DUMP WORKS</h3>
       <div class="cycle">
         <span>1. Insiders quietly buy</span><span class="gd">2. Group hype begins</span><span class="gd">3. Price jumps</span>
@@ -1095,7 +1098,7 @@ const EPISODES = [
    s3:{caption:"Same reel. Wiser Ravi treats it as an idea, not a shopping list.",mood:'thinking',bubble:"Is he SEBI-registered? Is this an ad? Does he know my goals, my age, my risk limit? A video can't know my situation.",thought:"(Nice car. Still not research.)"},
    right:{title:'Ravi · idea checked, small bet',holdings:[
      {name:'MANAS FOODS',sub:'Inv ₹15,000 · idea from a reel, then own research',inv:15000,cur:15900},
-     {name:'BHARAT INDEX FUND',sub:'Inv ₹85,000 · core holding (illustrative)',inv:85000,cur:88400}], stamp:'IDEA, NOT INSTRUCTION'},
+     {name:'ARVIND STEELWORKS',sub:'Inv ₹85,000 · researched core holding (illustrative)',inv:85000,cur:88400}], stamp:'IDEA, NOT INSTRUCTION'},
    extra:`<div class="mathbox"><h3>THE 5-POINT INFLUENCER CHECK</h3>
       <ul>
         <li><b>Is the person registered?</b> Specific buy or sell advice for a fee should come from a SEBI-registered adviser or research analyst. Verify it on SEBI's website.</li>
@@ -1116,7 +1119,7 @@ const EPISODES = [
    s1:{caption:"Office pantry. A colleague whispers as if he's passing nuclear secrets.",mood:'excited',bubble:"An operator is entering Mehta Alloys! Big news tomorrow, 100% sure! I'm buying ₹60,000 right now!",thought:"(He said “don't tell anyone”. He told six people.)"},
    wrong:{title:'Ravi · bought the rumour',holdings:[{name:'MEHTA ALLOYS',sub:'Qty 1,200 · Buy ₹50 · LTP ₹36 · the “big news” never came',inv:60000,cur:43200}], stamp:'RUMOUR ≠ NEWS'},
    s3:{caption:"Same pantry. Wiser Ravi checks the one place a rumour cannot hide.",mood:'thinking',bubble:"If there is real news, it will appear on the exchange website, for everyone at the same time. If it isn't there, it's just a story.",thought:"(And if it IS secret inside information, trading on it can land me in legal trouble.)"},
-   right:{title:'Ravi · waited for facts',holdings:[{name:'LIQUID FUND (parked cash)',sub:'Inv ₹60,000 · waiting for facts, not whispers (illustrative)',inv:60000,cur:60350}], stamp:'FACTS FIRST'},
+   right:{title:'Ravi · waited for facts',holdings:[{name:'CASH IN SAVINGS ACCOUNT',sub:'Inv ₹60,000 · waiting for facts, not whispers (illustrative)',inv:60000,cur:60350}], stamp:'FACTS FIRST'},
    extra:`<div class="mathbox"><h3>THE LIFE OF A RUMOUR</h3>
       <div class="cycle">
         <span>Someone whispers</span><span>Six people forward it</span><span class="gd">Price rises on the buzz</span>
@@ -1169,27 +1172,27 @@ const EPISODES = [
      {name:'SUNGRID SOLAR',sub:'Inv ₹50,000 · bought in the rally',inv:50000,cur:29000},
      {name:'TEXLINE MILLS',sub:'Inv ₹50,000 · bought in the rally',inv:50000,cur:36000},
      {name:'NOVA HOMES',sub:'Inv ₹50,000 · bought in the rally',inv:50000,cur:34000}], stamp:'THE TIDE WENT OUT'},
-   s3:{caption:"Same five winners. Honest Ravi keeps a scorecard.",mood:'thinking',bubble:"My picks rose 28%. A plain index fund rose 30%. So the market did the work, not me. I'll keep my bets small until I prove otherwise.",thought:"(Luck feels exactly like skill, until the tide goes out.)"},
+   s3:{caption:"Same five winners. Honest Ravi keeps a scorecard.",mood:'thinking',bubble:"My picks rose 28%. The ZENITH50 index itself rose 30%. So the market did the work, not me. I'll keep my bets small until I prove otherwise.",thought:"(Luck feels exactly like skill, until the tide goes out.)"},
    right:{title:'Ravi · same crash, smaller bets',holdings:[
-     {name:'BHARAT INDEX FUND',sub:'Inv ₹1,50,000 · core holding (illustrative)',inv:150000,cur:123000},
+     {name:'CORE HOLDINGS · 5 STEADY BLUE-CHIPS',sub:'Inv ₹1,50,000 · researched, spread out (illustrative)',inv:150000,cur:123000},
      {name:"RAVI'S 5 PICKS",sub:'Inv ₹50,000 · kept small until proven',inv:50000,cur:32500}], stamp:'SMALLER BETS, SMALLER DENT'},
    extra:`<div class="mathbox"><h3>THE COIN-FLIP CONTEST</h3>
       <p>Take 1,024 people and ask each to flip a coin 10 times. Roughly <b>one of them</b> will get 10 heads in a row.</p>
       <p class="stat">That person will be called a genius on WhatsApp. He did nothing special.</p>
       <p><b>Is it skill? Ask:</b></p>
       <ul>
-        <li><b>Did I beat a plain index fund</b> over the same period?</li>
+        <li><b>Did I beat the market index (such as ZENITH50)</b> over the same period?</li>
         <li><b>Did I follow my written rules,</b> win or lose?</li>
         <li><b>Would I have made money in a falling market too?</b></li>
         <li><b>Do I have dozens of trades,</b> or just a handful?</li>
       </ul>
       <div class="cmp">
         <div class="c bad"><span>All-in on “genius” picks</span><b>₹2,00,000 → ₹1,30,000</b><i>A bad turn, with nothing to cushion it</i></div>
-        <div class="c ok"><span>Index core + small bets</span><b>₹2,00,000 → ₹1,55,500</b><i>Same crash, a smaller dent</i></div>
+        <div class="c ok"><span>Steady core + small bets</span><b>₹2,00,000 → ₹1,55,500</b><i>Same crash, a smaller dent</i></div>
       </div>
       <p>A good outcome from a bad process is still a bad process. It just has not sent the bill yet.</p></div>`,
    wisdom:"Do not confuse a rising market with a rising mind.",
-   todo:"Compare your last six months of returns with a plain index fund. If you did not beat it, keep your active bets small until you do."},
+   todo:"Compare your last six months of returns with the market index (such as ZENITH50). If you did not beat it, keep your active bets small until you do."},
 
 ];
 
