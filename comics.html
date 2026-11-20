@@ -153,6 +153,38 @@ a{color:inherit}
 footer{margin-top:34px;border-top:1px solid var(--line);padding:20px 0 40px;background:#fff}
 footer .disc{font-size:.8rem;color:var(--muted);max-width:760px}
 footer .disc b{color:var(--ink)}
+
+/* visitor counter */
+.visit{margin-top:16px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(245,184,46,.12);border:1px solid rgba(245,184,46,.5);border-radius:12px;padding:8px 14px}
+.visit .dot{width:10px;height:10px;border-radius:50%;background:#2be08a;box-shadow:0 0 0 0 rgba(43,224,138,.7);animation:vpulse 1.6s infinite}
+.visit .vnum{font-family:'Bangers',Impact,sans-serif;font-size:1.9rem;letter-spacing:.05em;color:var(--gold);line-height:1;min-width:3ch}
+.visit .vmsg{font-size:.92rem;font-weight:700}
+@keyframes vpulse{0%{box-shadow:0 0 0 0 rgba(43,224,138,.7)}70%{box-shadow:0 0 0 10px rgba(43,224,138,0)}100%{box-shadow:0 0 0 0 rgba(43,224,138,0)}}
+@media(prefers-reduced-motion:reduce){.visit .dot{animation:none}}
+
+/* stats, progress, badges */
+.stats{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:grid;gap:8px}
+.stats .row2{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;font-weight:700;font-size:.92rem}
+.pbar,.mbar{height:8px;background:#e6e9f2;border-radius:99px;overflow:hidden}
+.pbar i,.mbar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:99px}
+.mbar{height:5px;margin-top:5px;max-width:180px}
+.badge-hot{display:inline-block;margin-left:8px;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:999px;vertical-align:middle}
+/* quiz */
+.quiz{margin-top:18px;border:4px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--yellow);padding:14px 16px}
+.quiz h3{font-family:'Bangers';letter-spacing:.05em;font-size:1.5rem;font-weight:400}
+.quiz p{font-weight:700;margin:4px 0 6px}
+.qopt{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 12px;border:3px solid var(--ink);background:#fff;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--ink)}
+.qopt:hover{background:#fff3c4}
+.qopt.ok{background:#e0f6e8;border-color:var(--green)}
+.qopt.no{background:#ffe5e5;border-color:var(--red)}
+.qopt:disabled{cursor:default}
+.qres{font-weight:700;margin-top:6px;min-height:1.2em}
+/* share */
+.share{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.share .bang{font-size:1.3rem;margin-right:4px}
+.share a,.share button{font-family:'Bangers';letter-spacing:.05em;font-size:1rem;text-decoration:none;color:#fff;border:3px solid var(--ink);padding:6px 12px;box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.share a:active,.share button:active{transform:translate(3px,3px);box-shadow:none}
+.share .wa{background:#1fa855}.share .tg{background:#2a8fd0}.share .cp{background:var(--ink)}
 </style>
 </head>
 <body>
@@ -1222,12 +1254,12 @@ const epsOf = key => EPISODES.filter(e=>e.cat===key).sort((a,b)=>a.num-b.num);
 
 function viewHome(){
   const cards = CATS.map(c=>{
-    const n = epsOf(c.key).length;
+    const n = epsOf(c.key).length, k = epsOf(c.key).filter(e=>done.has(e.id)).length;
     return `<a class="cat" href="#/c/${c.key}">
       <div class="art" style="background:${gradient(c)}"><span class="ico" aria-hidden="true">${c.icon}</span><img src="${c.img}" alt="" loading="lazy" onerror="this.remove()"></div>
       <div class="ct">${c.n}. ${c.title}</div>
       <div class="cs">${c.tag}</div>
-      <div class="cc ${n?'':'soon'}">${n? n+(n>1?' episodes':' episode') : 'Coming soon'}</div>
+      <div class="cc ${n?'':'soon'}">${n? n+(n>1?' episodes':' episode')+(k?' · '+k+' read ✓':'') : 'Coming soon'}</div>${n?`<div class="mbar"><i style="width:${Math.round(k/n*100)}%"></i></div>`:''}
     </a>`;
   }).join('');
   return `<div class="hero">
@@ -1235,6 +1267,7 @@ function viewHome(){
  
     <h1>OOPS! THE MARKET STRIKES AGAIN!</h1>
     <div class="tagline">Laugh & Learn Series</div>
+    <div class="visit" id="visit" aria-live="polite"><span class="dot" aria-hidden="true"></span><span class="vnum" id="vnum">700+</span><span class="vmsg" id="vmsg">learners have already visited. Join them!</span></div>
       </section>
   <aside class="ref" aria-label="Open a Demat account">
 <h2 style="text-align:center"><strong>Signup Now!</strong></h2>
@@ -1242,6 +1275,7 @@ function viewHome(){
     
   </aside>
 </div>
+    ${statsBlock()}
     <h2 class="sec">Explore your learning sections</h2>
     <div class="cats">${cards}</div>`;
 }
@@ -1250,7 +1284,7 @@ function viewCategory(key){
   const c = CATS.find(x=>x.key===key); if(!c) return viewHome();
   const eps = epsOf(key);
   const list = eps.length
-    ? `<div class="eplist">${eps.map(e=>`<a class="eprow" href="#/e/${e.id}">
+    ? `<div class="eplist">${eps.map(e=>`<a class="eprow" data-id="${e.id}" href="#/e/${e.id}">
         <span class="epn">EP ${e.num}</span>
         <span class="ept"><b>${e.title}</b><small>${e.hook||''}</small></span>
         <span class="go ${done.has(e.id)?'done':''}">${done.has(e.id)?'✓ Read':'Read ▶'}</span></a>`).join('')}</div>`
@@ -1276,7 +1310,7 @@ function viewEpisode(id){
       <p style="margin:14px 0 0"><a href="#/c/risk">Take me to Risk Management instead</a></p>
     </div>`;
   }
-  markDone(e.id);
+  markDone(e.id); bumpStreak(); trackRead(e.id);
   const eps = epsOf(e.cat), i = eps.findIndex(x=>x.id===e.id);
   const prev = eps[i-1], next = eps[i+1];
   return back + `<article class="ep-wrap">
@@ -1292,6 +1326,8 @@ function viewEpisode(id){
       <div class="big">💡 ${e.wisdom}</div>
       <div class="do"><b>Do this today:</b> ${e.todo}</div>
     </div>
+    ${quizHTML(e)}
+    ${shareHTML(e)}
     <nav class="pager" aria-label="Episode navigation">
       ${prev?`<a href="#/e/${prev.id}">◀ Previous</a>`:''}
       <a href="#/c/${c.key}">All in ${c.title}</a>
@@ -1299,6 +1335,172 @@ function viewEpisode(id){
     </nav>
   </article>`;
 }
+
+
+/* =====================================================================
+   VISITOR COUNTER  (starts at VISIT_BASE, then keeps counting)
+   Shared count via counterapi.dev; falls back to a per-browser count if offline.
+   ===================================================================== */
+const VISIT_BASE = 700;
+const VISIT_API  = 'https://api.counterapi.dev/v1/powerpangu-comics/site-visits';
+let visitState = null; // {total, isNew, shared}
+
+async function fetchVisits(){
+  const counted = (()=>{ try{ return sessionStorage.getItem('mw_counted')==='1'; }catch(e){ return false; } })();
+  const ctrl = new AbortController(); const t = setTimeout(()=>ctrl.abort(),4000);
+  try{
+    const r = await fetch(VISIT_API + (counted ? '' : '/up'), {signal:ctrl.signal});
+    const d = await r.json();
+    if(typeof d.count !== 'number') throw new Error('bad');
+    if(!counted){ try{ sessionStorage.setItem('mw_counted','1'); }catch(e){} }
+    return {total: VISIT_BASE + d.count, isNew: !counted, shared: true};
+  }catch(e){
+    let n = 0;
+    try{
+      n = parseInt(localStorage.getItem('mw_local_visits')||'0',10) || 0;
+      if(sessionStorage.getItem('mw_counted')!=='1'){ n++; localStorage.setItem('mw_local_visits',String(n)); sessionStorage.setItem('mw_counted','1'); }
+    }catch(_){}
+    return {total: VISIT_BASE + n, isNew: false, shared: false};
+  }finally{ clearTimeout(t); }
+}
+
+function paintVisits(animate){
+  const num = document.getElementById('vnum'), msg = document.getElementById('vmsg');
+  if(!num || !visitState) return;
+  const total = visitState.total, fmt = n => n.toLocaleString('en-IN');
+  msg.textContent = visitState.isNew && visitState.shared
+    ? `🔥 learners have already visited. You are visitor #${fmt(total)}!`
+    : '🔥 learners have already visited. Join them!';
+  if(!animate || matchMedia('(prefers-reduced-motion: reduce)').matches){ num.textContent = fmt(total); return; }
+  const start = performance.now(), dur = 1400, from = Math.max(0,total-150);
+  (function tick(now){
+    const p = Math.min(1,(now-start)/dur), e = 1-Math.pow(1-p,3);
+    num.textContent = fmt(Math.round(from+(total-from)*e));
+    if(p<1) requestAnimationFrame(tick);
+  })(start);
+}
+let visitPromise = null;
+function showVisits(){
+  if(!document.getElementById('vnum')) return;
+  if(visitState){ paintVisits(false); return; }
+  (visitPromise = visitPromise || fetchVisits()).then(v=>{ visitState = v; paintVisits(true); });
+}
+
+/* =====================================================================
+   WOW FEATURES: episodes-read counter, Most Read badge, progress + streak,
+   quiz after each episode, share buttons
+   ===================================================================== */
+const CAPI = 'https://api.counterapi.dev/v1/powerpangu-comics';
+const READ_MIN_SHOW = 25;   // show "episodes read" only once it reaches this number
+const BADGE_MIN = 3;        // an episode needs at least this many reads to earn "Most Read"
+const strip = h => String(h).replace(/<[^>]*>/g,'').replace(/&amp;/g,'&');
+const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+
+async function capi(key, up){
+  const c = new AbortController(), t = setTimeout(()=>c.abort(),4000);
+  try{
+    const r = await fetch(CAPI+'/'+key+(up?'/up':''),{signal:c.signal});
+    if(!r.ok) return null;
+    const d = await r.json();
+    return typeof d.count === 'number' ? d.count : null;
+  }catch(e){ return null; } finally{ clearTimeout(t); }
+}
+
+/* --- reading streak (consecutive days with at least one episode read) --- */
+const dayStr = d => d.toLocaleDateString('en-CA');
+function streakNow(){
+  const s = store.get('mw_streak'); if(!s) return 0;
+  const y = new Date(); y.setDate(y.getDate()-1);
+  return (s.last===dayStr(new Date()) || s.last===dayStr(y)) ? s.n : 0;
+}
+function bumpStreak(){
+  const today = dayStr(new Date()), s = store.get('mw_streak');
+  if(s && s.last===today) return;
+  const y = new Date(); y.setDate(y.getDate()-1);
+  store.set('mw_streak',{last:today, n:(s && s.last===dayStr(y)) ? s.n+1 : 1});
+}
+
+/* --- shared reads (counted once per episode per session) --- */
+function trackRead(id){
+  let seen = []; try{ seen = JSON.parse(sessionStorage.getItem('mw_read_ids')||'[]'); }catch(e){}
+  if(seen.includes(id)) return;
+  seen.push(id); try{ sessionStorage.setItem('mw_read_ids',JSON.stringify(seen)); }catch(e){}
+  capi('episodes-read',true); capi('ep-'+id,true);
+}
+
+/* --- home stats --- */
+function statsBlock(){
+  const total = EPISODES.length, k = EPISODES.filter(e=>done.has(e.id)).length, st = streakNow();
+  const mine = k
+    ? `📚 You have read <b>${k}</b> of ${total} episodes${k===total?'. You finished them all! 🏆':'. Keep going!'}`
+    : `📚 ${total} episodes are waiting. Pick any section below and meet Ravi 👇`;
+  return `<div class="stats" aria-label="Your reading progress">
+    <div class="row2"><span>${mine}</span>${st>=2?`<span>🔥 ${st}-day reading streak</span>`:''}<span id="eread" hidden></span></div>
+    <div class="pbar"><i style="width:${Math.round(k/total*100)}%"></i></div></div>`;
+}
+let readTotal = null;
+function showReadStat(){
+  const el = document.getElementById('eread'); if(!el) return;
+  const paint = n => { if(n!==null && n>=READ_MIN_SHOW){ el.hidden = false; el.innerHTML = `📖 <b>${n.toLocaleString('en-IN')}</b> episodes read by learners so far`; } };
+  if(readTotal!==null){ paint(readTotal); return; }
+  capi('episodes-read',false).then(n=>{ readTotal = n; paint(n); });
+}
+
+/* --- Most Read badge (per section) --- */
+function showBadges(key){
+  const eps = epsOf(key); if(eps.length<2) return;
+  Promise.all(eps.map(e=>capi('ep-'+e.id,false).then(n=>[e.id,n||0]))).then(res=>{
+    const top = res.sort((a,b)=>b[1]-a[1])[0];
+    if(!top || top[1]<BADGE_MIN) return;
+    const row = document.querySelector('.eprow[data-id="'+top[0]+'"] b');
+    if(row && !row.querySelector('.badge-hot')) row.insertAdjacentHTML('beforeend','<span class="badge-hot">🔥 MOST READ</span>');
+  });
+}
+
+/* --- quiz (built automatically from each episode's wisdom line) --- */
+function quizHTML(e){
+  const others = shuffle(EPISODES.filter(x=>x.id!==e.id && x.wisdom && x.wisdom!==e.wisdom)).slice(0,3);
+  if(others.length<2) return '';
+  const opts = shuffle([e,...others]);
+  return `<div class="quiz" data-quiz>
+    <h3>🎯 QUICK QUIZ</h3>
+    <p>Which one is the lesson from “${e.title}”?</p>
+    ${opts.map(o=>`<button type="button" class="qopt" data-ok="${o.id===e.id?1:0}">${o.wisdom}</button>`).join('')}
+    <div class="qres" aria-live="polite"></div></div>`;
+}
+
+/* --- share --- */
+function shareHTML(e){
+  const url = location.href.split('#')[0] + '#/e/' + e.id;
+  const text = `Ravi's lesson: “${strip(e.title)}”. ${strip(e.wisdom)}`;
+  const u = encodeURIComponent(url), t = encodeURIComponent(text);
+  return `<div class="share">
+    <span class="bang">📣 SHARE THIS EPISODE</span>
+    <a class="wa" href="https://wa.me/?text=${encodeURIComponent(text+' '+url)}" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="tg" href="https://t.me/share/url?url=${u}&text=${t}" target="_blank" rel="noopener">Telegram</a>
+    <button type="button" class="cp" data-share data-url="${u}" data-text="${t}">Copy link</button></div>`;
+}
+
+document.addEventListener('click',ev=>{
+  const o = ev.target.closest('.qopt');
+  if(o){
+    const q = o.closest('[data-quiz]'); if(!q || q.dataset.done) return;
+    q.dataset.done = '1';
+    const good = o.dataset.ok==='1';
+    q.querySelectorAll('.qopt').forEach(b=>{ b.disabled = true; if(b.dataset.ok==='1') b.classList.add('ok'); });
+    if(!good) o.classList.add('no');
+    q.querySelector('.qres').textContent = good ? '🎉 Ravi would be proud! You got it.' : '😅 Oops, Ravi made this mistake too. The right lesson is highlighted in green.';
+    return;
+  }
+  const s = ev.target.closest('[data-share]');
+  if(s){
+    const url = decodeURIComponent(s.dataset.url), text = decodeURIComponent(s.dataset.text);
+    if(navigator.share){ navigator.share({title:'Market Wisdom',text,url}).catch(()=>{}); return; }
+    const ok = () => { s.textContent = 'Link copied ✓'; setTimeout(()=>{ s.textContent = 'Copy link'; },2000); };
+    if(navigator.clipboard) navigator.clipboard.writeText(url).then(ok,()=>{ prompt('Copy this link:',url); });
+    else prompt('Copy this link:',url);
+  }
+});
 
 /* =====================================================================
    6. ROUTER  (#/  home · #/c/<section> · #/e/<episode>)
@@ -1313,6 +1515,8 @@ function route(){
   app.innerHTML = html;
   document.title = title;
   window.scrollTo(0,0);
+  showVisits(); showReadStat();
+  if(t==='c') showBadges(id);
 }
 document.addEventListener('click',ev=>{
   const b = ev.target.closest('[data-unlock]');
